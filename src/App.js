@@ -6,6 +6,8 @@ import ShoppingListPage from './pages/ShoppingListPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NavBar from "./components/NavBar";
 
+import './App.css';
+
 
 function App() {
   return (
