@@ -107,5 +107,59 @@
       ],
       "_id": "bbe820862e286",
       "_active" : true
+    },
+    {
+      "name": "Jirkův MMídl",
+      "note": "Kup rychle, než to vykoupí!",
+      "ownerID": 1045,
+      "userID": [
+          1046
+          ],  
+      "itemsOfList": [
+        {
+          "item": "Mrkev",
+          "amount": 1,
+          "units": "kg"
+        },
+        {
+          "item": "Máslo",
+          "amount": 1,
+          "units": "ks"
+        },
+        {
+          "item": "Mléko",
+          "amount": 2,
+          "units": "l"
+        }
+      ],
+      "_id": "bbe920862e286",
+      "_active" : true
+    },
+    {
+      "name": "Jirkův Fígl",
+      "note": "Kup rychle, než to vykoupí!",
+      "ownerID": 1045,
+      "userID": [
+          1046
+          ],  
+      "itemsOfList": [
+        {
+          "item": "Mrkev",
+          "amount": 1,
+          "units": "kg"
+        },
+        {
+          "item": "Máslo",
+          "amount": 1,
+          "units": "ks"
+        },
+        {
+          "item": "Mléko",
+          "amount": 2,
+          "units": "l"
+        }
+      ],
+      "_id": "bbe8208cc62e286",
+      "_active" : true
     }
   ]
