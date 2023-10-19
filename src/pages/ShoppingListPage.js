@@ -1,22 +1,58 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Modal } from 'react-bootstrap';
-import { Form, FormGroup } from 'react-bootstrap';
+import { Button, Container, Modal } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+import ShoppingCards from '../components/Cards';
+import data from "../data/data.json";
+import { Card } from "react-bootstrap";
 
 
 
 function ShoppingListPage() {
-
     const [show, setShow] = useState (false);
    
     return (
-        <>
-         <div class="text-center">
-           <Button className='w-20' variant='outline-success' onClick={() => setShow(true)}>
+      <Row>
+          {data.map((dat) =>  {
+            return (
+              <Col key={dat._id} className='d-flex justify-content-center' md={6} lg={4} xl={4} xxl={3}>
+                <Card className="ShoppingListCard text-center m-4">
+                  <Card.Body>
+                    <Card.Title>{dat.name}</Card.Title>
+                    <Card.Text>
+                      {dat.note}
+                    </Card.Text>
+                    <Button variant="outline-secondary" onClick={() => setShow(true)}>
+                        Detail
+                   </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+          )})}  
+      </Row>           
+    );
+      
+
+}
+  
+export default ShoppingListPage;
+
+
+
+
+
+/*
+
+
+
+
+<div className="text-center">
+           <Button className='w-20' variant="warning" onClick={() => setShow(true)}>
              New shopping list
             </Button>
           </div>
+
 
           <Modal
             size="xl"
@@ -33,46 +69,63 @@ function ShoppingListPage() {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                    <FormGroup
-                        label='Recipe name'
-                        type='text'
-                        placeholder='Recipe name'
-                        validate={true}
-                    />
-                    <FormGroup
-                        label='Description'
-                        as='textarea'
-                        placeholder='Description'
-                        rows={5}
-                        validate={true}
-                    />
-                    <FormGroup
-                        label='Image URL'
-                        type='url'
-                        placeholder='Image URL'
-                        validate={true}
-                    />
-                            
-                    <div className="mt-3">
-                        <Row className='gx-1'>
-                            <Col className='ps-0' xs={7}>
-                                <FormGroup
-                                    label='Preparation length (minutes)'
-                                    type='number'
-                                    placeholder='Preparation length in minutes'
-                                    validate={true}
-                                />
-                            </Col>
-                            <Col className xs={5}>
-                                <FormGroup
-                                    label='Final amount (servings)'
-                                    type='number'
-                                    placeholder='Final amount in servings'
-                                    validate={true}
-                                />
-                            </Col>
-                        </Row>
-                    </div>
+            <Form>
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+        <Form.Label column sm={2}>
+          Email
+        </Form.Label>
+        <Col sm={10}>
+          <Form.Control type="email" placeholder="Email" />
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+        <Form.Label column sm={2}>
+          Password
+        </Form.Label>
+        <Col sm={10}>
+          <Form.Control type="password" placeholder="Password" />
+        </Col>
+      </Form.Group>
+      <fieldset>
+        <Form.Group as={Row} className="mb-3">
+          <Form.Label as="legend" column sm={2}>
+            Radios
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Check
+              type="radio"
+              label="first radio"
+              name="formHorizontalRadios"
+              id="formHorizontalRadios1"
+            />
+            <Form.Check
+              type="radio"
+              label="second radio"
+              name="formHorizontalRadios"
+              id="formHorizontalRadios2"
+            />
+            <Form.Check
+              type="radio"
+              label="third radio"
+              name="formHorizontalRadios"
+              id="formHorizontalRadios3"
+            />
+          </Col>
+        </Form.Group>
+      </fieldset>
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
+        <Col sm={{ span: 10, offset: 2 }}>
+          <Form.Check label="Remember me" />
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3">
+        <Col sm={{ span: 10, offset: 2 }}>
+          <Button type="submit">Sign in</Button>
+        </Col>
+      </Form.Group>
+    </Form>
                     <Button className='mt-4'
                      variant={"danger"}
                      type="submit"
@@ -94,8 +147,5 @@ function ShoppingListPage() {
                     </Button>
             </Modal.Body>
           </Modal>
-        </>
-      );
-    }
 
-export default ShoppingListPage;
+*/

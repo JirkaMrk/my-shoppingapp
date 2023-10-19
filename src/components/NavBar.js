@@ -7,7 +7,7 @@ import React from 'react';
 
 function NavBar() {
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" style={{ fontWeight: 'bold' }}>
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/ShoppingListPage">My shopping lists</Nav.Link>
          <Navbar.Toggle aria-controls="basic-navbar-nav" />
