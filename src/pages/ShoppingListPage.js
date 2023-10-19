@@ -13,48 +13,13 @@ function ShoppingListPage() {
     const [show, setShow] = useState (false);
    
     return (
-      <Row>
-          {data.map((dat) =>  {
-            return (
-              <Col key={dat._id} className='d-flex justify-content-center' md={6} lg={4} xl={4} xxl={3}>
-                <Card className="ShoppingListCard text-center m-4">
-                  <Card.Body>
-                    <Card.Title>{dat.name}</Card.Title>
-                    <Card.Text>
-                      {dat.note}
-                    </Card.Text>
-                    <Button variant="outline-secondary" onClick={() => setShow(true)}>
-                        Detail
-                   </Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-          )})}  
-      </Row>           
-    );
-      
 
-}
-  
-export default ShoppingListPage;
-
-
-
-
-
-/*
-
-
-
-
-<div className="text-center">
+      <div className="text-center">
            <Button className='w-20' variant="warning" onClick={() => setShow(true)}>
              New shopping list
             </Button>
-          </div>
 
-
-          <Modal
+            <Modal
             size="xl"
             fullscreen="lg-down"
             show={show}
@@ -147,5 +112,15 @@ export default ShoppingListPage;
                     </Button>
             </Modal.Body>
           </Modal>
+          
+            <Container className='mt-4'>
+              <ShoppingCards/>
+            </Container>  
+      </div>       
+    );
+      
 
-*/
+}
+  
+export default ShoppingListPage;
+

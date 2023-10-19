@@ -1,25 +1,31 @@
-/*
-
-import { Col, Row } from "react-bootstrap"; 
-import ShoppingListCard from "./Card";
+import { Col, Row, Card, Button } from "react-bootstrap"; 
 import data from "../data/data.json";
+import { useState } from "react";
 
-
-function ShoppingCards() 
-{ 
+function ShoppingCards() {
+    const [setShow] = useState (false);
     return (
-        <Row>
-            {data.map((dat) =>  {
-                return (
-                    <Col key={dat._id} className='d-flex justify-content-center' md={6} lg={4} xl={4} xxl={3}>
-                     <ShoppingListCard dat={dat} />
-                    </Col>
-                )
-            })} 
-        </Row>             
-    ); 
-};
-        
-export default ShoppingCards;
+      <Row>
+          {data.map((dat) =>  {
+            return (
+              <Col key={dat._id} className='d-flex justify-content-center' md={5} lg={4} xl={3} xxl={2}>
+                <Card className="ShoppingListCard text-center m-4">
+                  <Card.Body>
+                    <Card.Title>{dat.name}</Card.Title>
+                    <Card.Text>
+                      {dat.note}
+                    </Card.Text>
+                    <Button variant="outline-secondary" onClick={() => setShow(true)}>
+                        Detail
+                   </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+          )})}  
+      </Row>           
+    );
+      
 
-*/
+}
+  
+export default ShoppingCards;
