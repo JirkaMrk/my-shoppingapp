@@ -19,19 +19,6 @@ function NavBar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <Form.Select size="sm" aria-label="Default select example">
-      <option>Filtr: Moje nákupní seznamy</option>
-      <option value="1">Všechny seznamy</option>
-      <option value="2">Moje seznamy</option>
-      <option value="3">Sdílené seznamy</option>
-      <option value="4">Uzavřené seznamy</option>
-    </Form.Select>
-      <Form.Select size="sm"  aria-label="Default select example">
-      <option>Uživatelé</option>
-      <option value="1">Jirka</option>
-      <option value="2">Tom</option>
-      <option value="3">Martin</option>
-    </Form.Select>
     </Navbar>
       
   );
