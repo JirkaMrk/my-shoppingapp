@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, ToggleButton } from 'react-bootstrap';
 
 function ShoppingForm() {
-  const [rows, setRows] = useState([{ item: '', quantity: '', price: '' }]);
+  const [rows, setRows] = useState([{ checkBox: '', item: '', quantity: '', price: '' }]);
 
   const handleAddRow = () => {
-    const newRow = { item: '', quantity: '', price: '' };
+    const newRow = { checkBox: '', item: '', quantity: '', price: '' };
     setRows([...rows, newRow]);
   };
 
@@ -30,25 +30,49 @@ function ShoppingForm() {
     console.log(rows);
   };
 
+  const [checked, setChecked] = useState(false);
+
   return (
+    
     <Form onSubmit={handleSubmit}>
+      
+      <Col sm={11} className="my-1">
+        <Row className="align-items-center">  
+            <Form.Control
+              type="text"
+              name="nameList"
+              placeholder="Název nákupního seznamu"
+
+            />  
+          </Row>
+          <Row className="align-items-center">  
+            <Form.Control
+              type="text"
+              name="noteList"
+              placeholder="Poznámka nákupního seznamu"
+
+            />  
+          </Row>    
+      </Col>
+      
+      
       {rows.map((row, index) => (
-        
+      
         <Row key={index} className="align-items-center">
           <Col sm={1} className="my-1">
-            <Form.Check // prettier-ignore
+            <Form.Check
             type='checkbox'
-            id="default-checkbox"
-            label="Vyřízeno"
+            name='checkBox'
+            label="Ok"
+            value={row.checkBox}
+            onChange={(event) => handleRowChange(index, event)}
           />
-            </Col>
-         
+          </Col>
           <Col sm={6} className="my-1">
-            
             <Form.Control
               type="text"
               name="item"
-              placeholder="Item"
+              placeholder="Co"
               value={row.item}
               onChange={(event) => handleRowChange(index, event)}
             />    
@@ -57,16 +81,16 @@ function ShoppingForm() {
             <Form.Control
               type="text"
               name="quantity"
-              placeholder="Quantity"
+              placeholder="Množství"
               value={row.quantity}
               onChange={(event) => handleRowChange(index, event)}
             />
           </Col>
-          <Col sm={1} className="my-1">
+          <Col sm={2} className="my-1">
             <Form.Control
               type="text"
               name="price"
-              placeholder="Price"
+              placeholder="Jednotky"
               value={row.price}
               onChange={(event) => handleRowChange(index, event)}
             />
@@ -78,6 +102,8 @@ function ShoppingForm() {
           </Col>
         </Row>
       ))}
+      <Col sm={11} className="my-1">
+        <Row sm={5}>
       <Button variant="primary" onClick={handleAddRow} >
         Přidat řádek
       </Button>
@@ -90,7 +116,18 @@ function ShoppingForm() {
       <Button variant="danger" type="Submit" >
         Smazat seznam
       </Button>
-    
+      <ToggleButton
+        id="toggle-check"
+        type="checkbox"
+        variant="outline-primary"
+        checked={checked}
+        value="1"
+        onChange={(e) => setChecked(e.currentTarget.checked)}
+      >
+        Zobrazit hotové
+      </ToggleButton>
+      </Row>
+        </Col>
     </Form>
   );
 }
