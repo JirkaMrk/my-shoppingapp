@@ -4,8 +4,6 @@ import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Row, Col, ToggleButton } from 'react-bootstrap';
 
-
-
 function ShoppingForm() {
   const [rows, setRows] = useState([{ checkBox: '', item: '', quantity: '', units: '' }]);
 
@@ -13,15 +11,6 @@ function ShoppingForm() {
     const newRow = { checkBox: '', item: '', quantity: '', units: '' };
     setRows([...rows, newRow]);
   };
-
-  /*
-  function handleDelete(id) { // funkce pro smazání položky
-    setVychoziKniha(([...momentlaniList]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
-        const index = momentlaniList.findIndex((item) => item.id === id);   // najde index položky, kterou chceme smazat  
-        momentlaniList.splice(index, 1);    // smaže položku ze seznamu 
-        return momentlaniList;  // vrátí nový seznam
-    })
-  };*/
 
   const handleDeleteRow = (index) => {
     const newRows = [...rows];
@@ -44,40 +33,29 @@ function ShoppingForm() {
   const [checked, setChecked] = useState(false);
 
   return (
-    
     <Form onSubmit={handleSubmit}>
-      
       <Col sm={11} className="my-1">
-        <Row className="align-items-center">  
-            <Form.Control
-              type="text"
-              name="nameList"
-              placeholder="Název nákupního seznamu"
-
-            />  
-          </Row>
-          <Row className="align-items-center">  
-            <Form.Control
-              type="text"
-              name="noteList"
-              placeholder="Poznámka nákupního seznamu"
-
-            />  
-          </Row>    
+        <Row className="align-items-center">
+          <Form.Control type="text" name="nameList" placeholder="Název nákupního seznamu" />
+        </Row>
+        <Row className="align-items-center">
+          <Form.Control type="text" name="noteList" placeholder="Poznámka nákupního seznamu" />
+        </Row>
       </Col>
-      
-      
+
       {rows.map((row, index) => (
-      
-        <Row key={index} className="align-items-center">
+        <Row
+          key={index}
+          className={`align-items-center ${checked && !row.checkBox ? 'd-none' : ''}`}
+        >
           <Col sm={1} className="my-1">
             <Form.Check
-            type='checkbox'
-            name='checkBox'
-            label="Ok"
-            value={row.checkBox}
-            onChange={(event) => handleRowChange(index, event)}
-          />
+              type="checkbox"
+              name="checkBox"
+              label="Ok"
+              value={row.checkBox}
+              onChange={(event) => handleRowChange(index, event)}
+            />
           </Col>
           <Col sm={6} className="my-1">
             <Form.Control
@@ -86,7 +64,7 @@ function ShoppingForm() {
               placeholder="Co"
               value={row.item}
               onChange={(event) => handleRowChange(index, event)}
-            />    
+            />
           </Col>
           <Col sm={2} className="my-1">
             <Form.Control
@@ -115,34 +93,33 @@ function ShoppingForm() {
       ))}
       <Col sm={11} className="my-1">
         <Row sm={5}>
-      <Button variant="primary" onClick={handleAddRow} >
-        Přidat řádek
-      </Button>
-      <Button variant="success" type="Submit" >
-        Uložit seznam
-      </Button>
-      <Button variant="primary" type="Submit" >
-        Sdílet seznam
-      </Button>
-      <Button variant="danger" type="Submit" >
-        Smazat seznam
-      </Button>
-      <ToggleButton
-        id="toggle-check"
-        type="checkbox"
-        variant="outline-primary"
-        checked={checked}
-        value="1"
-        onChange={(e) => setChecked(e.currentTarget.checked)}
-      >
-        Zobrazit hotové
-      </ToggleButton>
-      </Row>
-        </Col>
+          <Button variant="primary" onClick={handleAddRow}>
+            Přidat řádek
+          </Button>
+          <Button variant="success" type="Submit">
+            Uložit seznam
+          </Button>
+          <Button variant="primary" type="Submit">
+            Sdílet seznam
+          </Button>
+          <Button variant="danger" type="Submit">
+            Smazat seznam
+          </Button>
+          <ToggleButton
+            id="toggle-check"
+            type="checkbox"
+            variant="outline-primary"
+            checked={checked}
+            value="1"
+            onChange={(e) => setChecked(e.currentTarget.checked)}
+          >
+            Zobrazit hotové
+          </ToggleButton>
+        </Row>
+      </Col>
     </Form>
   );
 }
 
 export default ShoppingForm;
-  
 
