@@ -1,54 +1,59 @@
+import { useState } from "react";
+import { Form, FormControl, Button, Col, Row, ListGroup } from "react-bootstrap";
 
-class AddBook extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: [
-        { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", checked: false },
-        { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee", checked: false },
-        { id: 3, title: "1984", author: "George Orwell", checked: false },
-        { id: 4, title: "Pride and Prejudice", author: "Jane Austen", checked: false },
-        { id: 5, title: "The Catcher in the Rye", author: "J.D. Salinger", checked: false }
-      ],
-      showUncheckedOnly: false
-    };
-  }
+function AddBook(props) {
+  const [name, setName] = useState();
+  const [author, setAuthor] = useState();
+  const [year, setYear] = useState();
+  const [done, setDone] = useState(false);
 
-  handleCheckboxChange = () => {
-    this.setState(prevState => ({
-      showUncheckedOnly: !prevState.showUncheckedOnly
-    }));
-  }
+  return (
+    <Form>
+        <ListGroup> 
+            <Row className="align-items-center">
+                  <div className="d-flex justify-content-center">
+                     <Button variant="outline-success"  onClick={() => props.onAdd({name, author, year})}>
+                          Add new item
+                     </Button>
+                  </div>
+                <Col sm={7} className="my-1">
+                    <FormControl
+                        id='name'
+                        type='text'
+                        name='name'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
+                    />
+                </Col>
+                <Col sm={2} className="my-1">
+                    <FormControl
+                        id='author'
+                        type='text'
+                        name='author'
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)}
+                        placeholder="Author"
+                    />
+                </Col>
+                <Col sm={2} className="my-1">
+                    <FormControl
+                        id='year'
+                        type='text'
+                        name='year'
+                        value={year}
+                        onChange={(e) => setYear(e.target.value)}
+                        placeholder="year"
 
-  render() {
-    const { books, showUncheckedOnly } = this.state;
-    const filteredBooks = showUncheckedOnly ? books.filter(book => !book.checked) : books;
-
-    return (
-      <div>
-        <label>
-          <input type="checkbox" checked={showUncheckedOnly} onChange={this.handleCheckboxChange} />
-          Show unchecked only
-        </label>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Checked</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredBooks.map(book => (
-              <tr key={book.id}>
-                <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td><input type="checkbox" checked={book.checked} /></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+                    />
+                </Col>
+                
+            </Row>
+        </ListGroup> 
+</Form>
+     
+  );
 }
+
+export default AddBook;
+

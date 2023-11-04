@@ -7,7 +7,7 @@ import _uniqueId from 'lodash/uniqueId';
 function Book(props) {
 
     return (
-        <Form  >
+        <Form>
         <ListGroup id={props} >  
             <Row className="align-items-center">
                 <Col sm={1} className="my-1">

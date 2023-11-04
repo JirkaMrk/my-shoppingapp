@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Book from "./book";
 import { Button, Modal, Form, Row } from "react-bootstrap";
+import AddBook from "./add-book";
 
 
 const VYCHOZI_KNIHA = [ // výchozí data
@@ -14,9 +15,15 @@ const VYCHOZI_KNIHA = [ // výchozí data
 ];
 
 function ShoppingListForm(props) {
+    
+    const [momentlaniList, setMomentalniList] = useState([]); // výchozí data seznamu knih
     const [ modalOpen, setModalOpen ] = useState(false); // výchozí data zavření modálního okna
     const [vychoziKniha, setVychoziKniha] = useState(VYCHOZI_KNIHA);    // výchozí data  
-    const [showChecked, setShowChecked] = useState(false); // výchozí data zobrazení zaškrtnutých položek
+    const [showChecked, setShowChecked] = useState(true); // výchozí data zobrazení zaškrtnutých položek
+
+    function _uniqueId() { // funkce pro generování unikátního ID
+        return Math.random().toString(36);
+        }
 
     function handleDelete(id) { // funkce pro smazání položky
         setVychoziKniha(([...momentlaniList]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
@@ -26,10 +33,18 @@ function ShoppingListForm(props) {
         })
     };
 
-    const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target.value);
-    };
+    function addBook(data) {
+        // save new data
+        setVychoziKniha(([...momentlaniList]) => {
+            momentlaniList.push({ ...data, id: _uniqueId() });
+          return momentlaniList;
+        });
+      }
+    
+      function handleSubmit(e) {
+        const data = e.data.value;
+        addBook(data);
+      }
 
     function handleToggleShowChecked() { {
         setShowChecked(!showChecked );
@@ -45,16 +60,14 @@ function ShoppingListForm(props) {
                 .filter((item) => showChecked || item.done === false )
                 .map((item) => (
                     <Book key={item.id} {...item} onDelete={() => handleDelete(item.id)} />
+                    
             ))}
+            <AddBook key={momentlaniList.length} onAdd={addBook} />
 
             <div className="d-flex justify-content-center">
             <Button 
                 variant="primary" onClick={handleToggleShowChecked}>
                 {showChecked ? "Show active" : "Show all"}
-            </Button>
-            <Button 
-              variant="warning">
-                New item
             </Button>
             <Button 
               variant="success" type="submit" onClick={handleSubmit}>
@@ -69,11 +82,6 @@ function ShoppingListForm(props) {
 
 export default ShoppingListForm;
 
-/*
-  <Button variant="primary" onClick= {() => setModalOpen(true)}>
-                +
-            </Button>
-            */
 
 
 
