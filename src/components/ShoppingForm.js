@@ -4,13 +4,24 @@ import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Row, Col, ToggleButton } from 'react-bootstrap';
 
+
+
 function ShoppingForm() {
-  const [rows, setRows] = useState([{ checkBox: '', item: '', quantity: '', price: '' }]);
+  const [rows, setRows] = useState([{ checkBox: '', item: '', quantity: '', units: '' }]);
 
   const handleAddRow = () => {
-    const newRow = { checkBox: '', item: '', quantity: '', price: '' };
+    const newRow = { checkBox: '', item: '', quantity: '', units: '' };
     setRows([...rows, newRow]);
   };
+
+  /*
+  function handleDelete(id) { // funkce pro smazání položky
+    setVychoziKniha(([...momentlaniList]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
+        const index = momentlaniList.findIndex((item) => item.id === id);   // najde index položky, kterou chceme smazat  
+        momentlaniList.splice(index, 1);    // smaže položku ze seznamu 
+        return momentlaniList;  // vrátí nový seznam
+    })
+  };*/
 
   const handleDeleteRow = (index) => {
     const newRows = [...rows];
@@ -89,9 +100,9 @@ function ShoppingForm() {
           <Col sm={2} className="my-1">
             <Form.Control
               type="text"
-              name="price"
+              name="units"
               placeholder="Jednotky"
-              value={row.price}
+              value={row.units}
               onChange={(event) => handleRowChange(index, event)}
             />
           </Col>

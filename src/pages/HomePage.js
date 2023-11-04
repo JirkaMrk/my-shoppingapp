@@ -1,10 +1,13 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
+import ShoppingListForm from '../components/ShoppingListForm';
 
 function HomePage() {
     return (
-        <div>
-       
-        </div>
+        <Container className='mt-4'>
+              <ShoppingListForm/>
+            </Container>  
     );
 }
 
