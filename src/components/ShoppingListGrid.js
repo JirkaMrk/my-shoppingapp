@@ -22,28 +22,28 @@ function Book(props) {
                 </Col>
                 <Col sm={6} className="my-1">
                     <FormControl
-                        id='name'
+                        id='listItem'
                         type='text'
-                        name='name'
-                        defaultValue={props.name}
+                        name='listItem'
+                        defaultValue={props.listItem}
                         disabled={props.done === true ? true : false}
                     />
                 </Col>
                 <Col sm={2} className="my-1">
                     <FormControl
-                        id='author'
+                        id='amount'
                         type='text'
-                        name='author'
-                        defaultValue={props.author}
+                        name='amount'
+                        defaultValue={props.amount}
                         disabled={props.done === true ? true : false}
                     />
                 </Col>
                 <Col sm={2} className="my-1">
                     <FormControl
-                        id='year'
+                        id='units'
                         type='text'
-                        name='year'
-                        defaultValue={props.year}
+                        name='units'
+                        defaultValue={props.units}
                         disabled={props.done === true ? true : false}
                     />
                 </Col>

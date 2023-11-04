@@ -7,18 +7,21 @@
           1046,
           1047
           ],  
-      "itemsOfList": [
+      "listOfItems": [
         {
+          "done": true,
           "item": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
+          "done": false,
           "item": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
+          "done": false,
           "item": "Mléko",
           "amount": 2,
           "units": "l"
@@ -34,7 +37,7 @@
       "userID": [
           1046
           ],  
-      "itemsOfList": [
+        "listOfItems": [
         {
           "item": "Mrkev",
           "amount": 1,
@@ -62,7 +65,7 @@
       "userID": [
           1046
           ],  
-      "itemsOfList": [
+        "listOfItems": [
         {
           "item": "Mrkev",
           "amount": 1,
@@ -89,7 +92,7 @@
       "userID": [
           1046
           ],  
-      "itemsOfList": [
+        "listOfItems": [
         {
           "item": "Mrkev",
           "amount": 1,
@@ -116,7 +119,7 @@
       "userID": [
           1046
           ],  
-      "itemsOfList": [
+        "listOfItems": [
         {
           "item": "Mrkev",
           "amount": 1,
@@ -143,7 +146,7 @@
       "userID": [
           1046
           ],  
-      "itemsOfList": [
+        "listOfItems": [
         {
           "item": "Mrkev",
           "amount": 1,
