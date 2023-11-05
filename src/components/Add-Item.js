@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Form, FormControl, Button, Col, Row, Container } from "react-bootstrap";
 
 function AddBook(props) {
-  const [listItem, setListItem] = useState();
-  const [amount, setAmount] = useState();
-  const [units, setUnits] = useState();
+  const [listItem, setListItem] = useState("");
+  const [amount, setAmount] = useState("");
+  const [units, setUnits] = useState("");
   const [done, setDone] = useState(false);
 
   return (

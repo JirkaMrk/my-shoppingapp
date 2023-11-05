@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container} from 'react-bootstrap';
 import ShoppingCards from '../components/Cards';
 import data from "../data/data.json";
