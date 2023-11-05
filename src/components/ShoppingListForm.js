@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import ShoppingListGrid from "./ShoppingListGrid";
-import { Button, Form, Row, Col } from "react-bootstrap";
+import { Button, Form, Col, Row } from "react-bootstrap";
 import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
-import ConfirmationDialog from "./ConfirmationDialog";
+
 
 
 const ShoppingListDefox = [ 
@@ -106,6 +106,7 @@ function ShoppingListForm(props) {
     const [shoppingList, setShoppingList] = useState(ShoppingListItems);  
     const [showChecked, setShowChecked] = useState(true); 
     const [show, setShow] = useState(false);
+    const [users, setUsers] = useState(listOfUsers);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -128,17 +129,17 @@ function ShoppingListForm(props) {
             list.push({ ...data, id: _uniqueId() });
           return list;
         });
-      }
+    }
     
-      function handleSubmit(e) {
+    function handleSubmit(e) {
         const data = e.data.value;
         addBook(data);
-      }
+    }
 
     function handleToggleShowChecked() { {
-        setShowChecked(!showChecked );
+         setShowChecked(!showChecked );
+        };
     };
-     };
 
     return (
         <div>
@@ -163,33 +164,38 @@ function ShoppingListForm(props) {
 
             <AddBook key={list.length} onAdd={addBook} />
 
-            <div className="d-flex justify-content-center">
-
-                <Button 
-                  variant="primary" onClick={handleToggleShowChecked}>
-                  {showChecked ? "Show active" : "Show all"}
-                </Button>
+            <Col sm={11} className="my-1 offset-sm-1 offset-md-1">
+                <Row sm={5}>
+                    <Button 
+                       variant="primary" onClick={handleToggleShowChecked}>
+                      {showChecked ? "Show active" : "Show all"}
+                    </Button>
             
-                <Button 
-                  variant="success" type="submit">
-                     Save list
-                </Button>
+                    <Button 
+                     variant="success" type="submit">
+                       Save list
+                    </Button>
             
-                <Button 
-                   variant="warning" onClick={handleShow} >
-                     Share List
-                </Button>
-                   {show && <ShareModal handleClose={handleClose} />}
+                    <Button 
+                      variant="warning" onClick={handleShow} >
+                       Share List
+                    </Button>
+                     {show && <ShareModal handleClose={handleClose} />}
             
-
-                <Button 
-                    variant="danger"  >
+                    <Button 
+                     variant="danger"  >
                      Delete List
-                </Button>
-            </div>
+                    </Button>
+                </Row>
+            </Col>
         </div>    
     );
 }
 
 export default ShoppingListForm;
 
+/*
+{users.map((item) => (
+                <ShareModal key={item.id} {...item} />
+            ))}
+            */

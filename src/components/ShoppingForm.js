@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
-import { Row, Col, ToggleButton } from 'react-bootstrap';
+import { Row, Col, ToggleButton, Button, Form } from 'react-bootstrap';
 
 function ShoppingForm() {
   const [rows, setRows] = useState([{ checkBox: '', item: '', quantity: '', units: '' }]);

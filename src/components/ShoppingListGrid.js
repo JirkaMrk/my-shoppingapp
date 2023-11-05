@@ -1,9 +1,8 @@
+import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { FormControl, Row, Form, Col, Modal } from 'react-bootstrap';
-import _uniqueId from 'lodash/uniqueId';
-import ShoppingListForm from './ShoppingListForm';
+
 
 function Book(props) {
 

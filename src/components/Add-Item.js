@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Form, FormControl, Button, Col, Row, ListGroup, Container } from "react-bootstrap";
+import { Form, FormControl, Button, Col, Row, Container } from "react-bootstrap";
 
 function AddBook(props) {
   const [listItem, setListItem] = useState();
@@ -24,7 +24,7 @@ function AddBook(props) {
                     <FormControl
                         id='listItem'
                         type='text'
-                        name='nlistItem'
+                        name='listItem'
                         value={listItem}
                         onChange={(e) => setListItem(e.target.value)}
                         placeholder="listItem"
