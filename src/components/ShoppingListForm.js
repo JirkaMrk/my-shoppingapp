@@ -1,29 +1,31 @@
 import React from "react";
 import { useState } from "react";
 import ShoppingListGrid from "./ShoppingListGrid";
-import { Button, Modal, Form, Row } from "react-bootstrap";
+import { Button, Form, Row, Col } from "react-bootstrap";
 import AddBook from "./Add-Item";
+import ShareModal from "./ShareModal";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 
-const ShoppingListDef = [ 
+const ShoppingListDefox = [ 
     {
       "name": "Jirkův Lídl",
       "note": "Kup rychle,vykoupí!",
-      "ownerID": 1045,
-      "userID": [
-          1046,
-          1047,
-          2046,
-          4096
-          ], 
-
+      "ownerId": 1045,
+      "userId": [
+            {name: "Jirka", id: 1045},
+            {name: "Petr", id: 1046},
+            {name: "Karel", id: 1047},
+            {name: "Jana", id: 2046},
+            {name: "Marie", id: 4096}
+            ],
     "listOfItems": [
         {
             id: "0",
             done: true,
             listItem: "Mrkev",
             amount: "20",
-            units: "kg"
+            units: "kgs"
         },
         {
             id: "1",
@@ -52,17 +54,61 @@ const ShoppingListDef = [
             listItem: "Pivo",
             amount: "10",
             units: "plechovek"
-        } 
+        },
+        {
+            id: "5",
+            done: true,
+            listItem: "Víno",
+            amount: "1",
+            units: "láhev"
+        }  
+
     ]
     }             
 ];
 
+const ShoppingListItems = []; // vytvoří prázdný seznam položek listu
+
+ShoppingListDefox.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
+  shoppingList.listOfItems.forEach((item) => {
+    const itemInfo = {  // vytvoří seznam položek
+      
+      id: item.id,
+      done: item.done,
+      listItem: item.listItem,
+      amount: item.amount,
+      units: item.units,
+      
+    };
+    ShoppingListItems.push(itemInfo); // přidá položky do seznamu
+  });
+});
+
+console.log(ShoppingListItems);
+
+const listOfUsers = []; // vytvoří prázdný seznam uživatelů
+
+ShoppingListDefox.forEach((userList) => { // projde všechny seznamy 
+  userList.userId.forEach((item) => {
+    const itemInfo = {  // vytvoří seznam položek
+      id: item.id,
+      name: item.name,
+    };
+    listOfUsers.push(itemInfo); // přidá položky do seznamu 
+  });
+});
+
+console.log(listOfUsers);
+
 function ShoppingListForm(props) {
-    
+   
     const [list, setList] = useState([]); 
-    const [shoppingList, setShoppingList] = useState(ShoppingListDef);  
+    const [shoppingList, setShoppingList] = useState(ShoppingListItems);  
     const [showChecked, setShowChecked] = useState(true); 
     const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     function _uniqueId() { // funkce pro generování unikátního ID
         return Math.random().toString(36);
@@ -92,42 +138,58 @@ function ShoppingListForm(props) {
     function handleToggleShowChecked() { {
         setShowChecked(!showChecked );
     };
-  };
+     };
 
     return (
         <div>
-            <h1>
-                Můj shopping list
-            </h1>  
+            <Form>  
+                <Col sm={14} className="my-1">
+                    <Form.Control 
+                     type="text" 
+                     name="name" 
+                     defaultValue={ShoppingListDefox[0].name} 
+                     placeholder="Název nákupního seznamu" 
+                     disabled={ShoppingListItems[0].ownwrID !== 1045 ? true : false}/>
+                </Col>
+
+            </Form>
+
             {shoppingList
-                .filter((item) => showChecked || item.done === false )
-                .map((item) => (
-                    <ShoppingListGrid key={item.id} {...item} onDelete={() => handleDelete(item.id)} />      
+             .filter((item) => showChecked || item.done === false )
+             .map((item) => (
+                <ShoppingListGrid key={item.id} {...item} onDelete={() => handleDelete(item.id)} 
+                />
             ))}
+
             <AddBook key={list.length} onAdd={addBook} />
 
             <div className="d-flex justify-content-center">
-            <Button 
-                variant="primary" onClick={handleToggleShowChecked}>
-                {showChecked ? "Show active" : "Show all"}
-            </Button>
-            <Button 
-              variant="success" type="submit" onClick={handleSubmit}>
-                Save list
-            </Button>
-            <Button 
-              variant="warning"  onClick={handleSubmit}>
-                Share list
-            </Button>
-            </div>
-        </div>
-        
-    );
 
+                <Button 
+                  variant="primary" onClick={handleToggleShowChecked}>
+                  {showChecked ? "Show active" : "Show all"}
+                </Button>
+            
+                <Button 
+                  variant="success" type="submit">
+                     Save list
+                </Button>
+            
+                <Button 
+                   variant="warning" onClick={handleShow} >
+                     Share List
+                </Button>
+                   {show && <ShareModal handleClose={handleClose} />}
+            
+
+                <Button 
+                    variant="danger"  >
+                     Delete List
+                </Button>
+            </div>
+        </div>    
+    );
 }
 
 export default ShoppingListForm;
-
-
-
 

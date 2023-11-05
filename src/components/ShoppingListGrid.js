@@ -1,14 +1,15 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { FormControl, Row, Form, Col } from 'react-bootstrap';
+import { FormControl, Row, Form, Col, Modal } from 'react-bootstrap';
 import _uniqueId from 'lodash/uniqueId';
+import ShoppingListForm from './ShoppingListForm';
 
 function Book(props) {
 
     return (
         <Form>
-        <ListGroup id={props} >  
+         <ListGroup id={props} > 
             <Row className="align-items-center">
                 <Col sm={1} className="my-1">
                     <Form.Check
@@ -17,7 +18,6 @@ function Book(props) {
                         name='checkBox'
                         label="OK"
                         defaultChecked={props.done === true ? true : false}
-                        
                     />     
                 </Col>
                 <Col sm={6} className="my-1">
@@ -49,11 +49,11 @@ function Book(props) {
                 </Col>
                 <Col sm={1} className="my-1">
                     <Button variant="danger" onClick={props.onDelete}>
-                        X
+                        Delete
                     </Button>
                 </Col>
             </Row>
-        </ListGroup> 
+          </ListGroup> 
         </Form>
     );
 }
