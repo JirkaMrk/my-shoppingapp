@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -5,6 +6,7 @@ import { FormControl, Row, Form, Col, Modal } from 'react-bootstrap';
 
 
 function Book(props) {
+    
 
     return (
         <Form>
@@ -17,6 +19,7 @@ function Book(props) {
                         name='checkBox'
                         label="OK"
                         defaultChecked={props.done === true ? true : false}
+                       
                     />     
                 </Col>
                 <Col sm={6} className="my-1">
@@ -24,7 +27,7 @@ function Book(props) {
                         id='listItem'
                         type='text'
                         name='listItem'
-                        defaultValue={props.listItem}
+                        defaultValue={props.ListGroup}
                         disabled={props.done === true ? true : false}
                     />
                 </Col>

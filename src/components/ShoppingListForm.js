@@ -5,19 +5,18 @@ import { Button, Form, Col, Row } from "react-bootstrap";
 import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
 
-
-
 const ShoppingListDefox = [ 
     {
       "name": "Jirkův Lídl",
       "note": "Kup rychle,vykoupí!",
       "ownerId": 1045,
       "userId": [
-            {name: "Jirka", id: 1045},
-            {name: "Petr", id: 1046},
-            {name: "Karel", id: 1047},
-            {name: "Jana", id: 2046},
-            {name: "Marie", id: 4096}
+            {userName: "Jirka", userId: 1045},
+            {userName: "Petr", userId: 1046},
+            {userName: "Karel", userId: 1047},
+            {userName: "Jana", userId: 2046},
+            {userName: "Marie", userId: 4096},
+            {userName: "Bohdan", userId: 5000}
             ],
     "listOfItems": [
         {
@@ -91,14 +90,12 @@ const listOfUsers = []; // vytvoří prázdný seznam uživatelů
 ShoppingListDefox.forEach((userList) => { // projde všechny seznamy 
   userList.userId.forEach((item) => {
     const itemInfo = {  // vytvoří seznam položek
-      id: item.id,
-      name: item.name,
+      userId: item.userId,
+      userName: item.userName,
     };
     listOfUsers.push(itemInfo); // přidá položky do seznamu 
   });
 });
-
-console.log(listOfUsers);
 
 function ShoppingListForm(props) {
    
@@ -107,7 +104,6 @@ function ShoppingListForm(props) {
     const [showChecked, setShowChecked] = useState(true); 
     const [show, setShow] = useState(false);
     const [users, setUsers] = useState(listOfUsers);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -117,6 +113,14 @@ function ShoppingListForm(props) {
 
     function handleDelete(id) { // funkce pro smazání položky
         setShoppingList(([...list]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
+            const index = list.findIndex((item) => item.id === id);   // najde index položky, kterou chceme smazat  
+            list.splice(index, 1);    // smaže položku ze seznamu 
+            return list;  // vrátí nový seznam
+        })
+    };
+
+    function handleShare(id) { // funkce pro smazání položky
+        setUsers(([...list]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
             const index = list.findIndex((item) => item.id === id);   // najde index položky, kterou chceme smazat  
             list.splice(index, 1);    // smaže položku ze seznamu 
             return list;  // vrátí nový seznam
@@ -150,15 +154,16 @@ function ShoppingListForm(props) {
                      name="name" 
                      defaultValue={ShoppingListDefox[0].name} 
                      placeholder="Název nákupního seznamu" 
-                     disabled={ShoppingListItems[0].ownwrID !== 1045 ? true : false}/>
+                     disabled={ShoppingListItems[0].ownerID !== 1045 ? true : false}/>
                 </Col>
 
             </Form>
 
             {shoppingList
-             .filter((item) => showChecked || item.done === false )
+             .filter((item) => showChecked || item.done === false  )
              .map((item) => (
-                <ShoppingListGrid key={item.id} {...item} onDelete={() => handleDelete(item.id)} 
+                <ShoppingListGrid key={item.id} {...item} 
+                onDelete={() => handleDelete(item.id)}
                 />
             ))}
 
@@ -176,17 +181,23 @@ function ShoppingListForm(props) {
                        Save list
                     </Button>
             
-                    <Button 
-                      variant="warning" onClick={handleShow} >
-                       Share List
+                    <Button variant="warning" onClick={handleShow}>
+                         Share List
                     </Button>
-                     {show && <ShareModal handleClose={handleClose} />}
-            
+                       
+                    <ShareModal users={users} 
+                    show={show} // Pass the show state variable to ShareModal
+                    handleClose={handleClose}
+                    handleShow={handleShow}
+                    onUnshare={() => handleShare(users.userId)} 
+                    />
+                    
                     <Button 
                      variant="danger"  >
                      Delete List
                     </Button>
                 </Row>
+                
             </Col>
         </div>    
     );
@@ -195,7 +206,9 @@ function ShoppingListForm(props) {
 export default ShoppingListForm;
 
 /*
-{users.map((item) => (
-                <ShareModal key={item.id} {...item} />
-            ))}
-            */
+
+
+            {users
+             .map((item) => (
+                <ShareModal key={item.userId} {...item} />
+            ))}     */
