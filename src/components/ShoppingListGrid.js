@@ -19,7 +19,7 @@ function Book(props) {
                         name='checkBox'
                         label="OK"
                         defaultChecked={props.done === true ? true : false}
-                       
+                        onChange={props.onCheck}
                     />     
                 </Col>
                 <Col sm={6} className="my-1">
@@ -27,7 +27,7 @@ function Book(props) {
                         id='listItem'
                         type='text'
                         name='listItem'
-                        defaultValue={props.ListGroup}
+                        defaultValue={props.listItem}
                         disabled={props.done === true ? true : false}
                     />
                 </Col>

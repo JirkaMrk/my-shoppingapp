@@ -21,17 +21,25 @@ const ShareModal = (props) => {
                 <Col sm={4} className="my-1">
                 <Form.Control
                   type='text'
+                  id='userName'
+                  name='userName'
                   defaultValue={user.userName}
                 />
                 </Col>
                 <Col sm={4} className="my-1">
                 <Form.Control
                   type='text'
+                  id='userId'
+                  name='userId'
                   defaultValue={user.userId}
                 />
                 </Col>
                 <Col sm={1} className="my-1">
-                    <Button variant="danger" onClick={props.onUnshare}>
+                    <Button variant="danger" 
+                    id='unshare'
+                    name='unshare'
+                    onClick={props.onUnshare}
+                    >
                         Delete
                     </Button>
                 </Col>

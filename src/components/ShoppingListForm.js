@@ -104,6 +104,8 @@ function ShoppingListForm(props) {
     const [showChecked, setShowChecked] = useState(true); 
     const [show, setShow] = useState(false);
     const [users, setUsers] = useState(listOfUsers);
+    const [isChecked, setIsChecked] = useState(false);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -127,6 +129,20 @@ function ShoppingListForm(props) {
         })
     };
 
+    function handleCheck(id) {
+        setShoppingList((prevList) => {
+          return prevList.map((item) => {
+            if (item.id === id) {
+              // Toggle the 'done' property when the item is found
+              return { ...item, done: !item.done };
+            }
+            return item;
+          });
+        });
+      }
+      
+      console.log(shoppingList);
+
     function addBook(data) {
         // save new data
         setShoppingList(([...list]) => {
@@ -141,7 +157,8 @@ function ShoppingListForm(props) {
     }
 
     function handleToggleShowChecked() { {
-         setShowChecked(!showChecked );
+         setShowChecked(!showChecked )
+         ;
         };
     };
 
@@ -164,6 +181,8 @@ function ShoppingListForm(props) {
              .map((item) => (
                 <ShoppingListGrid key={item.id} {...item} 
                 onDelete={() => handleDelete(item.id)}
+                onCheck={() => handleCheck(item.id)}
+
                 />
             ))}
 
@@ -189,7 +208,7 @@ function ShoppingListForm(props) {
                     show={show} // Pass the show state variable to ShareModal
                     handleClose={handleClose}
                     handleShow={handleShow}
-                    onUnshare={() => handleShare(users.userId)} 
+                    onUnshare={(userId) => handleShare(userId)} 
                     />
                     
                     <Button 
