@@ -5,18 +5,20 @@ import { Button, Form, Col, Row } from "react-bootstrap";
 import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
 
+
 const ShoppingListDefox = [ 
     {
       "name": "Jirkův Lídl",
       "note": "Kup rychle,vykoupí!",
-      "ownerId": 1045,
+      "activeList": true,
+      "ownerId": 1045987456,
       "userId": [
-            {userName: "Jirka", userId: 1045},
-            {userName: "Petr", userId: 1046},
-            {userName: "Karel", userId: 1047},
-            {userName: "Jana", userId: 2046},
-            {userName: "Marie", userId: 4096},
-            {userName: "Bohdan", userId: 5000}
+            {userName: "Jirka", userId: 1045000023},
+            {userName: "Petr", userId: 1046359874},
+            {userName: "Karel", userId: 1047569845},
+            {userName: "Jana", userId: 2046321587},
+            {userName: "Marie", userId: 4096639636},
+            {userName: "Bohdan", userId: 5000875423}
             ],
     "listOfItems": [
         {
@@ -83,7 +85,6 @@ ShoppingListDefox.forEach((shoppingList) => { // projde všechny seznamy v Shopp
   });
 });
 
-console.log(ShoppingListItems);
 
 const listOfUsers = []; // vytvoří prázdný seznam uživatelů
 
@@ -96,6 +97,8 @@ ShoppingListDefox.forEach((userList) => { // projde všechny seznamy
     listOfUsers.push(itemInfo); // přidá položky do seznamu 
   });
 });
+
+console.log(listOfUsers);
 
 function ShoppingListForm(props) {
    
@@ -141,8 +144,6 @@ function ShoppingListForm(props) {
         });
       }
       
-      console.log(shoppingList);
-
     function addBook(data) {
         // save new data
         setShoppingList(([...list]) => {
@@ -151,8 +152,6 @@ function ShoppingListForm(props) {
         });
     }
 
-    console.log(list);
-    
     function handleSubmit(e) {
         const data = e.data.value;
         addBook(data);
