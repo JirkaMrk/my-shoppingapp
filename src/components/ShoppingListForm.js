@@ -150,6 +150,8 @@ function ShoppingListForm(props) {
           return list;
         });
     }
+
+    console.log(list);
     
     function handleSubmit(e) {
         const data = e.data.value;
@@ -158,7 +160,7 @@ function ShoppingListForm(props) {
 
     function handleToggleShowChecked() { {
          setShowChecked(!showChecked )
-         ;
+         
         };
     };
 
@@ -223,11 +225,3 @@ function ShoppingListForm(props) {
 }
 
 export default ShoppingListForm;
-
-/*
-
-
-            {users
-             .map((item) => (
-                <ShareModal key={item.userId} {...item} />
-            ))}     */
