@@ -18,9 +18,8 @@ const ShareModal = (props) => {
       return user;
     });
     setSharedUsers(updatedUsers);
+    
   };
-
-  console.log(sharedUsers);
 
   return (
     <Modal show={props.show} onHide={props.handleClose} backdrop="static">
@@ -32,7 +31,7 @@ const ShareModal = (props) => {
           <ListGroup>
             {sharedUsers.map((item) => (
               <Row className="align-items-center" key={item.userId} >
-                <Col sm={2} className="my-1">
+                <Col sm={4} className="my-1">
                     <Form.Check
                         id={item.userId}
                         type='checkbox'

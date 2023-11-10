@@ -113,9 +113,6 @@ const usersListToShare = allUsersList.map((user) => {
 });
 
 
-console.log(usersListToShare);
-
-
 function ShoppingListForm(props) {
    
     const [list, setList] = useState([]); 
