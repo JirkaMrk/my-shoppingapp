@@ -16,16 +16,16 @@ const ShareModal = (props) => {
       <Modal.Body>
         <Form>
           <ListGroup>
-            {props.sharedUsers.map((user) => (
-              <Row className="align-items-center" key={user.userId}>
+            {props.sharedUsers.map((item) => (
+              <Row className="align-items-center" key={item.userId} >
                 <Col sm={4} className="my-1">
                     <Form.Check
                         id='onShare'
                         type='checkbox'
                         name='onShare'
                         label="Share"
-                        defaultChecked={user.onShare === true ? true : false}
-                        onChange={user.onCheck}
+                        defaultChecked={item.onShare === true ? true : false}
+                        onChange={item.onCheck}
                       
                     />     
                 </Col>
@@ -34,7 +34,7 @@ const ShareModal = (props) => {
                   type='text'
                   id='userName'
                   name='userName'
-                  defaultValue={user.userName}
+                  defaultValue={item.userName}
                   disabled
                 />
                 </Col>

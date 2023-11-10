@@ -100,7 +100,7 @@ ShoppingListDefox.forEach((userList) => { // projde všechny seznamy
 });
 
 
-const usersListToshare = allUsersList.map((user) => {
+const usersListToShare = allUsersList.map((user) => {
   const isShared = ShoppingListDefox.some((list) =>
     list.userId.some((item) => item.userId === user.userId)
   );
@@ -113,7 +113,7 @@ const usersListToshare = allUsersList.map((user) => {
 });
 
 
-console.log(usersListToshare);
+console.log(usersListToShare);
 
 
 function ShoppingListForm(props) {
@@ -125,7 +125,7 @@ function ShoppingListForm(props) {
     const [show, setShow] = useState(false);
     const [users, setUsers] = useState(listOfUsers);
     const [isChecked, setIsChecked] = useState(false);
-    const [usersList, setUsersList] = useState(usersListToshare);
+    const [usersList, setUsersList] = useState(usersListToShare);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -222,11 +222,11 @@ function ShoppingListForm(props) {
                          Share List
                     </Button>
                        
-                    <ShareModal sharedUsers={usersListToshare} 
+                    <ShareModal sharedUsers={usersListToShare} 
                     show={show} // Pass the show state variable to ShareModal
                     handleClose={handleClose}
                     handleShow={handleShow}
-                    onCheck={() => handleToggleShowOnShare(usersListToshare.user)}  //todo
+                    onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  //todo
                    
                     />
                     
