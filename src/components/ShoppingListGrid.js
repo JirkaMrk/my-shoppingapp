@@ -3,7 +3,6 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import { FormControl, Row, Form, Col, Modal } from 'react-bootstrap';
-import { FOCUSABLE_SELECTOR } from '@testing-library/user-event/dist/utils';
 
 
 function Book(props) {

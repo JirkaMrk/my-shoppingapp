@@ -4,6 +4,7 @@ import ShoppingListGrid from "./ShoppingListGrid";
 import { Button, Form, Col, Row } from "react-bootstrap";
 import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
+import allUsersList from "../data/allUsersList.json";
 
 
 const ShoppingListDefox = [ 
@@ -11,14 +12,15 @@ const ShoppingListDefox = [
       "name": "Jirkův Lídl",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
-      "ownerId": 1045987456,
+      "ownerId": 4586623265,
       "userId": [
-            {userName: "Jirka", userId: 1045000023},
-            {userName: "Petr", userId: 1046359874},
-            {userName: "Karel", userId: 1047569845},
-            {userName: "Jana", userId: 2046321587},
-            {userName: "Marie", userId: 4096639636},
-            {userName: "Bohdan", userId: 5000875423}
+            {userId: 1234567890},
+            {userId: 1111111111},
+            {userId: 3333333333},
+            {userId: 5555555555},
+            {userId: 7777777777},
+            {userId: 5656565656}
+            
             ],
     "listOfItems": [
         {
@@ -92,22 +94,38 @@ ShoppingListDefox.forEach((userList) => { // projde všechny seznamy
   userList.userId.forEach((item) => {
     const itemInfo = {  // vytvoří seznam položek
       userId: item.userId,
-      userName: item.userName,
     };
     listOfUsers.push(itemInfo); // přidá položky do seznamu 
   });
 });
 
-console.log(listOfUsers);
+
+const usersListToshare = allUsersList.map((user) => {
+  const isShared = ShoppingListDefox.some((list) =>
+    list.userId.some((item) => item.userId === user.userId)
+  );
+
+  return {
+    onShare: isShared,
+    userId: user.userId,
+    userName: user.userName
+  };
+});
+
+
+console.log(usersListToshare);
+
 
 function ShoppingListForm(props) {
    
     const [list, setList] = useState([]); 
-    const [shoppingList, setShoppingList] = useState(ShoppingListItems);  
+    const [shoppingList, setShoppingList] = useState(ShoppingListItems); 
+    const [showOnShare, setShowOnShare] = useState(true);
     const [showChecked, setShowChecked] = useState(true); 
     const [show, setShow] = useState(false);
     const [users, setUsers] = useState(listOfUsers);
     const [isChecked, setIsChecked] = useState(false);
+    const [usersList, setUsersList] = useState(usersListToshare);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -124,13 +142,6 @@ function ShoppingListForm(props) {
         })
     };
 
-    function handleShare(id) { // funkce pro smazání položky
-        setUsers(([...list]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
-            const index = list.findIndex((item) => item.id === id);   // najde index položky, kterou chceme smazat  
-            list.splice(index, 1);    // smaže položku ze seznamu 
-            return list;  // vrátí nový seznam
-        })
-    };
 
     function handleCheck(id) {
         setShoppingList((prevList) => {
@@ -142,8 +153,8 @@ function ShoppingListForm(props) {
             return item;
           });
         });
-      }
-      
+    };
+ 
     function addBook(data) {
         // save new data
         setShoppingList(([...list]) => {
@@ -162,6 +173,12 @@ function ShoppingListForm(props) {
          
         };
     };
+
+    function handleToggleShowOnShare() { {
+      setShowOnShare(!showOnShare )
+      
+     };
+ };
 
     return (
         <div>
@@ -205,11 +222,12 @@ function ShoppingListForm(props) {
                          Share List
                     </Button>
                        
-                    <ShareModal users={users} 
+                    <ShareModal sharedUsers={usersListToshare} 
                     show={show} // Pass the show state variable to ShareModal
                     handleClose={handleClose}
                     handleShow={handleShow}
-                    onUnshare={(userId) => handleShare(userId)} 
+                    onCheck={() => handleToggleShowOnShare(usersListToshare.user)}  //todo
+                   
                     />
                     
                     <Button 
