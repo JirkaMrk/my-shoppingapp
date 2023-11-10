@@ -30,26 +30,26 @@ const ShareModal = (props) => {
         <Form>
           <ListGroup>
             {sharedUsers.map((item) => (
-              <Row className="align-items-center" key={item.userId} >
+              <Row className="align-items-center" key={item.userId}>
                 <Col sm={4} className="my-1">
-                    <Form.Check
-                        id={item.userId}
-                        type='checkbox'
-                        name='onShare'
-                        label="Share"
-                        checked={item.onShare}
-                        onChange={() => handleCheckboxChange(item.userId)}
-                      
-                    />     
+                  <Form.Check
+                    id={`checkbox-${item.userId}`} // Use a unique id here
+                    type='checkbox'
+                    name='onShare'
+                    label="Share"
+                    checked={item.onShare}
+                    onChange={() => handleCheckboxChange(item.userId)}
+                  />
                 </Col>
                 <Col sm={8} className="my-1">
-                <Form.Control
-                  type='text'
-                  id='userName'
-                  name='userName'
-                  defaultValue={item.userName}
-                  disabled
-                />
+                  <Form.Control
+                    type='text'
+                    id={`userName-${item.userId}`} // Use a unique id here
+                    name='userName'
+                    defaultValue={item.userName}
+                    disabled
+                    autoComplete="off"
+                  />
                 </Col>
               </Row>
             ))}
