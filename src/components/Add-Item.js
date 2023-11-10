@@ -14,7 +14,7 @@ function AddBook(props) {
             <Row className="align-items-center">
                   <div className="d-flex justify-content-center">
                     <Button 
-                    variant="outline-success" 
+                    variant="success" 
                     onClick={() => props.onAdd({done, listItem, amount, units})} 
                     disabled={!listItem || !amount || !units}>
                         Add new item
