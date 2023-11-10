@@ -5,8 +5,22 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useState } from 'react';
 
 const ShareModal = (props) => {
+  const [sharedUsers, setSharedUsers] = useState(props.sharedUsers);
+
+  const handleCheckboxChange = (userId) => {
+    const updatedUsers = sharedUsers.map((user) => {
+      if (user.userId === userId) {
+        return { ...user, onShare: !user.onShare };
+      }
+      return user;
+    });
+    setSharedUsers(updatedUsers);
+  };
+
+  console.log(sharedUsers);
 
   return (
     <Modal show={props.show} onHide={props.handleClose} backdrop="static">
@@ -16,20 +30,20 @@ const ShareModal = (props) => {
       <Modal.Body>
         <Form>
           <ListGroup>
-            {props.sharedUsers.map((item) => (
+            {sharedUsers.map((item) => (
               <Row className="align-items-center" key={item.userId} >
-                <Col sm={4} className="my-1">
+                <Col sm={2} className="my-1">
                     <Form.Check
-                        id='onShare'
+                        id={item.userId}
                         type='checkbox'
                         name='onShare'
                         label="Share"
-                        defaultChecked={item.onShare === true ? true : false}
-                        onChange={item.onCheck}
+                        checked={item.onShare}
+                        onChange={() => handleCheckboxChange(item.userId)}
                       
                     />     
                 </Col>
-                <Col sm={6} className="my-1">
+                <Col sm={8} className="my-1">
                 <Form.Control
                   type='text'
                   id='userName'

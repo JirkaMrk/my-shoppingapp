@@ -142,7 +142,6 @@ function ShoppingListForm(props) {
         })
     };
 
-
     function handleCheck(id) {
         setShoppingList((prevList) => {
           return prevList.map((item) => {
@@ -177,8 +176,8 @@ function ShoppingListForm(props) {
     function handleToggleShowOnShare() { {
       setShowOnShare(!showOnShare )
       
-     };
- };
+      };
+    };
 
     return (
         <div>
@@ -200,7 +199,6 @@ function ShoppingListForm(props) {
                 <ShoppingListGrid key={item.id} {...item} 
                 onDelete={() => handleDelete(item.id)}
                 onCheck={() => handleCheck(item.id)}
-
                 />
             ))}
 
@@ -227,7 +225,6 @@ function ShoppingListForm(props) {
                     handleClose={handleClose}
                     handleShow={handleShow}
                     onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  //todo
-                   
                     />
                     
                     <Button 
