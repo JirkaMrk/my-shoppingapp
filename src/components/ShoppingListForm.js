@@ -70,6 +70,9 @@ const ShoppingListDefox = [
     }             
 ];
 
+const logInUser = 7777777777;
+const ownerId = ShoppingListDefox[0].ownerId;
+
 const ShoppingListItems = []; // vytvoří prázdný seznam položek listu
 
 ShoppingListDefox.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
@@ -185,9 +188,8 @@ function ShoppingListForm(props) {
                      name="name" 
                      defaultValue={ShoppingListDefox[0].name} 
                      placeholder="Název nákupního seznamu" 
-                     disabled={ShoppingListItems[0].ownerID !== 1045 ? true : false}/>
+                     disabled={ownerId !== logInUser ? true : false}/>
                 </Col>
-
             </Form>
 
             {shoppingList
@@ -218,7 +220,9 @@ function ShoppingListForm(props) {
                     </Button>
                        
                     <ShareModal sharedUsers={usersListToShare} 
-                    show={show} // Pass the show state variable to ShareModal
+                    show={show}
+                    listOwner={ShoppingListDefox[0].ownerId}
+                    logInUser={logInUser}
                     handleClose={handleClose}
                     handleShow={handleShow}
                     onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  //todo
