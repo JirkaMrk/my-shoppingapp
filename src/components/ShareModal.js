@@ -20,12 +20,12 @@ const ShareModal = (props) => {
     setSharedUsers(updatedUsers);
   };
 
-  const logUser = 4586623265;
-  const owner = 4586623265;
+  const logInUser = 4586623265;
+  const listOwner = 1111111111;
 
   const handleUserFilter = (userId) => {
-    const isOwner = logUser === owner;
-    return isOwner ? userId === owner : userId !== logUser;
+    const isOwner = logInUser === listOwner;
+    return isOwner ? userId === listOwner : userId !== logInUser;
   };
 
   return (
