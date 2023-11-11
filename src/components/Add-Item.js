@@ -13,9 +13,12 @@ function AddBook(props) {
         <Container> 
             <Row className="align-items-center">
                   <div className="d-flex justify-content-center">
-                    <Button 
+                    <Button  // přidá řádek a vynuluje hodnoty polí
                     variant="success" 
-                    onClick={() => props.onAdd({done, listItem, amount, units})}  // přidání položky do seznamu
+                    onClick={() => { props.onAdd({done, listItem, amount, units}); 
+                     setListItem("");
+                     setAmount("");
+                     setUnits("");}} 
                     disabled={!listItem || !amount || !units}>
                         Add new item
                     </Button>

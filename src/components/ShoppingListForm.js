@@ -9,8 +9,8 @@ import allUsersList from "../data/allUsersList.json";
 
 const ShoppingListExample = [ // data jednoho seznamu
     {
-      "name": "Jirkův Lídl",
-      "note": "Kup rychle,vykoupí!",
+      "name": "Jirkův Lídl nákup",
+      "note": "Nejpozději ve čtvrtek do 18:00",
       "activeList": true,
       "ownerId": 4586623265, 
       "userId": [  
@@ -28,7 +28,7 @@ const ShoppingListExample = [ // data jednoho seznamu
             done: true,
             listItem: "Mrkev",
             amount: "20",
-            units: "kgs"
+            units: "kg"
         },
         {
             id: "1",
@@ -77,7 +77,7 @@ const ShoppingListExample = [ // data jednoho seznamu
           done: false,
           listItem: "Tatranka",
           amount: "10",
-          units: "lks"
+          units: "ks"
        }, 
        {
          id: "8",
@@ -217,7 +217,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                     </Button>
             
                     <Button  // todo
-                     variant="success" type="submit">
+                     variant="success" type="submit" disabled>
                        Save list
                     </Button>
             
@@ -235,7 +235,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                     />
                     
                     <Button 
-                     variant="danger"  >
+                     variant="danger" disabled>
                      Delete List
                     </Button>
                 </Row>
