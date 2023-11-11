@@ -7,13 +7,13 @@ import ShareModal from "./ShareModal";
 import allUsersList from "../data/allUsersList.json";
 
 
-const ShoppingListDefox = [ 
+const ShoppingListExample = [ // data jednoho seznamu
     {
       "name": "Jirkův Lídl",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
-      "ownerId": 4586623265,
-      "userId": [
+      "ownerId": 4586623265, 
+      "userId": [  
             {userId: 1234567890},
             {userId: 1111111111},
             {userId: 3333333333},
@@ -22,7 +22,7 @@ const ShoppingListDefox = [
             {userId: 5656565656}
             
             ],
-    "listOfItems": [
+    "listOfItems": [  
         {
             id: "0",
             done: true,
@@ -90,13 +90,13 @@ const ShoppingListDefox = [
     }             
 ];
 
-const ownerId = ShoppingListDefox[0].ownerId;
+const ownerId = ShoppingListExample[0].ownerId; 
 
-const ShoppingListItems = []; // vytvoří prázdný seznam položek listu
+const ShoppingListItems = []; 
 
-ShoppingListDefox.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
+ShoppingListExample.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
   shoppingList.listOfItems.forEach((item) => {
-    const itemInfo = {  // vytvoří seznam položek
+    const itemInfo = {  // vytvoří pole seznamu všech položek seznamu z ShoppingListExample
       
       id: item.id,
       done: item.done,
@@ -105,27 +105,28 @@ ShoppingListDefox.forEach((shoppingList) => { // projde všechny seznamy v Shopp
       units: item.units,
       
     };
-    ShoppingListItems.push(itemInfo); // přidá položky do seznamu
+    ShoppingListItems.push(itemInfo); 
   });
 });
 
-const listOfUsers = []; // vytvoří prázdný seznam uživatelů
+const listOfUsers = []; 
 
-ShoppingListDefox.forEach((userList) => { // projde všechny seznamy 
+ShoppingListExample.forEach((userList) => { // projde všechny seznamy 
   userList.userId.forEach((item) => {
-    const itemInfo = {  // vytvoří seznam položek
+    const itemInfo = {  // vytvoří seznam uživatelů ze seznamu v ShoppingListExample
       userId: item.userId,
     };
     listOfUsers.push(itemInfo); // přidá položky do seznamu 
   });
 });
 
-const usersListToShare = allUsersList.map((user) => {  // projde všechny seznamy
-  const isShared = ShoppingListDefox.some((list) =>  // zjistí, jestli je seznam sdílený
-    list.userId.some((item) => item.userId === user.userId)  // zjistí, jestli je uživatel na seznamu
+const usersListToShare = allUsersList.map((user) => {  
+  // vytvoří seznam všech uživatelů a přiřadí uživateli informace o sdílení tohoto seznamu
+  // ze seznamu uživatelů v ShoppingListExample
+  const isShared = ShoppingListExample.some((list) =>  
+    list.userId.some((item) => item.userId === user.userId) 
   );
-
-  return {  // vytvoří seznam položek
+  return {  
     onShare: isShared,
     userId: user.userId,
     userName: user.userName
@@ -133,8 +134,6 @@ const usersListToShare = allUsersList.map((user) => {  // projde všechny seznam
 });
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
-
-  console.log(props.logInUser);
    
     const [list, setList] = useState([]); 
     const [shoppingList, setShoppingList] = useState(ShoppingListItems); 
@@ -142,8 +141,6 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
     const [showChecked, setShowChecked] = useState(true); 
     const [show, setShow] = useState(false);
     const [users, setUsers] = useState(listOfUsers);
-    const [isChecked, setIsChecked] = useState(false);
-    const [usersList, setUsersList] = useState(usersListToShare);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -164,7 +161,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
         setShoppingList((prevList) => {
           return prevList.map((item) => {
             if (item.id === id) {
-              // Toggle the 'done' property when the item is found
+              // změna stavu položky seznamu (done)
               return { ...item, done: !item.done };
             }
             return item;
@@ -173,77 +170,68 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
     };
  
     function addBook(data) {
-        // save new data
+        // přidá novou položku do seznamu
         setShoppingList(([...list]) => {
             list.push({ ...data, id: _uniqueId() });
           return list;
         });
     }
 
-    function handleSubmit(e) {
-        const data = e.data.value;
-        addBook(data);
-    }
-
-    function handleToggleShowChecked() { {
-         setShowChecked(!showChecked )
-         
-        };
+    function handleToggleShowChecked() {  // funkce pro zobrazení/ skrytí všech položek
+         setShowChecked(!showChecked )  
     };
 
-    function handleToggleShowOnShare() { {
-      setShowOnShare(!showOnShare )
-      
-      };
+    function handleToggleShowOnShare() {  // funkce pro změnu stavu seznamu sdílení
+      setShowOnShare(!showOnShare )  
     };
 
     return (
-        <div>
-            <Form>  
-                <Col sm={14} className="my-1">
+        <div>   
+            <Form> 
+                <Col sm={14} className="my-1"> 
                     <Form.Control 
                      type="text" 
                      name="name" 
-                     defaultValue={ShoppingListDefox[0].name} 
+                     defaultValue={ShoppingListExample[0].name} 
                      placeholder="Název nákupního seznamu" 
                      disabled={ownerId !== props.logInUser ? true : false}/>
                 </Col>
             </Form>
 
-            {shoppingList
+            {shoppingList  // vyfiltruje vybrané položky a zobrazí je
              .filter((item) => showChecked || item.done === false  )
              .map((item) => (
                 <ShoppingListGrid key={item.id} {...item} 
-                onDelete={() => handleDelete(item.id)}
-                onCheck={() => handleCheck(item.id)}
+                onDelete={() => handleDelete(item.id)}  // provede smazání položky
+                onCheck={() => handleCheck(item.id)}  // provede změnu stavu položky
                 />
             ))}
-
-            <AddBook key={list.length} onAdd={addBook} />
+        
+            <AddBook key={list.length} onAdd={addBook} />  
 
             <Col sm={11} className="my-1 offset-sm-1 offset-md-1">
                 <Row sm={5}>
-                    <Button 
+                    <Button  // tlačítko pro zobrazení/ skrytí všech označených položek
                        variant="primary" onClick={handleToggleShowChecked}>
                       {showChecked ? "Show active" : "Show all"}
                     </Button>
             
-                    <Button 
+                    <Button  // todo
                      variant="success" type="submit">
                        Save list
                     </Button>
             
-                    <Button variant="warning" onClick={handleShow}>
-                         Share List
-                    </Button>
+                    <Button variant="warning" onClick={handleShow}>  
+                         Share List 
+                    </Button>  
                        
-                    <ShareModal sharedUsers={usersListToShare} 
+                    <ShareModal sharedUsers={usersListToShare}  // komponenta pro zobrazení modálního okna sdílení uživatelů
                     show={show}
-                    listOwner={ShoppingListDefox[0].ownerId}
+                    listOwner={ShoppingListExample[0].ownerId}
                     logInUser={props.logInUser}
                     handleClose={handleClose}
                     handleShow={handleShow}
-                    onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  //todo
+                    onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  
                     />
                     
                     <Button 

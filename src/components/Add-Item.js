@@ -8,14 +8,14 @@ function AddBook(props) {
   const [units, setUnits] = useState("");
   const [done, setDone] = useState(false);
 
-  return (
+  return (  // formulář pro přidání položky do seznamu
     <Form>
         <Container> 
             <Row className="align-items-center">
                   <div className="d-flex justify-content-center">
                     <Button 
                     variant="success" 
-                    onClick={() => props.onAdd({done, listItem, amount, units})} 
+                    onClick={() => props.onAdd({done, listItem, amount, units})}  // přidání položky do seznamu
                     disabled={!listItem || !amount || !units}>
                         Add new item
                     </Button>

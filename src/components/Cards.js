@@ -3,7 +3,7 @@ import data from "../data/data.json";
 import { useState } from "react";
 import background from "../images/Background.jpg";
 
-function ShoppingCards() {
+function ShoppingCards() {  // výpis karet jednotlivých nákupních seznamů
     const [setShow] = useState (false);
     return (
       <Row>

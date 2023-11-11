@@ -7,10 +7,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 
-const ShareModal = (props) => {
-  const [sharedUsers, setSharedUsers] = useState(props.sharedUsers);
+const ShareModal = (props) => {  // modální okno pro sdílení seznamu
 
-  const handleCheckboxChange = (userId) => {
+  const [sharedUsers, setSharedUsers] = useState(props.sharedUsers); // seznam sdílených uživatelů
+
+  const handleCheckboxChange = (userId) => {  // změna stavu sdílení uživatelů
     const updatedUsers = sharedUsers.map((user) => {
       if (user.userId === userId) {
         return { ...user, onShare: !user.onShare };
@@ -20,12 +21,12 @@ const ShareModal = (props) => {
     setSharedUsers(updatedUsers);
   };
 
-  const handleUserFilter = (userId) => {
+  const handleUserFilter = (userId) => {  // logika pro "disabled" checkboxu na základě přihlášeného uživatele
     const isOwner = props.logInUser === props.listOwner;
     return isOwner ? userId === props.listOwner : userId !== props.logInUser;
   };
 
-  return (
+  return (  // výpis sdílených uživatelů s disabled checkboxem dle uživatele/ vlastníka seznamu
     <Modal show={props.show} onHide={props.handleClose} backdrop="static">
       <Modal.Header closeButton>
         <Modal.Title>List of shared users</Modal.Title>
@@ -33,7 +34,7 @@ const ShareModal = (props) => {
       <Modal.Body>
         <Form>
           <ListGroup>
-            {sharedUsers.map((item) => (
+            {sharedUsers.map((item) => (  // výpis sdílených uživatelů 
               <Row className="align-items-center" key={item.userId}>
                 <Col sm={4} className="my-1">
                   <Form.Check
@@ -42,24 +43,24 @@ const ShareModal = (props) => {
                     name='onShare'
                     label="Share"
                     checked={item.onShare}
-                    onChange={() => handleCheckboxChange(item.userId)}
-                    disabled={handleUserFilter(item.userId)}
+                    onChange={() => handleCheckboxChange(item.userId)}  // změna stavu sdílení uživatelů
+                    disabled={handleUserFilter(item.userId)}  // logika pro "disabled" checkboxu na základě přihlášeného uživatele
                   />
                 </Col>
                 <Col sm={4} className="my-1">
                   <Form.Control
                     type='text'
-                    id={`userName-${item.userId}`} // Use a unique id here
+                    id={`userName-${item.userId}`} // Nutnost unikátního Id
                     name='userName'
                     defaultValue={item.userName}
                     disabled
-                    autoComplete="off"
+                    autoComplete="off" // vypne automatické doplňování prohlížeče
                   />
                 </Col>
                 <Col sm={4} className="my-1">
                   <Form.Control
                     type='text'
-                    id={`userId-${item.userId}`} // Use a unique id here
+                    id={`userId-${item.userId}`} // Nutnost unikátního Id
                     name='userId'
                     defaultValue={item.userId}
                     disabled
@@ -72,7 +73,7 @@ const ShareModal = (props) => {
         </Form>
       </Modal.Body>
 
-      <Modal.Footer>
+      <Modal.Footer>  
         <Button variant="secondary" onClick={props.handleClose}>
           Close
         </Button>

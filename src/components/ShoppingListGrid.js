@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { FormControl, Row, Form, Col, Modal } from 'react-bootstrap';
 
 
-function Book(props) {
+function Book(props) {  // vypíše seznam položek v seznamu
     
 
     return (
