@@ -18,7 +18,14 @@ const ShareModal = (props) => {
       return user;
     });
     setSharedUsers(updatedUsers);
-    
+  };
+
+  const logUser = 4586623265;
+  const owner = 4586623265;
+
+  const handleUserFilter = (userId) => {
+    const isOwner = logUser === owner;
+    return isOwner ? userId === owner : userId !== logUser;
   };
 
   return (
@@ -39,14 +46,25 @@ const ShareModal = (props) => {
                     label="Share"
                     checked={item.onShare}
                     onChange={() => handleCheckboxChange(item.userId)}
+                    disabled={handleUserFilter(item.userId)}
                   />
                 </Col>
-                <Col sm={8} className="my-1">
+                <Col sm={4} className="my-1">
                   <Form.Control
                     type='text'
                     id={`userName-${item.userId}`} // Use a unique id here
                     name='userName'
                     defaultValue={item.userName}
+                    disabled
+                    autoComplete="off"
+                  />
+                </Col>
+                <Col sm={4} className="my-1">
+                  <Form.Control
+                    type='text'
+                    id={`userId-${item.userId}`} // Use a unique id here
+                    name='userId'
+                    defaultValue={item.userId}
                     disabled
                     autoComplete="off"
                   />
@@ -66,5 +84,6 @@ const ShareModal = (props) => {
     </Modal>
   );
 };
+
 
 export default ShareModal;
