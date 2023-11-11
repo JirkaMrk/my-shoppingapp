@@ -64,13 +64,32 @@ const ShoppingListDefox = [
             listItem: "Víno",
             amount: "1",
             units: "láhev"
+        },  
+        {
+          id: "6",
+          done: false,
+          listItem: "Pepsi",
+          amount: "1",
+          units: "litr"
+        },  
+        {
+          id: "7",
+          done: false,
+          listItem: "Tatranka",
+          amount: "10",
+          units: "lks"
+       }, 
+       {
+         id: "8",
+         done: true,
+         listItem: "Mouka",
+         amount: "1",
+         units: "kg"
         }  
-
     ]
     }             
 ];
 
-const logInUser = 7777777777;
 const ownerId = ShoppingListDefox[0].ownerId;
 
 const ShoppingListItems = []; // vytvoří prázdný seznam položek listu
@@ -90,7 +109,6 @@ ShoppingListDefox.forEach((shoppingList) => { // projde všechny seznamy v Shopp
   });
 });
 
-
 const listOfUsers = []; // vytvoří prázdný seznam uživatelů
 
 ShoppingListDefox.forEach((userList) => { // projde všechny seznamy 
@@ -102,21 +120,21 @@ ShoppingListDefox.forEach((userList) => { // projde všechny seznamy
   });
 });
 
-
-const usersListToShare = allUsersList.map((user) => {
-  const isShared = ShoppingListDefox.some((list) =>
-    list.userId.some((item) => item.userId === user.userId)
+const usersListToShare = allUsersList.map((user) => {  // projde všechny seznamy
+  const isShared = ShoppingListDefox.some((list) =>  // zjistí, jestli je seznam sdílený
+    list.userId.some((item) => item.userId === user.userId)  // zjistí, jestli je uživatel na seznamu
   );
 
-  return {
+  return {  // vytvoří seznam položek
     onShare: isShared,
     userId: user.userId,
     userName: user.userName
   };
 });
 
+function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
-function ShoppingListForm(props) {
+  console.log(props.logInUser);
    
     const [list, setList] = useState([]); 
     const [shoppingList, setShoppingList] = useState(ShoppingListItems); 
@@ -188,7 +206,7 @@ function ShoppingListForm(props) {
                      name="name" 
                      defaultValue={ShoppingListDefox[0].name} 
                      placeholder="Název nákupního seznamu" 
-                     disabled={ownerId !== logInUser ? true : false}/>
+                     disabled={ownerId !== props.logInUser ? true : false}/>
                 </Col>
             </Form>
 
@@ -222,7 +240,7 @@ function ShoppingListForm(props) {
                     <ShareModal sharedUsers={usersListToShare} 
                     show={show}
                     listOwner={ShoppingListDefox[0].ownerId}
-                    logInUser={logInUser}
+                    logInUser={props.logInUser}
                     handleClose={handleClose}
                     handleShow={handleShow}
                     onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  //todo

@@ -2,6 +2,7 @@
     {
       "name": "Jirkův Lídl",
       "note": "Kup rychle,vykoupí!",
+      "activeList": true,
       "ownerID": 1045,
       "userID": [
           1046,
@@ -33,6 +34,7 @@
     {
       "name": "Jirkův Fídl",
       "note": "Kup rychle, než to vykoupí!",
+      "activeList": false,
       "ownerID": 1045,
       "userID": [
           1046
@@ -61,6 +63,7 @@
     {
       "name": "Jirkův Dídl",
       "note": "Kup rychle, než to vykoupí!",
+      "activeList": true,
       "ownerID": 1045,
       "userID": [
           1046
@@ -88,6 +91,7 @@
     {
       "name": "Jirkův Xídl",
       "note": "Kup rychle, než to vykoupí!",
+      "activeList": false,
       "ownerID": 1045,
       "userID": [
           1046
@@ -115,6 +119,7 @@
     {
       "name": "Jirkův MMídl",
       "note": "Kup rychle, než to vykoupí!",
+      "activeList": true,
       "ownerID": 1045,
       "userID": [
           1046
@@ -142,6 +147,7 @@
     {
       "name": "Jirkův Fígl",
       "note": "Kup rychle, než to vykoupí!",
+      "activeList": false,
       "ownerID": 1045,
       "userID": [
           1046
