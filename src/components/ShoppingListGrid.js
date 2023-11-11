@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import { FormControl, Row, Form, Col, Modal } from 'react-bootstrap';
+import { FormControl, Row, Form, Col } from 'react-bootstrap';
 
 
 function Book(props) {  // vypíše seznam položek v seznamu
