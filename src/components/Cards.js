@@ -30,7 +30,7 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
                     <Card.Text>
                       {dat.note}
                     </Card.Text>
-                    <Button variant="outline-secondary" onClick={() => handleDetailClick(dat)}>
+                    <Button variant="outline-secondary" onClick={() => handleDetailClick(dat._id)}>
                       <Link to={`/EditorPage/`}>Detail</Link>
                     </Button>
                   </Card.Body>

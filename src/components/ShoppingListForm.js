@@ -14,77 +14,77 @@ const ShoppingListExample = [ // data jednoho seznamu
       "activeList": true,
       "ownerId": 4586623265, 
       "userId": [  
-            {userId: 1234567890},
-            {userId: 1111111111},
-            {userId: 3333333333},
-            {userId: 5555555555},
-            {userId: 7777777777},
-            {userId: 5656565656}
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
             
             ],
     "listOfItems": [  
         {
-            id: "0",
-            done: true,
-            listItem: "Mrkev",
-            amount: "20",
-            units: "kg"
+            "id": "0",
+            "done": true,
+            "listItem": "Mrkev",
+            "amount": "20",
+            "units": "kg"
         },
         {
-            id: "1",
-            done: false,
-            listItem: "Mléko",
-            amount: "10",
-            units: "l"
+            "id": "1",
+            "done": false,
+            "listItem": "Mléko",
+            "amount": "10",
+            "units": "l"
         },
         {
-            id: "2",
-            done: true,
-            listItem: "Rohlíky",
-            amount: "50",
-            units: "kus"
+            "id": "2",
+            "done": true,
+            "listItem": "Rohlíky",
+            "amount": "50",
+            "units": "kus"
         },
         {
-            id: "3",
-            done: true,
-            listItem: "Sůl",
-            amount: "3",
-            units: "špetky"
+            "id": "3",
+            "done": true,
+            "listItem": "Sůl",
+            "amount": "3",
+            "units": "špetky"
         },
         {
-            id: "4",
-            done: false,
-            listItem: "Pivo",
-            amount: "10",
-            units: "plechovek"
+            "id": "4",
+            "done": false,
+            "listItem": "Pivo",
+            "amount": "10",
+            "units": "plechovek"
         },
         {
-            id: "5",
-            done: true,
-            listItem: "Víno",
-            amount: "1",
-            units: "láhev"
+            "id": "5",
+            "done": true,
+            "listItem": "Víno",
+            "amount": "1",
+            "units": "láhev"
         },  
         {
-          id: "6",
-          done: false,
-          listItem: "Pepsi",
-          amount: "1",
-          units: "litr"
+          "id": "6",
+          "done": false,
+          "listItem": "Pepsi",
+          "amount": "1",
+          "units": "litr"
         },  
         {
-          id: "7",
-          done: false,
-          listItem: "Tatranka",
-          amount: "10",
-          units: "ks"
+          "id": "7",
+          "done": false,
+          "listItem": "Tatranka",
+          "amount": "10",
+          "units": "ks"
        }, 
        {
-         id: "8",
-         done: true,
-         listItem: "Mouka",
-         amount: "1",
-         units: "kg"
+         "id": "8",
+         "done": true,
+         "listItem": "Mouka",
+         "amount": "1",
+         "units": "kg"
         }  
     ]
     }             
