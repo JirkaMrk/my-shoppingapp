@@ -34,7 +34,7 @@ function App() {
             <Nav.Link href="/EditorPage">Editor page</Nav.Link>
           </Nav>
           <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="light" id="dropdown-basic">
                Active user {logInUser}
             </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -45,7 +45,7 @@ function App() {
             </Dropdown>
             <Dropdown>
             <Dropdown.Toggle variant="warning" id="dropdown-basic">
-               Visible lists 
+               Visible all cards list {visibleLists.toString()} 
             </Dropdown.Toggle>
               <Dropdown.Menu>
               <Dropdown.Item onClick={() => handleVisibleSelect(true)}>Visible all lists</Dropdown.Item>
