@@ -1,9 +1,9 @@
 [
     {
-      "name": "Jirkův Lídl",
+      "name": "Jirkův Lídl 4586623265",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
-      "ownerID": 1045,
+      "ownerID": 4586623265,
       "userID": [
           1046,
           1047
@@ -35,7 +35,7 @@
       "name": "Jirkův Fídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
-      "ownerID": 1045,
+      "ownerID": 1234567890,
       "userID": [
           1046
           ],  
@@ -64,7 +64,7 @@
       "name": "Jirkův Dídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": true,
-      "ownerID": 1045,
+      "ownerID": 7777777777,
       "userID": [
           1046
           ],  
