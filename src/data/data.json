@@ -1,6 +1,38 @@
 [
     {
-      "name": "Jirkův Lídl 4586623265",
+      "name": "Jirkův Lídl 4586623265 neaktivní",
+      "note": "Kup rychle,vykoupí!",
+      "activeList": false,
+      "ownerID": 4586623265,
+      "userID": [
+          1046,
+          1047
+          ],  
+      "listOfItems": [
+        {
+          "done": true,
+          "item": "Petržel",
+          "amount": 1,
+          "units": "kg"
+        },
+        {
+          "done": false,
+          "item": "Máslo",
+          "amount": 1,
+          "units": "ks"
+        },
+        {
+          "done": false,
+          "item": "Mléko",
+          "amount": 2,
+          "units": "l"
+        }
+      ],
+      "_id": "bbe82094682e200",
+      "_active" : true
+    },
+    {
+      "name": "Jirkův Lídl 4586623265 aktivní",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
       "ownerID": 4586623265,
@@ -28,7 +60,7 @@
           "units": "l"
         }
       ],
-      "_id": "bbe82094682e200",
+      "_id": "bbe82094682e300",
       "_active" : true
     },
     {

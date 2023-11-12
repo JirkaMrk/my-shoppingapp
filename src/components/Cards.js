@@ -17,7 +17,7 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
       <Row>
           {data
           .filter((dat) => dat.ownerID === props.logInUser) 
-          .filter((dat) => dat.activeList !== props.visibleLists)
+          .filter((dat) => dat.activeList !== props.visibleLists && props.visibleLists === false || props.visibleLists === true)
           .map((dat) =>  {
             console.log(dat);
             
