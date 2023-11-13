@@ -13,7 +13,7 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
     console.log(props.visibleLists);
     console.log(props.logInUser);
 
-    return (
+    return (  // TODO user ID filtr, ne jenom ownwer ID
       <Row>
           {data
           .filter((dat) => dat.ownerID === props.logInUser) 

@@ -1,12 +1,17 @@
 [
+  
     {
       "name": "Jirkův Lídl 4586623265 neaktivní",
       "note": "Kup rychle,vykoupí!",
       "activeList": false,
       "ownerID": 4586623265,
-      "userID": [
-          1046,
-          1047
+      "userId": [
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
       "listOfItems": [
         {
@@ -31,14 +36,19 @@
       "_id": "bbe82094682e200",
       "_active" : true
     },
+    
     {
       "name": "Jirkův Lídl 4586623265 aktivní",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
       "ownerID": 4586623265,
       "userID": [
-          1046,
-          1047
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
       "listOfItems": [
         {
@@ -69,7 +79,12 @@
       "activeList": false,
       "ownerID": 1234567890,
       "userID": [
-          1046
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
         "listOfItems": [
         {
@@ -98,7 +113,12 @@
       "activeList": true,
       "ownerID": 7777777777,
       "userID": [
-          1046
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
         "listOfItems": [
         {
@@ -124,9 +144,14 @@
       "name": "Jirkův Xídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
-      "ownerID": 1045,
+      "ownerID": 1234567890,
       "userID": [
-          1046
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
         "listOfItems": [
         {
@@ -152,9 +177,14 @@
       "name": "Jirkův MMídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": true,
-      "ownerID": 1045,
+      "ownerID": 7777777777,
       "userID": [
-          1046
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
         "listOfItems": [
         {
@@ -180,9 +210,14 @@
       "name": "Jirkův Fígl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
-      "ownerID": 1045,
+      "ownerID": 4586623265,
       "userID": [
-          1046
+        {"userId": 1234567890},
+        {"userId": 1111111111},
+        {"userId": 3333333333},
+        {"userId": 5555555555},
+        {"userId": 7777777777},
+        {"userId": 5656565656}
           ],  
         "listOfItems": [
         {
