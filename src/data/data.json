@@ -4,7 +4,7 @@
       "name": "Jirkův Lídl 4586623265 neaktivní",
       "note": "Kup rychle,vykoupí!",
       "activeList": false,
-      "ownerID": 4586623265,
+      "ownerId": 4586623265,
       "userId": [
         {"userId": 1234567890},
         {"userId": 1111111111},
@@ -41,8 +41,8 @@
       "name": "Jirkův Lídl 4586623265 aktivní",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
-      "ownerID": 4586623265,
-      "userID": [
+      "ownerId": 4586623265,
+      "userId": [
         {"userId": 1234567890},
         {"userId": 1111111111},
         {"userId": 3333333333},
@@ -74,16 +74,16 @@
       "_active" : true
     },
     {
-      "name": "Jirkův Fídl",
+      "name": "Jirkův Fídl user 4586623265",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
-      "ownerID": 1234567890,
-      "userID": [
+      "ownerId": 1234567890,
+      "userId": [
         {"userId": 1234567890},
         {"userId": 1111111111},
         {"userId": 3333333333},
         {"userId": 5555555555},
-        {"userId": 7777777777},
+        {"userId": 4586623265},
         {"userId": 5656565656}
           ],  
         "listOfItems": [
@@ -111,8 +111,8 @@
       "name": "Jirkův Dídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": true,
-      "ownerID": 7777777777,
-      "userID": [
+      "ownerId": 7777777777,
+      "userId": [
         {"userId": 1234567890},
         {"userId": 1111111111},
         {"userId": 3333333333},
@@ -144,8 +144,8 @@
       "name": "Jirkův Xídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
-      "ownerID": 1234567890,
-      "userID": [
+      "ownerId": 1234567890,
+      "userId": [
         {"userId": 1234567890},
         {"userId": 1111111111},
         {"userId": 3333333333},
@@ -177,9 +177,8 @@
       "name": "Jirkův MMídl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": true,
-      "ownerID": 7777777777,
-      "userID": [
-        {"userId": 1234567890},
+      "ownerId": 7777777777,
+      "userId": [
         {"userId": 1111111111},
         {"userId": 3333333333},
         {"userId": 5555555555},
@@ -210,8 +209,8 @@
       "name": "Jirkův Fígl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
-      "ownerID": 4586623265,
-      "userID": [
+      "ownerId": 4586623265,
+      "userId": [
         {"userId": 1234567890},
         {"userId": 1111111111},
         {"userId": 3333333333},

@@ -4,19 +4,21 @@ import data from "../data/data.json";
 import { useState } from "react";
 import background from "../images/Background.jpg";
 
+
 function ShoppingCards(props) {  // výpis karet jednotlivých nákupních seznamů
 
     const [selectedData, setSelectedData] = useState(null);
     const handleDetailClick = (dat) => { setSelectedData(dat);};
     const [setShow] = useState (false);
+      
+    const filterIdUsers = data.filter((item) => {  // filtr vyfiltrje seznamy, které obsahují ID uživatele a zároveň Vlastníka
+      const userIds = item.userId ? item.userId.map((user) => user.userId) : [];
+      return userIds.includes(props.logInUser) || props.logInUser === item.ownerId;
+    });
 
-    console.log(props.visibleLists);
-    console.log(props.logInUser);
-
-    return (  // TODO user ID filtr, ne jenom ownwer ID
+    return ( 
       <Row>
-          {data
-          .filter((dat) => dat.ownerID === props.logInUser) 
+          {filterIdUsers
           .filter((dat) => dat.activeList !== props.visibleLists && props.visibleLists === false || props.visibleLists === true)
           .map((dat) =>  {
             console.log(dat);
@@ -28,7 +30,7 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
                   <Card.Body>
                     <Card.Title>{dat.name}</Card.Title>
                     <Card.Text>
-                      {dat.note}
+                      {dat.ownerId}
                     </Card.Text>
                     <Button variant="outline-secondary" onClick={() => handleDetailClick(dat._id)}>
                       <Link to={`/EditorPage/`}>Detail</Link>
