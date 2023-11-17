@@ -6,7 +6,6 @@ import { FormControl, Row, Form, Col } from 'react-bootstrap';
 
 function Book(props) {  // vypíše seznam položek v seznamu
     
-
     return (
         <Form>
          <ListGroup id={props} > 

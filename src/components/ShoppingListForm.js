@@ -1,114 +1,63 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ShoppingListGrid from "./ShoppingListGrid";
 import { Button, Form, Col, Row } from "react-bootstrap";
 import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
 import allUsersList from "../data/allUsersList.json";
+import data from "../data/data.json";
+import { useParams } from "react-router-dom";
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
-  const ShoppingListExample = [ // data jednoho seznamu
-    {
-      "name": "Jirkův Lídl nákup",
-      "note": "Nejpozději ve čtvrtek do 18:00",
-      "activeList": true,
-      "ownerId": 4586623265, 
-      "userId": [  
-        {"userId": 1234567890},
-        {"userId": 1111111111},
-        {"userId": 3333333333},
-        {"userId": 5555555555},
-        {"userId": 7777777777},
-        {"userId": 5656565656}
-            
-            ],
-    "listOfItems": [  
-        {
-            "id": "0",
-            "done": true,
-            "listItem": "Mrkev",
-            "amount": "20",
-            "units": "kg"
-        },
-        {
-            "id": "1",
-            "done": false,
-            "listItem": "Mléko",
-            "amount": "10",
-            "units": "l"
-        },
-        {
-            "id": "2",
-            "done": true,
-            "listItem": "Rohlíky",
-            "amount": "50",
-            "units": "kus"
-        },
-        {
-            "id": "3",
-            "done": true,
-            "listItem": "Sůl",
-            "amount": "3",
-            "units": "špetky"
-        },
-        {
-            "id": "4",
-            "done": false,
-            "listItem": "Pivo",
-            "amount": "10",
-            "units": "plechovek"
-        },
-        {
-            "id": "5",
-            "done": true,
-            "listItem": "Víno",
-            "amount": "1",
-            "units": "láhev"
-        },  
-        {
-          "id": "6",
-          "done": false,
-          "listItem": "Pepsi",
-          "amount": "1",
-          "units": "litr"
-        },  
-        {
-          "id": "7",
-          "done": false,
-          "listItem": "Tatranka",
-          "amount": "10",
-          "units": "ks"
-       }, 
-       {
-         "id": "8",
-         "done": true,
-         "listItem": "Mouka",
-         "amount": "1",
-         "units": "kg"
-        }  
-    ]
-    }             
-  ];
+  function uniqueIdGenerator() { // funkce pro generování unikátního ID
+    return Math.random().toString(36);
+  }
 
-  const ShoppingListItems = []; 
-  ShoppingListExample.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
-  shoppingList.listOfItems.forEach((item) => {
-    const itemInfo = {  // vytvoří pole seznamu všech položek seznamu z ShoppingListExample
-      
-      id: item.id,
-      done: item.done,
-      listItem: item.listItem,
-      amount: item.amount,
-      units: item.units,
-      
-    };
-    ShoppingListItems.push(itemInfo); 
-  });
-  });
+  const { displayListId } = useParams();
+
+  const blank = {
+    name: "",
+    note: "",
+    activeList: true,
+    ownerId: props.logInUser,
+    userId: [],
+    listOfItems: [],
+    _id: uniqueIdGenerator(),
+  };
+
+  const [shoppingListData, setShoppingListData] = useState([blank]);
+  const ownerId = shoppingListData[0]?.ownerId;
+
+  useEffect(() => {
+    // Update shoppingListData if displayListId changes
+    const newList = data.filter((list) => list._id === displayListId);
+  
+    if (Array.isArray(newList) && newList.length > 0) {
+      // Push data to setShoppingListData
+      const shoppingListItems = newList.reduce((items, shoppingList) => {
+        return items.concat(
+          shoppingList.listOfItems.map((item) => ({
+            id: item.id,
+            done: item.done,
+            listItem: item.listItem,
+            amount: item.amount,
+            units: item.units,
+          }))
+        );
+      }, []);
+  
+      setShoppingList(shoppingListItems);
+    } else {
+      // If newList is not an array or is empty, set an empty array to shoppingList
+      setShoppingList([]);
+    }
+  
+    setShoppingListData(newList);
+  }, [displayListId]);
 
   const listOfUsers = []; 
-  ShoppingListExample.forEach((userList) => { // projde všechny seznamy 
+  shoppingListData.forEach((userList) => { // projde všechny seznamy 
   userList.userId.forEach((item) => {
     const itemInfo = {  // vytvoří seznam uživatelů ze seznamu v ShoppingListExample
       userId: item.userId,
@@ -118,25 +67,19 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
   });
 
 
+
   const [list, setList] = useState([]); 
-  const [shoppingList, setShoppingList] = useState(ShoppingListItems); 
-  const [showOnShare, setShowOnShare] = useState(true);
+  const [shoppingList, setShoppingList] = useState([]);
   const [showChecked, setShowChecked] = useState(true); 
   const [show, setShow] = useState(false);
   const [users, setUsers] = useState(listOfUsers);
-  const ownerId = ShoppingListExample[0].ownerId; 
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  function uniqueIdGenerator() { // funkce pro generování unikátního ID
-      return Math.random().toString(36);
-  }
 
   const usersListToShare = allUsersList.map((user) => {  
   // vytvoří seznam všech uživatelů a přiřadí uživateli informace o sdílení tohoto seznamu
   // ze seznamu uživatelů v ShoppingListExample
-  const isShared = ShoppingListExample.some((list) =>  
+  const isShared = shoppingListData.some((list) =>  
     list.userId.some((item) => item.userId === user.userId) 
   );
   return {  
@@ -178,20 +121,17 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
          setShowChecked(!showChecked )  
     };
 
-    function handleToggleShowOnShare() {  // funkce pro změnu stavu seznamu sdílení
-      setShowOnShare(!showOnShare )  
-    };
-
     return (
         <div>   
             <Form> 
                 <Col sm={14} className="my-1"> 
-                    <Form.Control 
-                     type="text" 
-                     name="name" 
-                     defaultValue={ShoppingListExample[0].name} 
-                     placeholder="Název nákupního seznamu" 
-                     disabled={ownerId !== props.logInUser ? true : false}/>
+                <Form.Control 
+                   type="text" 
+                   name="name" 
+                   defaultValue={shoppingListData[0]?.name} 
+                   placeholder="Název nákupního seznamu" 
+                   disabled={ownerId !== props.logInUser ? true : false}
+                />
                 </Col>
             </Form>
 
@@ -222,14 +162,14 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                          Share List 
                     </Button>  
                        
-                    <ShareModal sharedUsers={usersListToShare}  // komponenta pro zobrazení modálního okna sdílení uživatelů
-                    show={show}
-                    listOwner={ShoppingListExample[0].ownerId}
-                    logInUser={props.logInUser}
-                    handleClose={handleClose}
-                    handleShow={handleShow}
-                    onCheck={() => handleToggleShowOnShare(usersListToShare.userId)}  
-                    />
+                    <ShareModal 
+                      shareList={usersListToShare}
+                      show={show}
+                      listOwner={shoppingListData[0]?.ownerId}
+                      logInUser={props.logInUser}
+                      handleClose={handleClose}
+                      handleShow={handleShow}
+                        />
                     
                     <Button 
                      variant="danger" disabled>

@@ -1,40 +1,39 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import ShoppingListPage from './pages/ShoppingListPage';
 import EditorPage from './pages/EditorPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap';
-
-
+import ShoppingListForm from "./components/ShoppingListForm";
 
 function App() {
-
   const [logInUser, setLogInUser] = useState(4586623265);
-  const handleUserSelect = (user) => {setLogInUser(user);};
+  const handleUserSelect = (user) => { setLogInUser(user); };
 
   const [visibleLists, setVisibleLists] = useState(true);
-  const handleVisibleSelect = (list) => {setVisibleLists(list);};
-
+  const handleVisibleSelect = (list) => { setVisibleLists(list); };
 
   return (
     <div>
-      <BrowserRouter> 
-          <div>
-          <Navbar className="fw-bold" expand="lg" >
-           <Container>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-            <Nav.Link href="/">Home page</Nav.Link>
-            <Nav.Link href="/ShoppingListPage">Shopping list page</Nav.Link>
-            <Nav.Link href="/EditorPage">Editor page</Nav.Link>
-          </Nav>
-          <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
+      <Router>
+        <div>
+          <Navbar className="fw-bold" expand="lg">
+            <Container>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/">Home page</Nav.Link>
+                  <Nav.Link as={Link} to="/ShoppingListPage">Shopping list page</Nav.Link>
+                  {/* Use Link component to navigate to EditorPage */}
+                  <Nav.Link as={Link} to={`/EditorPage/${logInUser}`}>
+                    Editor page
+                  </Nav.Link>
+                </Nav>
+                <Dropdown>
+                  <Dropdown.Toggle variant="light" id="dropdown-basic">
                Active user {logInUser}
             </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -51,22 +50,29 @@ function App() {
               <Dropdown.Item onClick={() => handleVisibleSelect(true)}>Visible all lists</Dropdown.Item>
               <Dropdown.Item onClick={() => handleVisibleSelect(false)}>Visible only active lists</Dropdown.Item>
               </Dropdown.Menu>
-            </Dropdown>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-          </div> 
-        <Routes> 
+                </Dropdown>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
+        </div>
+        <Routes>
           <Route index element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="ShoppingListPage" element={<ShoppingListPage logInUser={logInUser} visibleLists={visibleLists} />} />
-          <Route path="EditorPage" element={<EditorPage logInUser={logInUser}/>} />
+          <Route
+            path="ShoppingListPage"
+            element={<ShoppingListPage logInUser={logInUser} visibleLists={visibleLists} />}
+          />
+          {/* Update the route to accept id parameter */}
+          <Route
+            path="/EditorPage/:displayListId" component={ShoppingListForm}
+            element={<EditorPage logInUser={logInUser} />}
+          />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
-
   );
 }
 
 export default App;
+
