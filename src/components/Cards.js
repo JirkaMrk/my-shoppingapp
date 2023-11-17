@@ -10,6 +10,7 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
     const [selectedData, setSelectedData] = useState(null);
     const handleDetailClick = (dat) => { setSelectedData(dat);};
     const [setShow] = useState (false);
+    const [selectedId, setSelectedId] = useState(null);
       
     const filterIdUsers = data.filter((item) => {  // filtr vyfiltrje seznamy, které obsahují ID uživatele a zároveň Vlastníka
       const userIds = item.userId ? item.userId.map((user) => user.userId) : [];
@@ -33,7 +34,10 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
                       {dat.ownerId}
                     </Card.Text>
                     <Button variant="outline-secondary" onClick={() => handleDetailClick(dat._id)}>
-                      <Link to={`/EditorPage/`}>Detail</Link>
+                    <Link
+                     to={`/EditorPage/${dat._id}`}>
+                      Detail
+                     </Link>
                     </Button>
                   </Card.Body>
                 </Card>
@@ -46,3 +50,4 @@ function ShoppingCards(props) {  // výpis karet jednotlivých nákupních sezna
 }
 
 export default ShoppingCards;
+

@@ -15,26 +15,70 @@
           ],  
       "listOfItems": [
         {
+          "id": "0",
           "done": true,
-          "item": "Petržel",
-          "amount": 1,
+          "listItem": "Mrkev",
+          "amount": "20",
           "units": "kg"
-        },
-        {
+      },
+      {
+          "id": "1",
           "done": false,
-          "item": "Máslo",
-          "amount": 1,
-          "units": "ks"
-        },
-        {
-          "done": false,
-          "item": "Mléko",
-          "amount": 2,
+          "listItem": "Mléko",
+          "amount": "10",
           "units": "l"
-        }
+      },
+      {
+          "id": "2",
+          "done": true,
+          "listItem": "Rohlíky",
+          "amount": "50",
+          "units": "kus"
+      },
+      {
+          "id": "3",
+          "done": true,
+          "listItem": "Sůl",
+          "amount": "3",
+          "units": "špetky"
+      },
+      {
+          "id": "4",
+          "done": false,
+          "listItem": "Pivo",
+          "amount": "10",
+          "units": "plechovek"
+      },
+      {
+          "id": "5",
+          "done": true,
+          "listItem": "Víno",
+          "amount": "1",
+          "units": "láhev"
+      },  
+      {
+        "id": "6",
+        "done": false,
+        "listItem": "Pepsi",
+        "amount": "1",
+        "units": "litr"
+      },  
+      {
+        "id": "7",
+        "done": false,
+        "listItem": "Tatranka",
+        "amount": "10",
+        "units": "ks"
+     }, 
+     {
+       "id": "8",
+       "done": true,
+       "listItem": "Mouka",
+       "amount": "1",
+       "units": "kg"
+      }
       ],
-      "_id": "bbe82094682e200",
-      "_active" : true
+      "_id": "bbe82094682e200"
     },
     
     {
@@ -52,26 +96,28 @@
           ],  
       "listOfItems": [
         {
+          "id": "0",
           "done": true,
-          "item": "Mrkev",
+          "listItem": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
+          "id": "1",
           "done": false,
-          "item": "Máslo",
+          "listItem": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
+          "id": "2",
           "done": false,
-          "item": "Mléko",
+          "listItem": "Mléko",
           "amount": 2,
           "units": "l"
         }
       ],
-      "_id": "bbe82094682e300",
-      "_active" : true
+      "_id": "bbe82094682e300"
     },
     {
       "name": "Jirkův Fídl user 4586623265",
@@ -88,23 +134,28 @@
           ],  
         "listOfItems": [
         {
-          "item": "Mrkev",
+          "id": "0",
+          "done": false,
+          "listItem": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
-          "item": "Máslo",
+          "id": "1",
+          "done": true,
+          "listItem": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
-          "item": "Mléko",
+          "id": "2",
+          "done": false,
+          "listItem": "Mléko",
           "amount": 2,
           "units": "l"
         }
       ],
-      "_id": "bb82089462e201",
-      "_active" : true
+      "_id": "bb82089462e201"
 
     },
     {
@@ -122,23 +173,28 @@
           ],  
         "listOfItems": [
         {
-          "item": "Mrkev",
+          "id": "0",
+          "done": true,
+          "listItem": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
-          "item": "Máslo",
+          "id": "1",
+          "done": false,
+          "listItem": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
-          "item": "Mléko",
+          "id": "2",
+          "done": true,
+          "listItem": "Mléko",
           "amount": 2,
           "units": "l"
         }
       ],
-      "_id": "bbe82089462202",
-      "_active" : true
+      "_id": "bbe82089462202"
     },
     {
       "name": "Jirkův Xídl",
@@ -155,23 +211,28 @@
           ],  
         "listOfItems": [
         {
-          "item": "Mrkev",
+          "id": "0",
+          "done": false,
+          "listItem": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
-          "item": "Máslo",
+          "id": "1", 
+          "done": false,
+          "listItem": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
-          "item": "Mléko",
+          "id": "2",
+          "done": true,
+          "listItem": "Mléko",
           "amount": 2,
           "units": "l"
         }
       ],
-      "_id": "bbe820862e203",
-      "_active" : true
+      "_id": "bbe820862e203"
     },
     {
       "name": "Jirkův MMídl",
@@ -187,55 +248,65 @@
           ],  
         "listOfItems": [
         {
-          "item": "Mrkev",
+          "id": "0",
+          "done": false,
+          "listItem": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
-          "item": "Máslo",
+          "id": "1",
+          "done": true,
+          "listItem": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
-          "item": "Mléko",
+          "id": "2",
+          "done": false,
+          "listItem": "Mléko",
           "amount": 2,
           "units": "l"
         }
       ],
-      "_id": "bbe920862e204",
-      "_active" : true
+      "_id": "bbe920862e204"
     },
     {
       "name": "Jirkův Fígl",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
       "ownerId": 4586623265,
-      "userId": [
+      "userId": [  
         {"userId": 1234567890},
         {"userId": 1111111111},
         {"userId": 3333333333},
         {"userId": 5555555555},
         {"userId": 7777777777},
-        {"userId": 5656565656}
-          ],  
+        {"userId": 5656565656} 
+            ],  
         "listOfItems": [
         {
-          "item": "Mrkev",
+          "id": "0",
+          "done": true,
+          "listItem": "Mrkev",
           "amount": 1,
           "units": "kg"
         },
         {
-          "item": "Máslo",
+          "id": "1",
+          "done": false,
+          "listItem": "Máslo",
           "amount": 1,
           "units": "ks"
         },
         {
-          "item": "Mléko",
+          "id": "2",
+          "done": true,
+          "listItem": "Mléko",
           "amount": 2,
           "units": "l"
         }
       ],
-      "_id": "bbe8208cc62e205",
-      "_active" : true
+      "_id": "bbe8208cc62e205"
     }
   ]

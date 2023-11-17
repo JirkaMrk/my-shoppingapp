@@ -6,8 +6,9 @@ import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
 import allUsersList from "../data/allUsersList.json";
 
+function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
-const ShoppingListExample = [ // data jednoho seznamu
+  const ShoppingListExample = [ // data jednoho seznamu
     {
       "name": "Jirkův Lídl nákup",
       "note": "Nejpozději ve čtvrtek do 18:00",
@@ -88,13 +89,10 @@ const ShoppingListExample = [ // data jednoho seznamu
         }  
     ]
     }             
-];
+  ];
 
-const ownerId = ShoppingListExample[0].ownerId; 
-
-const ShoppingListItems = []; 
-
-ShoppingListExample.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
+  const ShoppingListItems = []; 
+  ShoppingListExample.forEach((shoppingList) => { // projde všechny seznamy v ShoppingListDefox
   shoppingList.listOfItems.forEach((item) => {
     const itemInfo = {  // vytvoří pole seznamu všech položek seznamu z ShoppingListExample
       
@@ -107,20 +105,35 @@ ShoppingListExample.forEach((shoppingList) => { // projde všechny seznamy v Sho
     };
     ShoppingListItems.push(itemInfo); 
   });
-});
+  });
 
-const listOfUsers = []; 
-
-ShoppingListExample.forEach((userList) => { // projde všechny seznamy 
+  const listOfUsers = []; 
+  ShoppingListExample.forEach((userList) => { // projde všechny seznamy 
   userList.userId.forEach((item) => {
     const itemInfo = {  // vytvoří seznam uživatelů ze seznamu v ShoppingListExample
       userId: item.userId,
     };
     listOfUsers.push(itemInfo); // přidá položky do seznamu 
   });
-});
+  });
 
-const usersListToShare = allUsersList.map((user) => {  
+
+  const [list, setList] = useState([]); 
+  const [shoppingList, setShoppingList] = useState(ShoppingListItems); 
+  const [showOnShare, setShowOnShare] = useState(true);
+  const [showChecked, setShowChecked] = useState(true); 
+  const [show, setShow] = useState(false);
+  const [users, setUsers] = useState(listOfUsers);
+  const ownerId = ShoppingListExample[0].ownerId; 
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  function uniqueIdGenerator() { // funkce pro generování unikátního ID
+      return Math.random().toString(36);
+  }
+
+  const usersListToShare = allUsersList.map((user) => {  
   // vytvoří seznam všech uživatelů a přiřadí uživateli informace o sdílení tohoto seznamu
   // ze seznamu uživatelů v ShoppingListExample
   const isShared = ShoppingListExample.some((list) =>  
@@ -131,23 +144,7 @@ const usersListToShare = allUsersList.map((user) => {
     userId: user.userId,
     userName: user.userName
   };
-});
-
-function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
-   
-    const [list, setList] = useState([]); 
-    const [shoppingList, setShoppingList] = useState(ShoppingListItems); 
-    const [showOnShare, setShowOnShare] = useState(true);
-    const [showChecked, setShowChecked] = useState(true); 
-    const [show, setShow] = useState(false);
-    const [users, setUsers] = useState(listOfUsers);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    function _uniqueId() { // funkce pro generování unikátního ID
-        return Math.random().toString(36);
-    }
+  });
 
     function handleDelete(id) { // funkce pro smazání položky
         setShoppingList(([...list]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
@@ -172,7 +169,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
     function addBook(data) {
         // přidá novou položku do seznamu
         setShoppingList(([...list]) => {
-            list.push({ ...data, id: _uniqueId() });
+            list.push({ ...data, id: uniqueIdGenerator() });
           return list;
         });
     }
