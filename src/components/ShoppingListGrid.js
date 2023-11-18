@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { FormControl, Row, Form, Col } from 'react-bootstrap';
 
 
-function Book(props) {  // vypíše seznam položek v seznamu
+function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
     
     return (
         <Form>
@@ -58,4 +58,4 @@ function Book(props) {  // vypíše seznam položek v seznamu
     );
 }
 
-export default Book;
+export default ShoppingListItem;
