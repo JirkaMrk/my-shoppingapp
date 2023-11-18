@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import background from '../images/Background.jpg';
 
+
 function ShoppingCards(props) {
   const { data, logInUser, visibleLists, onDelete } = props;
   const [selectedData, setSelectedData] = useState(null);
@@ -37,11 +38,15 @@ function ShoppingCards(props) {
                 <Card.Img src={background} alt="Shopping List" />
                 <Card.Body>
                   <Card.Title>{dat.name}</Card.Title>
-                  <Card.Text>{dat.ownerId}</Card.Text>
+                  <Card.Text>{dat.ownerId === logInUser ? "My own List" : "Share List"}</Card.Text>
                   <Button variant="outline-success" onClick={() => handleDetailClick(dat._id)}>
                     <Link to={`/EditorPage/${dat._id}`}>Detail</Link>
                   </Button>
-                  <Button variant="outline-danger" onClick={() => handleDeleteClick(dat._id)}>
+                  <Button 
+                  variant="outline-danger" 
+                  disabled={dat.ownerId !== logInUser}
+                  onClick={() => handleDeleteClick(dat._id)}
+                  >
                     Delete
                   </Button>
                 </Card.Body>
