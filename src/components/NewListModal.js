@@ -18,8 +18,9 @@ const NewListModal = (props) => {
         setNewFormData((prevState) => ({
             ...prevState,
             _id: newId,
+            ownerId: props.logInUser,
         }));
-    }, []);
+    }, [props.logInUser]); 
 
     const uniqueIdGenerator = () => {
         return uuidv4();
