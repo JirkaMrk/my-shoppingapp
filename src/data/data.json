@@ -1,7 +1,7 @@
 [
   
     {
-      "name": "Jirkův Lídl 4586623265 neaktivní",
+      "name": "Nakup na víkend",
       "note": "Kup rychle,vykoupí!",
       "activeList": false,
       "ownerId": 4586623265,
@@ -82,7 +82,7 @@
     },
     
     {
-      "name": "Jirkův Lídl 4586623265 aktivní",
+      "name": "Ctěl bych koupit něco na víkend",
       "note": "Kup rychle,vykoupí!",
       "activeList": true,
       "ownerId": 4586623265,
@@ -120,7 +120,7 @@
       "_id": "bbe82094682e300"
     },
     {
-      "name": "Jirkův Fídl user 4586623265",
+      "name": "Tohle je potřeba na oslavu 15.12.2023",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
       "ownerId": 1234567890,
@@ -159,7 +159,7 @@
 
     },
     {
-      "name": "Jirkův Dídl",
+      "name": "Tohle je na tenhle víkend 12.3.2023",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": true,
       "ownerId": 7777777777,
@@ -197,7 +197,7 @@
       "_id": "bbe82089462202"
     },
     {
-      "name": "Jirkův Xídl",
+      "name": "Nákup pro babičku 12.3.2023",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
       "ownerId": 1234567890,
@@ -235,7 +235,7 @@
       "_id": "bbe820862e203"
     },
     {
-      "name": "Jirkův MMídl",
+      "name": "Nákup na chalupu Karlovy Vary 12.3.2023",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": true,
       "ownerId": 7777777777,
@@ -272,7 +272,7 @@
       "_id": "bbe920862e204"
     },
     {
-      "name": "Jirkův Fígl",
+      "name": "Nákup",
       "note": "Kup rychle, než to vykoupí!",
       "activeList": false,
       "ownerId": 4586623265,

@@ -39,6 +39,7 @@ function ShoppingCards(props) {
                 <Card.Body>
                   <Card.Title>{dat.name}</Card.Title>
                   <Card.Text>{dat.ownerId === logInUser ? "My own List" : "Share List"}</Card.Text>
+                  <Card.Text>{dat.activeList === true ? "Active" : "Inactive"}</Card.Text>
                   <Button variant="outline-success" onClick={() => handleDetailClick(dat._id)}>
                     <Link to={`/EditorPage/${dat._id}`}>Detail</Link>
                   </Button>
