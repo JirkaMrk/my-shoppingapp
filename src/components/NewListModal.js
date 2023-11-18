@@ -39,7 +39,7 @@ const NewListModal = (props) => {
     };
 
     return (
-        <Modal show={props.show} onHide={props.handleClose} backdrop="static">
+        <Modal show={props.show} onHide={props.handleClose} backdrop="static"> 
             <Modal.Header closeButton>
                 <Modal.Title>New shopping List</Modal.Title>
             </Modal.Header>
@@ -53,12 +53,16 @@ const NewListModal = (props) => {
                             name="name"
                             placeholder="Název nákupního seznamu"
                             onChange={handleInputChange}
+                            required
                         />
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={handleCreateList} variant="success">
+                <Button onClick={handleCreateList} 
+                variant="success"
+                disabled={newFormData.name === "" ? true : false}
+                > 
                     Create new shopping list
                 </Button>
             </Modal.Footer>

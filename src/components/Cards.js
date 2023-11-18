@@ -12,7 +12,7 @@ function ShoppingCards(props) {
   };
 
   const handleDeleteClick = (id) => {
-    // Call the onDelete function from the parent component
+    // Todo: Delete the item from the list
     onDelete(id);
   };
 
