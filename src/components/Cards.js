@@ -2,19 +2,36 @@ import { Col, Row, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import background from '../images/Background.jpg';
+import ConfirmationDialog from './ConfirmationDialog';
 
 
 function ShoppingCards(props) {
   const { data, logInUser, visibleLists, onDelete } = props;
   const [selectedData, setSelectedData] = useState(null);
+  const [itemToDelete, setItemToDelete] = useState(null);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleDetailClick = (dat) => {
     setSelectedData(dat);
   };
 
   const handleDeleteClick = (id) => {
+    setItemToDelete(id);
+    setShow(true);
+  };
+
+  const handleConfirmDelete = () => {
     // Todo: Delete the item from the list
-    onDelete(id);
+    //onDelete(itemToDelete);
+    handleClose();
+  };
+
+  const handleCancelDelete = () => {
+    setItemToDelete(null);
+    handleClose();
   };
 
   const filterIdUsers = data.filter((item) => {
@@ -55,6 +72,13 @@ function ShoppingCards(props) {
             </Col>
           );
         })}
+        <ConfirmationDialog
+        show={show} 
+        handleClose={handleCancelDelete} 
+        onConfirm={handleConfirmDelete}
+        title="Confirm delete"
+        body="Are you sure you want to delete this list?"
+/>
     </Row>
   );
 }
