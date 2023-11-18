@@ -15,7 +15,7 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
                         id='checkBox'
                         type='checkbox'
                         name='checkBox'
-                        label="OK"
+                        label={props.done === true ? "Done" : "ToDo"}
                         defaultChecked={props.done === true ? true : false}
                         onChange={props.onCheck}
                     />     

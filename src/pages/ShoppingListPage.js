@@ -1,16 +1,22 @@
 import { Button, Container, Modal} from 'react-bootstrap';
 import ShoppingCards from '../components/Cards';
 import { useState } from 'react';
-import ShoppingListGrid from '../components/ShoppingListGrid';
-import ShoppingListForm from '../components/ShoppingListForm';
-
+import NewListModal from '../components/NewListModal';
+import data from "../data/data.json";
 
 function ShoppingListPage( {logInUser, visibleLists} ) {
 
-      const [show, setShow] = useState(false);
-      const handleClose = () => setShow(false);
-      const handleShow = () => setShow(true);
-   
+  console.log(logInUser);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+  const handleNewListSubmit = (formData) => {
+    data.push(formData);
+  };
+
     return (  
       <div>
           <Container className='mt-4'>
@@ -19,20 +25,18 @@ function ShoppingListPage( {logInUser, visibleLists} ) {
                 variant="outline-dark" 
                 size="lg" 
                 className='mb-4' 
-                onClick={setShow}>
-                
+                onClick={handleShow}>
                   Add new shopping list
                   </Button>
-                </div>  
-                <Modal size="xl" show={show} backdrop="static" onHide={handleClose}>
-                  <Modal.Header closeButton>
-                    <Modal.Title>TODO</Modal.Title>
-                    <Modal.Body>
-                      <ShoppingListForm/>
-                      </Modal.Body>
-                    </Modal.Header>
-                  </Modal>
-              <ShoppingCards logInUser={logInUser} visibleLists={visibleLists}/>
+                </div>     
+                <NewListModal 
+                logInUser={logInUser}
+                show={show}
+                handleClose={handleClose}
+                handleShow={handleShow}
+                onSubmit={handleNewListSubmit}
+                />
+              <ShoppingCards data={data} logInUser={logInUser} visibleLists={visibleLists}/>
             </Container>  
       </div>       
     );

@@ -46,7 +46,7 @@ const ShareModal = (props) => {
                     id={`checkbox-${item.userId}`}
                     type="checkbox"
                     name="onShare"
-                    label="Share"
+                    label= {item.onShare ? "Shared" : "Not shared"}
                     checked={item.onShare}
                     onChange={() => handleCheckboxChange(item.userId)}
                     disabled={handleUserFilter(item.userId)}

@@ -7,11 +7,13 @@ import ShareModal from "./ShareModal";
 import allUsersList from "../data/allUsersList.json";
 import data from "../data/data.json";
 import { useParams } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
   function uniqueIdGenerator() { // funkce pro generování unikátního ID
-    return Math.random().toString(36);
+    return uuidv4()
   }
 
   const { displayListId } = useParams();
