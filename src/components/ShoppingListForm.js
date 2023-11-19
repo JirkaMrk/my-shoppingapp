@@ -72,7 +72,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
 
   const [list, setList] = useState([]); 
   const [shoppingList, setShoppingList] = useState([]);
-  const [showChecked, setShowChecked] = useState(true); 
+  const [showChecked, setShowChecked] = useState(false); 
   const [show, setShow] = useState(false);
   const [users, setUsers] = useState(listOfUsers);
   const handleClose = () => setShow(false);
@@ -152,7 +152,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                 <Row sm={5}>
                     <Button  // tlačítko pro zobrazení/ skrytí všech označených položek
                        variant="primary" onClick={handleToggleShowChecked}>
-                      {showChecked ? "Show active" : "Show all"}
+                      {showChecked ? "Show active items" : "Show all items"}
                     </Button>
             
                     <Button  // todo

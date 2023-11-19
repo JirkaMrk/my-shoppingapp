@@ -55,8 +55,8 @@ function ShoppingCards(props) {
                 <Card.Img src={background} alt="Shopping List" />
                 <Card.Body>
                   <Card.Title>{dat.name}</Card.Title>
-                  <Card.Text>{dat.ownerId === logInUser ? "My own List" : "Share List"}</Card.Text>
-                  <Card.Text>{dat.activeList === true ? "Active" : "Inactive"}</Card.Text>
+                  <Card.Text>{dat.ownerId === logInUser ? "My own List" : "Shared List"}</Card.Text>
+                  <Card.Text>{dat.activeList === true ? "Active list" : "Inactive list"}</Card.Text>
                   <Button variant="outline-success" onClick={() => handleDetailClick(dat._id)}>
                     <Link to={`/EditorPage/${dat._id}`}>Detail</Link>
                   </Button>
