@@ -11,9 +11,8 @@ function ShoppingCards(props) {
   const [selectedData, setSelectedData] = useState(null);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showDelete, setShowDelete] = useState(false);
+  const handleCloseDelete = () => setShowDelete(false);
 
   const handleDetailClick = (dat) => {
     setSelectedData(dat);
@@ -21,7 +20,7 @@ function ShoppingCards(props) {
 
   const handleDeleteClick = (id) => {
     setItemToDelete(id);
-    setShow(true);
+    setShowDelete(true);
   };
 
   function handleConfirmDelete() { // funkce pro smazání položky seznamu dataList
@@ -31,12 +30,12 @@ function ShoppingCards(props) {
         list.splice(index, 1);    // smaže položku ze seznamu 
         return list;  // vrátí nový seznam
     })
-    handleClose();  // zavře dialogové okno
+    handleCloseDelete();  // zavře dialogové okno
 };
 
   const handleCancelDelete = () => {
     setItemToDelete(null);
-    handleClose();
+    handleCloseDelete();
   };
 
   const filterIdUsers = dataList.filter((item) => {
@@ -78,7 +77,7 @@ function ShoppingCards(props) {
           );
         })}
         <ConfirmationDialog
-        show={show} 
+        show={showDelete} 
         handleClose={handleCancelDelete} 
         onConfirm={handleConfirmDelete}
         title="Confirm delete"

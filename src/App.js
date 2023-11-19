@@ -62,7 +62,6 @@ function App() {
             path="ShoppingListPage"
             element={<ShoppingListPage logInUser={logInUser} visibleLists={visibleLists} />}
           />
-          {/* Update the route to accept id parameter */}
           <Route
             path="/EditorPage/:displayListId" component={ShoppingListForm}
             element={<EditorPage logInUser={logInUser} />}
