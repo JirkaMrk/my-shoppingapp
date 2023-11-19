@@ -23,15 +23,13 @@ function ShoppingCards(props) {
     setShowDelete(true);
   };
 
-  function handleConfirmDelete() { // funkce pro smazání položky seznamu dataList
-    setDataList(([...list]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
-        const index = list.findIndex((item) => item._id === itemToDelete);  
-         // najde index položky item._id, kterou chceme smazat itemToDelete
-        list.splice(index, 1);    // smaže položku ze seznamu 
-        return list;  // vrátí nový seznam
-    })
-    handleCloseDelete();  // zavře dialogové okno
-};
+  function handleConfirmDelete() {
+    setDataList((prevList) => {
+      const newList = prevList.filter((item) => item._id !== itemToDelete);
+      return newList;
+    });
+    handleCloseDelete();
+  }
 
   const handleCancelDelete = () => {
     setItemToDelete(null);

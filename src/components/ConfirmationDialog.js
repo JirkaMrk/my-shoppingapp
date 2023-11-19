@@ -1,7 +1,7 @@
 import { Modal, Button } from "react-bootstrap";
 
 const ConfirmationDialog = (props) => {
-    console.log(props);
+
   return (
     <Modal show={props.show} onHide={props.handleClose} backdrop="static">
       <Modal.Header closeButton>

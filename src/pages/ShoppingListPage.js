@@ -6,8 +6,6 @@ import data from "../data/data.json";
 
 function ShoppingListPage( {logInUser, visibleLists} ) {
 
-  console.log(logInUser);
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,6 +14,8 @@ function ShoppingListPage( {logInUser, visibleLists} ) {
   const handleNewListSubmit = (formData) => {
     data.push(formData);
   };
+
+  console.log("data",data);
 
     return (  
       <div>
