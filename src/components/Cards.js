@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import background from '../images/Background.jpg';
 import ConfirmationDialog from './ConfirmationDialog';
-
+import NewListModal from './NewListModal';
 
 function ShoppingCards(props) {
+
+  const handleNewListSubmit = (formData) => {
+    setDataList((prevDataList) => [...prevDataList, formData]);
+  }; 
+
   const { data, logInUser, visibleLists, onDelete } = props;
   const [dataList, setDataList] = useState(data);
   const [selectedData, setSelectedData] = useState(null);
@@ -13,6 +18,13 @@ function ShoppingCards(props) {
 
   const [showDelete, setShowDelete] = useState(false);
   const handleCloseDelete = () => setShowDelete(false);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  console.log("data",data);
+  console.log("dataList",dataList);
 
   const handleDetailClick = (dat) => {
     setSelectedData(dat);
@@ -31,6 +43,7 @@ function ShoppingCards(props) {
     handleCloseDelete();
   }
 
+
   const handleCancelDelete = () => {
     setItemToDelete(null);
     handleCloseDelete();
@@ -41,9 +54,17 @@ function ShoppingCards(props) {
     return userIds.includes(logInUser) || logInUser === item.ownerId;
   });
 
-  console.log(dataList);
-
   return (
+    <div>
+      <div className='text-center'>
+                <Button 
+                variant="outline-dark" 
+                size="lg" 
+                className='mb-4' 
+                onClick={handleShow}>
+                  Add new shopping list
+                  </Button>
+                </div>  
     <Row>
       {filterIdUsers
         .filter(
@@ -80,9 +101,18 @@ function ShoppingCards(props) {
         onConfirm={handleConfirmDelete}
         title="Confirm delete"
         body="Are you sure you want to delete this list?"
-/>
+        />
+        <NewListModal 
+                logInUser={logInUser}
+                show={show}
+                handleClose={handleClose}
+                handleShow={handleShow}
+                onSubmit={handleNewListSubmit}
+                />
     </Row>
+    </div>
   );
 }
 
 export default ShoppingCards;
+
