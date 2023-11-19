@@ -7,6 +7,7 @@ import ConfirmationDialog from './ConfirmationDialog';
 
 function ShoppingCards(props) {
   const { data, logInUser, visibleLists, onDelete } = props;
+  const [dataList, setDataList] = useState(data);
   const [selectedData, setSelectedData] = useState(null);
   const [itemToDelete, setItemToDelete] = useState(null);
 
@@ -23,23 +24,27 @@ function ShoppingCards(props) {
     setShow(true);
   };
 
-  const handleConfirmDelete = () => {
-    // Todo: Delete the item from the list
-    //onDelete(itemToDelete);
-    handleClose();
-  };
+  function handleConfirmDelete() { // funkce pro smazání položky seznamu dataList
+    setDataList(([...list]) => {  // vytvoří nový seznam, který obsahuje všechny položky z původního seznamu
+        const index = list.findIndex((item) => item._id === itemToDelete);  
+         // najde index položky item._id, kterou chceme smazat itemToDelete
+        list.splice(index, 1);    // smaže položku ze seznamu 
+        return list;  // vrátí nový seznam
+    })
+    handleClose();  // zavře dialogové okno
+};
 
   const handleCancelDelete = () => {
     setItemToDelete(null);
     handleClose();
   };
 
-  const filterIdUsers = data.filter((item) => {
+  const filterIdUsers = dataList.filter((item) => {
     const userIds = item.userId ? item.userId.map((user) => user.userId) : [];
     return userIds.includes(logInUser) || logInUser === item.ownerId;
   });
 
-  console.log(data);
+  console.log(dataList);
 
   return (
     <Row>
