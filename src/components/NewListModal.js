@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { v4 as uuidv4 } from 'uuid';
+import UniqueIdGenerator from "./UniqueIdGenerator";
 
 const NewListModal = (props) => {
-    const [newFormData, setNewFormData] = useState({
-        name: "",
-        note: "",
-        activeList: true,
-        ownerId: props.logInUser,
-        userId: [],
-        listOfItems: [],
-        _id: "",
-    });
 
-    useEffect(() => {
-        const newId = uniqueIdGenerator();
-        setNewFormData((prevState) => ({
-            ...prevState,
-            _id: newId,
+    const uniqueIdGenerator = UniqueIdGenerator();
+    const [newId, setNewId] = useState(uniqueIdGenerator.generateUniqueId());
+
+    const handleButtonClick = () => {
+        setNewId(uniqueIdGenerator.generateUniqueId());
+        };
+    
+        const [newFormData, setNewFormData] = useState({
+            name: "",
+            note: "",
+            activeList: true,
             ownerId: props.logInUser,
-        }));
-    }, [props.logInUser]); 
+            userId: [],
+            listOfItems: [],
+            _id: "",
+        });
+    
 
-    const uniqueIdGenerator = () => {
-        return uuidv4();
-    }
+        useEffect(() => {
+            setNewFormData((prevState) => ({
+                ...prevState,
+                ownerId: props.logInUser,
+                _id: newId,
+                
+            }));
+        }, [newId]); 
 
     const handleInputChange = (e) => {
         setNewFormData({
@@ -59,7 +64,11 @@ const NewListModal = (props) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={handleCreateList} 
+                <Button 
+                    onClick={() => {
+                        handleButtonClick();
+                        handleCreateList();
+                    }}
                 variant="success"
                 disabled={newFormData.name === "" ? true : false}
                 > 
