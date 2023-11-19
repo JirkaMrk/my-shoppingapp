@@ -9,13 +9,12 @@ import Col from 'react-bootstrap/Col';
 const ShareModal = (props) => {
 
   const [sharedUsers, setSharedUsers] = useState([]);
-
   useEffect(() => {
     // Update sharedUsers when props.shareList changes
     setSharedUsers(props.shareList || []);
   }, [props.shareList]);
 
-  const handleCheckboxChange = (userId) => {
+  const handleCheckboxChange = (userId) => { // funkce nastaví "onShare" na opačnou hodnotu
     setSharedUsers((prevUsers) => {
       return prevUsers.map((user) => {
         if (user.userId === userId) {
@@ -26,7 +25,7 @@ const ShareModal = (props) => {
     });
   };
 
-  const handleUserFilter = (userId) => {
+  const handleUserFilter = (userId) => { // funkce určuje jestli je uživatel vlastník nebo ne
     const isOwner = props.logInUser === props.listOwner;
     return isOwner ? userId === props.listOwner : userId !== props.logInUser;
   };

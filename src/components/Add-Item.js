@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Form, FormControl, Button, Col, Row, Container } from "react-bootstrap";
 
-function AddBook(props) {
+function AddBook(props) {  // komponenta pro přidání položky do seznamu
   const [listItem, setListItem] = useState("");
   const [amount, setAmount] = useState("");
   const [units, setUnits] = useState("");
@@ -19,7 +19,7 @@ function AddBook(props) {
                      setListItem("");
                      setAmount("");
                      setUnits("");}} 
-                    disabled={!listItem || !amount || !units}>
+                    disabled={!listItem || !amount || !units}>  
                         Add new item
                     </Button>
                   </div>

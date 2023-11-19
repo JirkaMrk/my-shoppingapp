@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import './App.css';
+import './Styles/App.css';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './pages/HomePage';
@@ -9,7 +9,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap';
 import ShoppingListForm from "./components/ShoppingListForm";
 
-function App() {
+function App() {  // komponenta pro zobrazení celé aplikace
   const [logInUser, setLogInUser] = useState(4586623265);
   const handleUserSelect = (user) => { setLogInUser(user); };
 
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <Router>
+      <Router>  
         <div>
           <Navbar className="fw-bold" expand="lg">
             <Container>
@@ -27,7 +27,6 @@ function App() {
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/">Home page</Nav.Link>
                   <Nav.Link as={Link} to="/ShoppingListPage">Shopping list page</Nav.Link>
-                  {/* Use Link component to navigate to EditorPage */}
                   <Nav.Link as={Link} to={`/EditorPage/${logInUser}`}>
                     Editor page
                   </Nav.Link>
@@ -63,7 +62,7 @@ function App() {
             element={<ShoppingListPage logInUser={logInUser} visibleLists={visibleLists} />}
           />
           <Route
-            path="/EditorPage/:displayListId" component={ShoppingListForm}
+            path="/EditorPage/:displayListId" component={ShoppingListForm}   
             element={<EditorPage logInUser={logInUser} />}
           />
           <Route path="/*" element={<NotFoundPage />} />

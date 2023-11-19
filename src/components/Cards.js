@@ -5,37 +5,38 @@ import background from '../images/Background.jpg';
 import ConfirmationDialog from './ConfirmationDialog';
 import NewListModal from './NewListModal';
 
-function ShoppingCards(props) {
+function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
 
-  const handleNewListSubmit = (formData) => {
-    setDataList((prevDataList) => [...prevDataList, formData]);
-  }; 
-
-  const { data, logInUser, visibleLists, onDelete } = props;
+  
+  const { data, logInUser, visibleLists } = props;
   const [dataList, setDataList] = useState(data);
   const [selectedData, setSelectedData] = useState(null);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  const [showDelete, setShowDelete] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);  // stavy pro dialogové okno smazání
   const handleCloseDelete = () => setShowDelete(false);
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);  // stavy pro dialogové okno nového seznamu
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   console.log("data",data);
   console.log("dataList",dataList);
 
-  const handleDetailClick = (dat) => {
+  const handleNewListSubmit = (formData) => {  // funkce přidá "formData" do seznamu "dataList"
+    setDataList((prevDataList) => [...prevDataList, formData]);
+  }; 
+
+  const handleDetailClick = (dat) => {  // funkce nastaví "selectedData" na "dat"
     setSelectedData(dat);
   };
 
-  const handleDeleteClick = (id) => {
+  const handleDeleteClick = (id) => {  // funkce nastaví "itemToDelete" na "id" a otevře dialogové okno
     setItemToDelete(id);
     setShowDelete(true);
   };
 
-  function handleConfirmDelete() {
+  function handleConfirmDelete() {  // funkce smaže položku z "dataList" a zavře dialogové okno
     setDataList((prevList) => {
       const newList = prevList.filter((item) => item._id !== itemToDelete);
       return newList;
@@ -44,12 +45,13 @@ function ShoppingCards(props) {
   }
 
 
-  const handleCancelDelete = () => {
+  const handleCancelDelete = () => {  // funkce zavře dialogové okno a vynuluje "itemToDelete"
     setItemToDelete(null);
     handleCloseDelete();
   };
 
-  const filterIdUsers = dataList.filter((item) => {
+  const filterIdUsers = dataList.filter((item) => {  
+    // funkce vrátí seznam položek, které obsahují "logInUser" v poli "userId" nebo "ownerId"
     const userIds = item.userId ? item.userId.map((user) => user.userId) : [];
     return userIds.includes(logInUser) || logInUser === item.ownerId;
   });
@@ -66,12 +68,13 @@ function ShoppingCards(props) {
                   </Button>
                 </div>  
     <Row>
-      {filterIdUsers
+      {filterIdUsers  // zobrazení seznamu položek
         .filter(
           (dat) =>
-            dat.activeList !== visibleLists && visibleLists === false || visibleLists === true
+            dat.activeList !== visibleLists && visibleLists === false || visibleLists === true    
+            // filtruje seznam podle "visibleLists"
         )
-        .map((dat) => {
+        .map((dat) => {   
           return (
             <Col key={dat._id} className="d-flex justify-content-center" md={5} lg={4} xl={3} xxl={2}>
               <Card className="ShoppingListCard text-center m-4">
@@ -95,20 +98,20 @@ function ShoppingCards(props) {
             </Col>
           );
         })}
-        <ConfirmationDialog
+        <ConfirmationDialog  // dialogové okno pro smazání
         show={showDelete} 
         handleClose={handleCancelDelete} 
         onConfirm={handleConfirmDelete}
         title="Confirm delete"
         body="Are you sure you want to delete this list?"
         />
-        <NewListModal 
-                logInUser={logInUser}
-                show={show}
-                handleClose={handleClose}
-                handleShow={handleShow}
-                onSubmit={handleNewListSubmit}
-                />
+        <NewListModal  // dialogové okno pro nový seznam
+        logInUser={logInUser}
+        show={show}
+        handleClose={handleClose}
+        handleShow={handleShow}
+        onSubmit={handleNewListSubmit}
+        />
     </Row>
     </div>
   );

@@ -7,11 +7,11 @@ const NewListModal = (props) => {
     const uniqueIdGenerator = UniqueIdGenerator();
     const [newId, setNewId] = useState(uniqueIdGenerator.generateUniqueId());
 
-    const handleButtonClick = () => {
+    const handleButtonClick = () => {   // funkce nastaví nový "_id" pro nový seznam
         setNewId(uniqueIdGenerator.generateUniqueId());
         };
     
-        const [newFormData, setNewFormData] = useState({
+        const [newFormData, setNewFormData] = useState({  // stavy pro nový seznam
             name: "",
             note: "",
             activeList: true,
@@ -21,29 +21,30 @@ const NewListModal = (props) => {
             _id: "",
         });
     
-
-        useEffect(() => {
+        useEffect(() => {  
+            // funkce nastaví "newFormData" s novým "_id" a "ownerId"
             setNewFormData((prevState) => ({
                 ...prevState,
                 ownerId: props.logInUser,
-                _id: newId,
-                
+                _id: newId,   
             }));
-        }, [newId]); 
+        }, [newId]);    
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e) => {  
+        // funkce nastaví "newFormData" s novými hodnotami
         setNewFormData({
             ...newFormData,
             [e.target.name]: e.target.value.trim(),
         });
     };
 
-    const handleCreateList = () => {
+    const handleCreateList = () => { 
+        // funkce přidá nový seznam do seznamu "dataList" a zavře dialogové okno
         props.onSubmit(newFormData);
         props.handleClose();
     };
 
-    return (
+    return (    
         <Modal show={props.show} onHide={props.handleClose} backdrop="static"> 
             <Modal.Header closeButton>
                 <Modal.Title>New shopping List</Modal.Title>
@@ -64,13 +65,13 @@ const NewListModal = (props) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button 
-                    onClick={() => {
+                <Button     
+                    onClick={() => {    
                         handleButtonClick();
                         handleCreateList();
                     }}
-                variant="success"
-                disabled={newFormData.name === "" ? true : false}
+                    variant="success"
+                    disabled={newFormData.name === "" ? true : false}
                 > 
                     Create new shopping list
                 </Button>

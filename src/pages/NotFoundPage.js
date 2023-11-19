@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NotFoundPage() {
+function NotFoundPage() {   // komponenta pro zobrazení stránky s chybovou hláškou
     return (
         <div>
             <h1>NotFoundPage</h1>

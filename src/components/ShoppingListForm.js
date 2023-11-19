@@ -18,7 +18,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
 
   const { displayListId } = useParams();
 
-  const blank = {
+  const blank = { // prázdný seznam
     name: "",
     note: "",
     activeList: true,
@@ -32,11 +32,11 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
   const ownerId = shoppingListData[0]?.ownerId;
 
   useEffect(() => {
-    // Update shoppingListData if displayListId changes
+    // Updatuje seznam položek, které se mají zobrazit
     const newList = data.filter((list) => list._id === displayListId);
   
     if (Array.isArray(newList) && newList.length > 0) {
-      // Push data to setShoppingListData
+      // vloží seznam položek do seznamu "shoppingList"
       const shoppingListItems = newList.reduce((items, shoppingList) => {
         return items.concat(
           shoppingList.listOfItems.map((item) => ({
@@ -51,7 +51,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
   
       setShoppingList(shoppingListItems);
     } else {
-      // If newList is not an array or is empty, set an empty array to shoppingList
+      // pokud není seznam položek nalezen, vynuluje seznam
       setShoppingList([]);
     }
   
@@ -67,8 +67,6 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
     listOfUsers.push(itemInfo); // přidá položky do seznamu 
   });
   });
-
-
 
   const [list, setList] = useState([]); 
   const [shoppingList, setShoppingList] = useState([]);
@@ -164,7 +162,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                          Share List 
                     </Button>  
                        
-                    <ShareModal 
+                    <ShareModal   // dialogové okno pro sdílení seznamu
                       shareList={usersListToShare}
                       show={show}
                       listOwner={shoppingListData[0]?.ownerId}
