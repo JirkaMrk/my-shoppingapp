@@ -11,6 +11,7 @@ function HomePage() {
                 <p> Funkcionality DŮ2</p> 
                 <p>V Shopping list page zvolte detail nákupního seznamu a</p>
                 <p>budete odkázáni na editor page kde funkcionality dle Dů2</p>
+                <p>todo název není ve stavu, po odsdílení uživatel nemůže měnit stav čehokoli.</p>
               </h2>
               <h2>
                 <p>Funkcionality DŮ3</p> 

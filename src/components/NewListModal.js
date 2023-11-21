@@ -28,7 +28,7 @@ const NewListModal = (props) => {
                 ownerId: props.logInUser,
                 _id: newId,   
             }));
-        }, [newId]);    
+        }, [newId, props.logInUser]);    
 
     const handleInputChange = (e) => {  
         // funkce nastaví "newFormData" s novými hodnotami
