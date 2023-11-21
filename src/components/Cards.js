@@ -20,9 +20,6 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log("data",data);
-  console.log("dataList",dataList);
-
   const handleNewListSubmit = (formData) => {  // funkce přidá "formData" do seznamu "dataList"
     setDataList((prevDataList) => [...prevDataList, formData]);
   }; 

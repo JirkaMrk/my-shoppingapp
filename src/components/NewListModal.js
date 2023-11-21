@@ -42,6 +42,11 @@ const NewListModal = (props) => {
         // funkce přidá nový seznam do seznamu "dataList" a zavře dialogové okno
         props.onSubmit(newFormData);
         props.handleClose();
+
+        setNewFormData((prevState) => ({  // vynulování formuláře po odeslání
+            ...prevState,
+            name: "",
+        }));
     };
 
     return (    
