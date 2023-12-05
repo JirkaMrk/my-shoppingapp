@@ -8,9 +8,39 @@ import axios from 'axios';
 import ServerStateSpinner from './ServerStateSpinner';
 
 function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
-  
 
-  const { data, logInUser, visibleLists } = props;
+  const [data, setData] = useState([]);
+  const [reload, setReload] = useState(true);
+  const [showGetCall, setShowGetCall] = useState(false);
+  const [serverGetState, setServerGetState] = useState({ state: "pending" });
+
+  const reloadData = () => {
+    console.log('Reloading data...');
+    setReload(!reload);
+    setServerGetState({ state: "pending" });
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setShowGetCall(true);
+      axios.get('//localhost:3030/api/getLists')
+      .then(response => {
+        setServerGetState({ state: "success" });
+        setDataList(response.data);
+        setShowGetCall(false);
+      })
+      .catch(error => {
+        setServerGetState({ state: "error" });
+        console.error('Error fetching data:', error);
+      });
+    };
+  
+    fetchData();
+  }, [reload]);
+
+
+
+  const { logInUser, visibleLists } = props;
   const [dataList, setDataList] = useState(data);
   const [selectedData, setSelectedData] = useState(null);
   const [itemToDelete, setItemToDelete] = useState(null);
@@ -109,6 +139,19 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
             </Col>
           );
         })}
+        <ServerStateSpinner // spinner pro načtení 
+            show={showGetCall}
+            stateOfServer={serverGetState.state}
+            onSuccess={() => {
+                setShowGetCall(false);
+                setServerGetState({ state: "pending" });
+            }}
+            onCancel={() => {
+                setShowGetCall(false);
+                setServerGetState({ state: "pending" });
+            }}
+        />
+
         <ConfirmationDialog  // dialogové okno pro smazání
         show={showDelete} 
         handleClose={handleCancelDelete} 
@@ -134,13 +177,13 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
 
             }}
         />
-
         <NewListModal  // dialogové okno pro nový seznam
         logInUser={logInUser}
         show={show}
         handleClose={handleClose}
         handleShow={handleShow}
         onSubmit={handleNewListSubmit}
+        reloadData={reloadData}
         />
          
     </Row>

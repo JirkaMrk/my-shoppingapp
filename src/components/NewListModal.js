@@ -4,7 +4,7 @@ import UniqueIdGenerator from "./UniqueIdGenerator";
 import axios from 'axios';
 import ServerStateSpinner from './ServerStateSpinner';
 
-const NewListModal = (props) => {
+const NewListModal = (props, reloadData) => {
 
     const uniqueIdGenerator = UniqueIdGenerator();
     const [newId, setNewId] = useState(uniqueIdGenerator.generateUniqueId());
@@ -101,7 +101,8 @@ const NewListModal = (props) => {
                 stateOfServer={serverAddState.state}
                 onSuccess={() => {
                     setShowAddCall(false);
-                    setServerAddState({ state: "pending" });
+                    setServerAddState({ state: "pending" });   
+                    props.reloadData();
                 }}
                 onCancel={() => {
                     setShowAddCall(false);
