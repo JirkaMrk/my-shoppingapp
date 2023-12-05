@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ShoppingCards from '../components/Cards';
+import axios from 'axios';
+import { Spinner } from 'react-bootstrap';
 
 function ShoppingListPage({ logInUser, visibleLists }) {
   const [data, setData] = useState([]);
@@ -7,29 +9,25 @@ function ShoppingListPage({ logInUser, visibleLists }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch('api/get');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        setData(result);
+      axios.get('//localhost:3030/api/getLists')
+      .then(response => {
+        // Handle the successful response
+        setData(response.data);
         setLoading(false);
-      } catch (error) {
+      })
+      .catch(error => {
+        // Handle errors
         console.error('Error fetching data:', error);
-        setLoading(false);
-      }
+      });
     };
-
+  
     fetchData();
   }, []);
-
-  console.log(data);
 
   return (
     <div>
       {loading ? (
-        <p>Loading...</p>
+        <p>loading</p>
       ) : (
         <div>
           <ShoppingCards data={data} logInUser={logInUser} visibleLists={visibleLists} />

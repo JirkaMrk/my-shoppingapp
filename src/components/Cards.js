@@ -1,17 +1,21 @@
 import { Col, Row, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import background from '../images/Background.jpg';
 import ConfirmationDialog from './ConfirmationDialog';
 import NewListModal from './NewListModal';
+import axios from 'axios';
+import ServerStateSpinner from './ServerStateSpinner';
 
 function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
-
   
+
   const { data, logInUser, visibleLists } = props;
   const [dataList, setDataList] = useState(data);
   const [selectedData, setSelectedData] = useState(null);
   const [itemToDelete, setItemToDelete] = useState(null);
+  const [showDeleteCall, setShowDeleteCall] = useState(false);
+  const [serverDeleteState, setServerDeleteState] = useState({ state: "pending" });
 
   const [showDelete, setShowDelete] = useState(false);  // stavy pro dialogové okno smazání
   const handleCloseDelete = () => setShowDelete(false);
@@ -34,10 +38,18 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   };
 
   function handleConfirmDelete() {  // funkce smaže položku z "dataList" a zavře dialogové okno
-    setDataList((prevList) => {
-      const newList = prevList.filter((item) => item._id !== itemToDelete);
-      return newList;
-    });
+    axios.delete(`//localhost:3030/api/deleteList/${itemToDelete}`)
+      .then(() => {
+        setDataList((prevList) => {
+          const newList = prevList.filter((item) => item._id !== itemToDelete);
+          setServerDeleteState({ state: "success" });
+          return newList;
+        });
+      })
+      .catch((error) => {
+        console.error('Error deleting list:', error);
+        setServerDeleteState({ state: "error" });
+      });
     handleCloseDelete();
   }
 
@@ -65,6 +77,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
                   </Button>
                 </div>  
     <Row>
+
       {filterIdUsers  // zobrazení seznamu položek
         .filter(
           (dat) =>
@@ -72,6 +85,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
             // filtruje seznam podle "visibleLists"
         )
         .map((dat) => {   
+          
           return (
             <Col key={dat._id} className="d-flex justify-content-center" md={5} lg={4} xl={3} xxl={2}>
               <Card className="ShoppingListCard text-center m-4">
@@ -98,10 +112,29 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
         <ConfirmationDialog  // dialogové okno pro smazání
         show={showDelete} 
         handleClose={handleCancelDelete} 
-        onConfirm={handleConfirmDelete}
+        onConfirm={() => {
+          handleConfirmDelete()
+          setShowDeleteCall(true);
+          setShowDeleteCall(true);
+        }}
+      
         title="Confirm delete"
         body="Are you sure you want to delete this list?"
         />
+        <ServerStateSpinner // spinner pro smazání
+            show={showDeleteCall}
+            stateOfServer={serverDeleteState.state}
+            onSuccess={() => {
+                setShowDeleteCall(false);
+                setServerDeleteState({ state: "pending" });
+            }}
+            onCancel={() => {
+                setShowDeleteCall(false);
+                setServerDeleteState({ state: "pending" });
+
+            }}
+        />
+
         <NewListModal  // dialogové okno pro nový seznam
         logInUser={logInUser}
         show={show}
@@ -109,6 +142,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
         handleShow={handleShow}
         onSubmit={handleNewListSubmit}
         />
+         
     </Row>
     </div>
   );

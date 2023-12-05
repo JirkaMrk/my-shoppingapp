@@ -78,7 +78,7 @@
        "units": "kg"
       }
       ],
-      "_id": "bbe82094682e200"
+      "_Id": "bbe82094682e200"
     },
     
     {
@@ -117,7 +117,7 @@
           "units": "l"
         }
       ],
-      "_id": "bbe82094682e300"
+      "_Id": "bbe82094682e300"
     },
     {
       "name": "Tohle je potřeba na oslavu 15.12.2023",

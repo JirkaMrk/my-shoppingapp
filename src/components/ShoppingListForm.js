@@ -5,18 +5,40 @@ import { Button, Form, Col, Row } from "react-bootstrap";
 import AddBook from "./Add-Item";
 import ShareModal from "./ShareModal";
 import allUsersList from "../data/allUsersList.json";
-import data from "../data/data.json";
 import { useParams } from "react-router-dom";
 import UniqueIdGenerator from "./UniqueIdGenerator";
+import axios from 'axios';
 
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
+  const { displayListId } = useParams();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  console.log("data", data);
+  console.log("displayListId", displayListId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      axios.get('//localhost:3030/api/getLists')
+      .then(response => {
+        // Handle the successful response
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error fetching data:', error);
+      });
+    };
+  
+    fetchData();
+  }, []);
+
   function uniqueIdGenerator() { // funkce pro generování unikátního ID
     return UniqueIdGenerator().generateUniqueId();
   }
-
-  const { displayListId } = useParams();
 
   const blank = { // prázdný seznam
     name: "",
@@ -30,6 +52,8 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
 
   const [shoppingListData, setShoppingListData] = useState([blank]);
   const ownerId = shoppingListData[0]?.ownerId;
+
+  
 
   useEffect(() => {
     // Updatuje seznam položek, které se mají zobrazit
@@ -56,7 +80,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
     }
   
     setShoppingListData(newList);
-  }, [displayListId]);
+  }, [data, displayListId]);
 
   const listOfUsers = []; 
   shoppingListData.forEach((userList) => { // projde všechny seznamy 

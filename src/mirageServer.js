@@ -1,4 +1,4 @@
-// mirageServer.js
+/*// mirageServer.js
 import { createServer } from 'miragejs';
 
 export function makeServer({ environment = 'development' } = {}) {
@@ -349,3 +349,4 @@ export function makeServer({ environment = 'development' } = {}) {
 
   return server;
 }
+*/

@@ -1,0 +1,133 @@
+[
+  {
+    "name": "Nákup",
+    "note": "Kup rychle, než to vykoupí!",
+    "activeList": false,
+    "ownerId": 4586623265,
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": true,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": false,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": true,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe8xx208cc62e205"
+  },
+  {
+    "name": "zuzuzu",
+    "note": "",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "dabb2e2e-b77d-4860-a8b0-a305b65e3047"
+  },
+  {
+    "name": "ttttttttttttttttttt",
+    "note": "",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "cf661c34-4556-42fd-9507-45a53603b4b4"
+  },
+  {
+    "name": "aa",
+    "note": "",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "6a0576f9-3cde-42f8-a382-0118ca0361e8"
+  },
+  {
+    "name": "ds",
+    "note": "",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "3a60c7f0-d270-462b-bbf3-644d7c3cdff3"
+  },
+  {
+    "name": "o",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "1fe71923-212f-4642-a2c4-82bc69bc201f"
+  },
+  {
+    "name": "jirka",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "19f8dca1-f95e-4494-a3fe-62a614a60cde"
+  },
+  {
+    "name": "hj",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "0ef8a6c6-e701-4714-aa83-87dec1d176f2"
+  },
+  {
+    "name": "vb",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db92c"
+  },
+  {
+    "name": "mm",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "36a55077-d93c-4de4-9d62-729342f5cae4"
+  }
+]

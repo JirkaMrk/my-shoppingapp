@@ -8,12 +8,6 @@ import EditorPage from './pages/EditorPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap';
 import ShoppingListForm from "./components/ShoppingListForm";
-import { makeServer } from './mirageServer';
-
-if (process.env.NODE_ENV === 'development') {
-  makeServer({ environment: 'development' });
-}
-
 
 
 function App() {  // komponenta pro zobrazení celé aplikace
