@@ -230,15 +230,6 @@
     "_id": "a9becb66-652c-45e5-a6b1-5c7591768e03"
   },
   {
-    "name": "rz",
-    "note": "",
-    "activeList": true,
-    "ownerId": 1234567890,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "4deb25ab-0f21-46fe-bed5-420030945dd3"
-  },
-  {
     "name": "fhg",
     "note": "",
     "activeList": true,
@@ -255,5 +246,14 @@
     "userId": [],
     "listOfItems": [],
     "_id": "ff496532-1904-4d61-822e-485bb93d8077"
+  },
+  {
+    "name": "moje",
+    "note": "",
+    "activeList": true,
+    "ownerId": 1234567890,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "84c5da2e-94a2-4af4-af90-982a2cd240af"
   }
 ]

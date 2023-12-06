@@ -25,6 +25,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
       axios.get('//localhost:3030/api/getLists')
       .then(response => {
         setDataList(response.data);
+        
         setServerGetState({ state: "success" });
         setShowGetCall(false);
 
