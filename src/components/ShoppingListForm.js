@@ -8,8 +8,8 @@ import allUsersList from "../data/allUsersList.json";
 import { useParams } from "react-router-dom";
 import UniqueIdGenerator from "./UniqueIdGenerator";
 import axios from 'axios';
-import ServerStateSpinner from './ServerStateSpinner';
-
+import ServerStateSpinner from './ServerStateSpinner'
+import { Link } from 'react-router-dom';
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
@@ -153,8 +153,6 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
          setShowChecked(!showChecked )  
     };
 
-    console.log("shoppingListData", shoppingListData);
-
     function handleListUpdate() {
       if (!displayListId) {
         console.error("Invalid displayListId");
@@ -233,9 +231,14 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                       {showChecked ? "Show active items" : "Show all items"}
                     </Button>
             
-                    <Button  // todo
-                     variant="success" type="submit" onClick={handleListUpdate}>
-                       Update list
+                    <Button
+                      variant="success"
+                      type="submit"
+                      onClick={() => {
+                        handleListUpdate();
+                      }}
+                    >
+                      Update list
                     </Button>
             
                     <Button variant="warning" onClick={handleShow}>  
