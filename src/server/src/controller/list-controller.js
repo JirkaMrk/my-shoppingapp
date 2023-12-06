@@ -14,13 +14,13 @@ const deleteListSchema = require('../schema/deleteListSchema.js');
 router.get('/getLists', jsonParser, apiController.handleGetShoppingLists);
 
 // GET endpoint shopping list by ID
-router.get('/getList/:listId', jsonParser, validate(getListIdSchema), apiController.handleGetShoppingListById);
+router.get('/getList/:listId', jsonParser, apiController.handleGetShoppingListById);
 
 // POST endpoint for adding shopping list
 router.post('/addList', jsonParser, apiController.handleAddShoppingList);
 
 // PUT endpoint for updating shopping list
-router.put('/updateList/:listId', jsonParser, validate(updateListSchema), apiController.handleUpdateShoppingListById);
+router.put('/updateList/:listId', jsonParser, apiController.handleUpdateShoppingListById);
 
 // DELETE endpoint for removing an shopping list
 router.delete('/deleteList/:listId',jsonParser, apiController.handleDeleteShoppingListById);

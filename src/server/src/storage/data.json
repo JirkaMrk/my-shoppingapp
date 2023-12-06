@@ -1,52 +1,11 @@
 [
   {
-    "name": "Nákup",
-    "note": "Kup rychle, než to vykoupí!",
-    "activeList": false,
+    "name": "okolo lesakbgzzzzzzzzzzzzzzzzzziiiiiiiitt",
+    "note": "",
+    "activeList": true,
     "ownerId": 4586623265,
-    "userId": [
-      {
-        "userId": 1234567890
-      },
-      {
-        "userId": 1111111111
-      },
-      {
-        "userId": 3333333333
-      },
-      {
-        "userId": 5555555555
-      },
-      {
-        "userId": 7777777777
-      },
-      {
-        "userId": 5656565656
-      }
-    ],
-    "listOfItems": [
-      {
-        "id": "0",
-        "done": true,
-        "listItem": "Mrkev",
-        "amount": 1,
-        "units": "kg"
-      },
-      {
-        "id": "1",
-        "done": false,
-        "listItem": "Máslo",
-        "amount": 1,
-        "units": "ks"
-      },
-      {
-        "id": "2",
-        "done": true,
-        "listItem": "Mléko",
-        "amount": 2,
-        "units": "l"
-      }
-    ],
+    "userId": [],
+    "listOfItems": [],
     "_id": "bbe8xx208cc62e205"
   },
   {
@@ -212,15 +171,6 @@
     "_id": "2c793629-9dbb-40f4-a28a-3541b4c6d2bf"
   },
   {
-    "name": "jhjh",
-    "note": "",
-    "activeList": true,
-    "ownerId": 1234567890,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "763317a1-1dfd-4db5-b213-57c86538d3e3"
-  },
-  {
     "name": "ghg",
     "note": "",
     "activeList": true,
@@ -255,5 +205,14 @@
     "userId": [],
     "listOfItems": [],
     "_id": "84c5da2e-94a2-4af4-af90-982a2cd240af"
+  },
+  {
+    "name": "g",
+    "note": "",
+    "activeList": true,
+    "ownerId": 1234567890,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "4ed9631c-0969-4c9a-85fe-4c3799f5bfec"
   }
 ]

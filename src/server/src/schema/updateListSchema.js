@@ -16,10 +16,10 @@ module.exports = { // update list schema
           amount: { type: 'string' },
           units: { type: 'string' },
         },
-        required: ['id', 'done', 'listItem'],
+       // required: ['id', 'done', 'listItem'],
       },
     },
     _id: { type: 'string' },
   },
-  required: [ 'listId', 'name', 'activeList', 'ownerId' ],
+  required: [ '_id', 'name', 'activeList', 'ownerId' ],
 };

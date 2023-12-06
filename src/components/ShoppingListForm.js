@@ -44,21 +44,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
     fetchData();
   }, []);
 
-  function handleListUpdate() {  // funkce updatuje položku z "dataList" a zavře dialogové okno
-    axios.put(`//localhost:3030/api/updatelist/${displayListId}`)
-      .then(() => {
-        setData((prevList) => {
-          const newList = prevList.filter((item) => item._id !== displayListId);
-          setServerUpdateState({ state: "success" });
-          return newList;
-        });
-      })
-      .catch((error) => {
-        console.error('Error deleting list:', error);
-        setServerUpdateState({ state: "error" });
-      });
-    handleListUpdate();
-  }
+  
 
   function uniqueIdGenerator() { // funkce pro generování unikátního ID
     return UniqueIdGenerator().generateUniqueId();
@@ -167,17 +153,65 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
          setShowChecked(!showChecked )  
     };
 
+    console.log("shoppingListData", shoppingListData);
+
+    function handleListUpdate() {
+      if (!displayListId) {
+        console.error("Invalid displayListId");
+        return;
+      }
+    
+      const updatedShoppingListData = {
+        "name": shoppingListData[0]?.name,
+        "note": shoppingListData[0]?.note,
+        "activeList": shoppingListData[0]?.activeList,
+        "ownerId": shoppingListData[0]?.ownerId,
+        "userId": shoppingListData[0]?.userId,
+        "listOfItems": [],
+        "_id": displayListId,
+      };
+
+      setShowUpdateCall(true);
+      setServerUpdateState({ state: "pending" });
+    
+      axios
+        .put(`//localhost:3030/api/updatelist/${displayListId}`, updatedShoppingListData)
+        .then((response) => {
+          const updatedList = response.data; // Assuming the updated data is returned from the server
+          setData((prevList) => {
+            const newList = prevList.map((item) =>
+              item._id === displayListId ? updatedList : item
+            );
+            setServerUpdateState({ state: "success" });
+            console.log("newList", newList);
+            return newList;
+          });
+        })
+        .catch((error) => {
+          console.error('Error updating list:', error);
+          setServerUpdateState({ state: 'error', error: error.message || 'Unknown error' });
+        });
+    }
+
+
     return (
         <div>   
             <Form> 
                 <Col sm={14} className="my-1"> 
-                <Form.Control 
-                   type="text" 
-                   name="name" 
-                   defaultValue={shoppingListData[0]?.name} 
-                   placeholder="Název nákupního seznamu" 
-                   disabled={ownerId !== props.logInUser ? true : false}
-                />
+                <Form.Control
+                    type="text"
+                    name="name"
+                    value={shoppingListData[0]?.name}  
+                    onChange={(e) => {
+    
+                    setShoppingListData((prevData) => [{
+                        ...prevData[0],
+                        name: e.target.value,
+                      }]);
+                    }}
+                    placeholder="Název nákupního seznamu"
+                    disabled={ownerId !== props.logInUser ? true : false}
+                  />
                 </Col>
             </Form>
 
@@ -201,7 +235,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
             
                     <Button  // todo
                      variant="success" type="submit" onClick={handleListUpdate}>
-                       Save list
+                       Update list
                     </Button>
             
                     <Button variant="warning" onClick={handleShow}>  
@@ -233,7 +267,19 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                      setShowGetCall(false);
                      setServerGetState({ state: "pending" });
                    }}
-                   />                
+                   />    
+                   <ServerStateSpinner // spinner pro update listu
+                     show={showUpdateCall}
+                     stateOfServer={serverUpdateState.state}
+                     onSuccess={() => {
+                     setShowUpdateCall(false);
+                     setServerUpdateState({ state: "pending" });
+                    }}
+                     onCancel={() => {
+                     setShowUpdateCall(false);
+                     setServerUpdateState({ state: "pending" });
+                   }}
+                   />              
                 </Row>
                 
             </Col>

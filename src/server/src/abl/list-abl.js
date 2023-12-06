@@ -67,11 +67,9 @@ async function handleAddShoppingList(req, res) {
 // update shopping list/ owner only
 async function handleUpdateShoppingListById(req, res) {
   try {
-    if (req.headers.authorization === req.body.ownerId  && // pokud je autorizován uživatel jako vlastník seznamu
-      user.map(userObj => userObj.id).includes(req.headers.authorization)) { // a je obsažen v seznamu uživatelů
-      const listId = req.params.listId; // listId je součástí URL parametrů
+      const listId = req.params._id; // listId je součástí URL parametrů
       const updatedShoppingList = req.body;  // předpokládáme, že nový seznam je součástí "body" požadavku
-      delete updatedShoppingList.listId; // odstraní listId z objektu seznamu
+      delete updatedShoppingList._id; // odstraní listId z objektu seznamu
       // aktualizuje seznam
       const shoppingList = await updateShoppingList(listId, updatedShoppingList); // aktualizuje seznam dao dle listId
 
@@ -80,9 +78,6 @@ async function handleUpdateShoppingListById(req, res) {
       } else { // vrátí chybu nenalezení listId seznamu
         res.status(404).json({ errors: [`A shopping list with the id ${listId} was not found`] });
       }
-    } else { //  vrátí chybu autorizace
-      res.status(403).json({ errors: ['Permission denied'] });
-    }
   } catch (error) { //  vrátí chybu serveru
     console.error(error); 
     res.status(500).json({ errors: [error.message] });
