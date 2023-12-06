@@ -8,6 +8,7 @@ import allUsersList from "../data/allUsersList.json";
 import { useParams } from "react-router-dom";
 import UniqueIdGenerator from "./UniqueIdGenerator";
 import axios from 'axios';
+import ServerStateSpinner from './ServerStateSpinner';
 
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
@@ -15,26 +16,49 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
   const { displayListId } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showGetCall, setShowGetCall] = useState(false);
+  const [serverGetState, setServerGetState] = useState({ state: "pending" });
+  const [showUpdateCall, setShowUpdateCall] = useState(false);
+  const [serverUpdateState, setServerUpdateState] = useState({ state: "pending" });
 
   console.log("data", data);
   console.log("displayListId", displayListId);
 
   useEffect(() => {
+    setShowGetCall(true);
     const fetchData = async () => {
       axios.get('//localhost:3030/api/getLists')
       .then(response => {
         // Handle the successful response
         setData(response.data);
-        setLoading(false);
+        setServerGetState('success');
+        setShowGetCall(false);
       })
       .catch(error => {
         // Handle errors
+        setServerGetState('error');
         console.error('Error fetching data:', error);
       });
     };
   
     fetchData();
   }, []);
+
+  function handleListUpdate() {  // funkce updatuje položku z "dataList" a zavře dialogové okno
+    axios.put(`//localhost:3030/api/updatelist/${displayListId}`)
+      .then(() => {
+        setData((prevList) => {
+          const newList = prevList.filter((item) => item._id !== displayListId);
+          setServerUpdateState({ state: "success" });
+          return newList;
+        });
+      })
+      .catch((error) => {
+        console.error('Error deleting list:', error);
+        setServerUpdateState({ state: "error" });
+      });
+    handleListUpdate();
+  }
 
   function uniqueIdGenerator() { // funkce pro generování unikátního ID
     return UniqueIdGenerator().generateUniqueId();
@@ -52,8 +76,6 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
 
   const [shoppingListData, setShoppingListData] = useState([blank]);
   const ownerId = shoppingListData[0]?.ownerId;
-
-  
 
   useEffect(() => {
     // Updatuje seznam položek, které se mají zobrazit
@@ -178,7 +200,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                     </Button>
             
                     <Button  // todo
-                     variant="success" type="submit" disabled>
+                     variant="success" type="submit" onClick={handleListUpdate}>
                        Save list
                     </Button>
             
@@ -199,6 +221,19 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                      variant="danger" disabled>
                      Delete List
                     </Button>
+
+                    <ServerStateSpinner // spinner pro načtení listu
+                     show={showGetCall}
+                     stateOfServer={serverGetState.state}
+                     onSuccess={() => {
+                     setShowGetCall(false);
+                     setServerGetState({ state: "pending" });
+                    }}
+                     onCancel={() => {
+                     setShowGetCall(false);
+                     setServerGetState({ state: "pending" });
+                   }}
+                   />                
                 </Row>
                 
             </Col>

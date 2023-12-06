@@ -15,7 +15,6 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   const [serverGetState, setServerGetState] = useState({ state: "pending" });
 
   const reloadData = () => {
-    console.log('Reloading data...');
     setReload(!reload);
     setServerGetState({ state: "pending" });
   };
@@ -25,9 +24,10 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
       setShowGetCall(true);
       axios.get('//localhost:3030/api/getLists')
       .then(response => {
-        setServerGetState({ state: "success" });
         setDataList(response.data);
+        setServerGetState({ state: "success" });
         setShowGetCall(false);
+
       })
       .catch(error => {
         setServerGetState({ state: "error" });
@@ -37,8 +37,6 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   
     fetchData();
   }, [reload]);
-
-
 
   const { logInUser, visibleLists } = props;
   const [dataList, setDataList] = useState(data);

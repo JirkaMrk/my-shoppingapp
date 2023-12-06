@@ -29,7 +29,6 @@ function App() {  // komponenta pro zobrazení celé aplikace
                   <Nav.Link as={Link} to="/">Home page</Nav.Link>
                   <Nav.Link as={Link} to="/ShoppingListPage">Shopping list page</Nav.Link>
                   <Nav.Link as={Link} to={`/EditorPage/${logInUser}`}>
-                    Editor page
                   </Nav.Link>
                 </Nav>
                 <Dropdown>
