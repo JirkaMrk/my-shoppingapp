@@ -48,7 +48,7 @@ async function addShoppingList(newShoppingList) { // asynchronní funkce pro př
 async function updateShoppingList(id, updatedShoppingList) { // asynchronní funkce pro aktualizaci seznamu
   let lists = await readAllShoppingLists(); // přečte všechny seznamy
   // najde seznam s odpovídajícím id
-  let listIndex = lists.findIndex((list) => id === list.l_id);
+  let listIndex = lists.findIndex((list) => id === list._id);
   if (listIndex === -1) { // pokud není nalezeno
     throw new Error(`Shopping list with id ${id} not found`); // vrátí chybu
   }

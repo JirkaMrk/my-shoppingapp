@@ -67,7 +67,7 @@ async function handleAddShoppingList(req, res) {
 // update shopping list/ owner only
 async function handleUpdateShoppingListById(req, res) {
   try {
-      const listId = req.params._id; // listId je součástí URL parametrů
+      const listId = req.params.listId; // listId je součástí URL parametrů
       const updatedShoppingList = req.body;  // předpokládáme, že nový seznam je součástí "body" požadavku
       delete updatedShoppingList._id; // odstraní listId z objektu seznamu
       // aktualizuje seznam

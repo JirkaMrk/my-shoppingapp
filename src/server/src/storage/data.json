@@ -1,39 +1,12 @@
 [
   {
-    "name": "ou",
+    "name": "Nákup 12",
     "note": "",
     "activeList": true,
     "ownerId": 4586623265,
     "userId": [],
     "listOfItems": [],
-    "_id": "dabb2e2e-b77d-4860-a8b0-a305b65e3047"
-  },
-  {
-    "name": "ttttttttttttttttttt",
-    "note": "",
-    "activeList": true,
-    "ownerId": 7777777777,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "cf661c34-4556-42fd-9507-45a53603b4b4"
-  },
-  {
-    "name": "aa",
-    "note": "",
-    "activeList": true,
-    "ownerId": 7777777777,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "6a0576f9-3cde-42f8-a382-0118ca0361e8"
-  },
-  {
-    "name": "o",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "1fe71923-212f-4642-a2c4-82bc69bc201f"
+    "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db9245j"
   },
   {
     "name": "jirka",
@@ -45,34 +18,16 @@
     "_id": "19f8dca1-f95e-4494-a3fe-62a614a60cde"
   },
   {
-    "name": "hj",
+    "name": "Alza",
     "note": "",
     "activeList": true,
     "ownerId": 4586623265,
     "userId": [],
     "listOfItems": [],
-    "_id": "0ef8a6c6-e701-4714-aa83-87dec1d176f2"
+    "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db"
   },
   {
-    "name": "vb",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db92c"
-  },
-  {
-    "name": "mm",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "36a55077-d93c-4de4-9d62-729342f5cae4"
-  },
-  {
-    "name": "t",
+    "name": "Lídl",
     "note": "",
     "activeList": true,
     "ownerId": 4586623265,
@@ -81,7 +36,7 @@
     "_id": "a791bf36-d72e-412d-b290-9f468392e9ae"
   },
   {
-    "name": "dad",
+    "name": "Bauhaus",
     "note": "",
     "activeList": true,
     "ownerId": 4586623265,
@@ -90,106 +45,7 @@
     "_id": "afc8f2bc-b6e4-4206-b133-db68737a3600"
   },
   {
-    "name": "mnm",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "b70b2cda-cfb4-42c0-8c59-632ce368fdf3"
-  },
-  {
-    "name": "hjh",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "c3c43dcc-aa79-46e7-b7d0-7563ea5f6898"
-  },
-  {
-    "name": "xx",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "47c4953d-9c37-4680-bc04-efeb6b8fc959"
-  },
-  {
-    "name": "s",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "f22a6437-0619-4ea8-a48d-cbbcd0760944"
-  },
-  {
-    "name": "jk",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "6daad359-f7bd-4036-b2f2-69fb3294c4f0"
-  },
-  {
-    "name": "kj",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "05dfd698-bc48-4cab-9ad9-181ddb9531db"
-  },
-  {
-    "name": "s",
-    "note": "",
-    "activeList": true,
-    "ownerId": 1234567890,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "a76ad14a-1c65-45c3-864f-f4e8aadb2578"
-  },
-  {
-    "name": "klkl",
-    "note": "",
-    "activeList": true,
-    "ownerId": 1234567890,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "2c793629-9dbb-40f4-a28a-3541b4c6d2bf"
-  },
-  {
-    "name": "ghg",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "a9becb66-652c-45e5-a6b1-5c7591768e03"
-  },
-  {
-    "name": "fhg",
-    "note": "",
-    "activeList": true,
-    "ownerId": 7777777777,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "2534f9fe-fbf0-4c63-aeea-1b3630f57e79"
-  },
-  {
-    "name": "d",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "ff496532-1904-4d61-822e-485bb93d8077"
-  },
-  {
-    "name": "moje",
+    "name": "Nákup drogerie",
     "note": "",
     "activeList": true,
     "ownerId": 1234567890,
@@ -198,12 +54,48 @@
     "_id": "84c5da2e-94a2-4af4-af90-982a2cd240af"
   },
   {
-    "name": "g",
+    "name": "Hornbach",
     "note": "",
     "activeList": true,
     "ownerId": 1234567890,
     "userId": [],
     "listOfItems": [],
     "_id": "4ed9631c-0969-4c9a-85fe-4c3799f5bfec"
+  },
+  {
+    "name": "Nákup",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "bd9c6cbe-4a3d-4928-b5b4-7cde24901377"
+  },
+  {
+    "name": "Nákup Penny",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "99faa5ed-ec76-45ec-912b-2633dcb89502"
+  },
+  {
+    "name": "Nákup",
+    "note": "",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "bfda6d25-bef0-4d64-bd87-d1daa59183ca"
+  },
+  {
+    "name": "Nákup Penny",
+    "note": "",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "49fab4b5-b430-4abf-8c55-f2d7e36bcf6c"
   }
 ]
