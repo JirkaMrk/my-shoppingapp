@@ -8,19 +8,13 @@ function HomePage() {
               <h1>Mrkvica Jiří</h1>
               <h1><p>-</p></h1>
               <h2>
-                <p> Funkcionality DŮ2</p> 
-                <p>V Shopping list page zvolte detail nákupního seznamu a</p>
-                <p>budete odkázáni na editor page kde funkcionality dle Dů2</p>
-                <p>todo název není ve stavu, po odsdílení uživatel nemůže</p>
-                <p> měnit stav čehokoli.</p>
+                <p> Funkcionality DŮ4</p> 
+                <p>server v src/backend (node index.js) port 3030</p>
+                <p>spinner a volání serveru pro GET (karty) / POST (add new shopping List) / PUT (detail/ update karty)/ DELETE (delete)</p>
+                <p>Po kliknutí update na kartě funkční zatím jen změna názvu karty</p>
+                <p> pak ručně změnit routu na ShoppingListPage </p>
               </h2>
-              <h2>
-                <p>Funkcionality DŮ3</p> 
-                <p>V Shopping list page použijte filtr aktivních/ neaktivních</p>
-                <p>seznamů a přepínání uživatelů</p>
-                <p>Přidávání ubírání dlaždic dle vlastníka</p>
-                <p>mazat lze pouze listy kde je aktivní uživatel owner</p>
-              </h2>
+              
           </div>
         </Container>  
     );
