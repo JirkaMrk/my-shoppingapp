@@ -5,10 +5,32 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ShoppingListForm from './ShoppingListForm';
 
 const ShareModal = (props) => {
 
   const [sharedUsers, setSharedUsers] = useState([]);
+  const isEnglish = props.isEnglish;
+
+  console.log('isEnglish', isEnglish);
+
+  const translations = {
+    listOfSharedUsers: {
+      en: 'List of shared users',
+      cs: 'Seznam sdílených uživatelů',
+    },
+    close: {
+      en: 'Close',
+      cs: 'Zavřít',
+    },
+    save: {
+      en: 'Save',
+      cs: 'Uložit',
+    },
+
+  };
+
+
   useEffect(() => {
     // Update sharedUsers when props.shareList changes
     setSharedUsers(props.shareList || []);
@@ -33,7 +55,9 @@ const ShareModal = (props) => {
   return (
     <Modal show={props.show} onHide={props.handleClose} backdrop="static">
       <Modal.Header closeButton>
-        <Modal.Title>List of shared users</Modal.Title>
+        <Modal.Title>
+        {`${translations.listOfSharedUsers[isEnglish ? 'en' : 'cs']}`}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -45,7 +69,8 @@ const ShareModal = (props) => {
                     id={`checkbox-${item.userId}`}
                     type="checkbox"
                     name="onShare"
-                    label= {item.onShare ? "Shared" : "Not shared"}
+                    label= {item.onShare 
+                      ? "Shared" : "Not shared"}
                     checked={item.onShare}
                     onChange={() => handleCheckboxChange(item.userId)}
                     disabled={handleUserFilter(item.userId)}
@@ -78,9 +103,11 @@ const ShareModal = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>
-          Close
+        {`${translations.close[isEnglish ? 'en' : 'cs']}`}
         </Button>
-        <Button variant="primary">Save changes</Button>
+        <Button variant="primary">
+        {`${translations.save[isEnglish ? 'en' : 'cs']}`}
+          </Button>
       </Modal.Footer>
     </Modal>
   );

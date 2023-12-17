@@ -9,10 +9,36 @@ import ServerStateSpinner from './ServerStateSpinner';
 
 function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
 
+  const translations = {
+    detail: {
+      en: 'Detail',
+      cs: 'Podrobnosti',
+    },
+    delete: {
+      en: 'Delete',
+      cs: 'Smazat',
+    },
+    addNewList: {
+      en: 'Add new list',
+      cs: 'Přidat nový seznam',
+    },
+    deleteConfirm: {
+      en: 'Delete confirm',
+      cs: 'Potvrzení smazání',
+    },
+    areYouSure: {
+      en: 'Are you sure? You want to delete this list.',
+      cs: 'Jste si jistý? Chcete smazat tento seznam.',
+    },
+  };
+
   const [data, setData] = useState([]);
   const [reload, setReload] = useState(true);
   const [showGetCall, setShowGetCall] = useState(false);
   const [serverGetState, setServerGetState] = useState({ state: "pending" });
+  const isEnglish = props.isEnglish;
+
+  console.log("language", isEnglish);
 
   const reloadData = () => {
     setReload(!reload);
@@ -97,14 +123,14 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   return (
     <div>
       <div className='text-center'>
-                <Button 
-                variant="outline-dark" 
-                size="lg" 
-                className='mb-4' 
-                onClick={handleShow}>
-                  Add new shopping list
-                  </Button>
-                </div>  
+        <Button 
+          variant="outline-dark" 
+          size="lg" 
+          className='mb-4' 
+          onClick={handleShow}>
+            {`${translations.addNewList[isEnglish ? 'en' : 'cs']}`}
+        </Button>
+      </div>  
     <Row>
 
       {filterIdUsers  // zobrazení seznamu položek
@@ -124,14 +150,16 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
                   <Card.Text>{dat.ownerId === logInUser ? "My own List" : "Shared List"}</Card.Text>
                   <Card.Text>{dat.activeList === true ? "Active list" : "Inactive list"}</Card.Text>
                   <Button variant="outline-success" onClick={() => handleDetailClick(dat._id)}>
-                    <Link to={`/EditorPage/${dat._id}`}>Detail</Link>
+                    <Link to={`/EditorPage/${dat._id}`}>
+                    {`${translations.detail[isEnglish ? 'en' : 'cs']}`}
+                      </Link>
                   </Button>
                   <Button 
                   variant="outline-danger" 
                   disabled={dat.ownerId !== logInUser}
                   onClick={() => handleDeleteClick(dat._id)}
                   >
-                    Delete
+                    {`${translations.delete[isEnglish ? 'en' : 'cs']}`}
                   </Button>
                 </Card.Body>
               </Card>
@@ -140,6 +168,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
         })}
         <ServerStateSpinner // spinner pro načtení 
             show={showGetCall}
+            isEnglish={isEnglish}
             stateOfServer={serverGetState.state}
             onSuccess={() => {
                 setShowGetCall(false);
@@ -153,6 +182,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
 
         <ConfirmationDialog  // dialogové okno pro smazání
         show={showDelete} 
+        isEnglish={isEnglish}
         handleClose={handleCancelDelete} 
         onConfirm={() => {
           handleConfirmDelete()
@@ -160,11 +190,12 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
           setShowDeleteCall(true);
         }}
       
-        title="Confirm delete"
-        body="Are you sure you want to delete this list?"
+        title={`${translations.deleteConfirm[isEnglish ? 'en' : 'cs']}`}
+        body={`${translations.areYouSure[isEnglish ? 'en' : 'cs']}`}
         />
         <ServerStateSpinner // spinner pro smazání
             show={showDeleteCall}
+            isEnglish={isEnglish}
             stateOfServer={serverDeleteState.state}
             onSuccess={() => {
                 setShowDeleteCall(false);
@@ -179,6 +210,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
         <NewListModal  // dialogové okno pro nový seznam
         logInUser={logInUser}
         show={show}
+        isEnglish={isEnglish}
         handleClose={handleClose}
         handleShow={handleShow}
         onSubmit={handleNewListSubmit}

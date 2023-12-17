@@ -20,9 +20,35 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
   const [serverGetState, setServerGetState] = useState({ state: "pending" });
   const [showUpdateCall, setShowUpdateCall] = useState(false);
   const [serverUpdateState, setServerUpdateState] = useState({ state: "pending" });
+  const isEnglish = props.isEnglish;
 
-  console.log("data", data);
-  console.log("displayListId", displayListId);
+  const translations = {
+    nameOfList: {
+      en: 'Name of shopping list',
+      cs: 'Název nákupního seznamu',
+    },
+    displayActiveLists: {
+      en: 'Display active lists',
+      cs: 'Zobrazit aktivní položky',
+    },
+    displayAllList: {
+      en: 'Display all lists',
+      cs: 'Zobrazit všechny položky',
+    },
+    updateList: {
+      en: 'Update list',
+      cs: 'Aktualizovat seznam',
+    },
+    shareList: {
+      en: 'Share list',
+      cs: 'Sdílet seznam',
+    },
+    deleteList: {
+      en: 'Delete list',
+      cs: 'Smazat seznam',
+    },
+
+  };
 
   useEffect(() => {
     setShowGetCall(true);
@@ -43,8 +69,6 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
   
     fetchData();
   }, []);
-
-  
 
   function uniqueIdGenerator() { // funkce pro generování unikátního ID
     return UniqueIdGenerator().generateUniqueId();
@@ -191,7 +215,6 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
         });
     }
 
-
     return (
         <div>   
             <Form> 
@@ -207,7 +230,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                         name: e.target.value,
                       }]);
                     }}
-                    placeholder="Název nákupního seznamu"
+                    placeholder={`${translations.nameOfList[isEnglish ? 'en' : 'cs']}`}
                     disabled={ownerId !== props.logInUser ? true : false}
                   />
                 </Col>
@@ -228,7 +251,11 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                 <Row sm={5}>
                     <Button  // tlačítko pro zobrazení/ skrytí všech označených položek
                        variant="primary" onClick={handleToggleShowChecked}>
-                      {showChecked ? "Show active items" : "Show all items"}
+                      {showChecked ? (
+                          `${translations.displayAllList[isEnglish ? 'en' : 'cs']}`
+                        ) : (
+                          `${translations.displayActiveLists[isEnglish ? 'en' : 'cs']}`
+                        )}
                     </Button>
             
                     <Button
@@ -238,29 +265,30 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                         handleListUpdate();
                       }}
                     >
-                      Update list
+                      {`${translations.updateList[isEnglish ? 'en' : 'cs']}`}
                     </Button>
             
                     <Button variant="warning" onClick={handleShow}>  
-                         Share List 
+                      {`${translations.shareList[isEnglish ? 'en' : 'cs']}`}
                     </Button>  
                        
                     <ShareModal   // dialogové okno pro sdílení seznamu
                       shareList={usersListToShare}
                       show={show}
+                      isEnglish={isEnglish}
                       listOwner={shoppingListData[0]?.ownerId}
                       logInUser={props.logInUser}
                       handleClose={handleClose}
                       handleShow={handleShow}
                         />
-                    
                     <Button 
                      variant="danger" disabled>
-                     Delete List
+                     {`${translations.deleteList[isEnglish ? 'en' : 'cs']}`}
                     </Button>
 
                     <ServerStateSpinner // spinner pro načtení listu
                      show={showGetCall}
+                     isEnglish={isEnglish}
                      stateOfServer={serverGetState.state}
                      onSuccess={() => {
                      setShowGetCall(false);
@@ -273,6 +301,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                    />    
                    <ServerStateSpinner // spinner pro update listu
                      show={showUpdateCall}
+                     isEnglish={isEnglish}
                      stateOfServer={serverUpdateState.state}
                      onSuccess={() => {
                      setShowUpdateCall(false);

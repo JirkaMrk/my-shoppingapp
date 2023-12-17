@@ -8,6 +8,26 @@ const NewListModal = (props, reloadData) => {
 
     const uniqueIdGenerator = UniqueIdGenerator();
     const [newId, setNewId] = useState(uniqueIdGenerator.generateUniqueId());
+    const isEnglish = props.isEnglish;
+
+    const translations = {
+        newList: {
+          en: 'New shopping list',
+          cs: 'Nový nákupní seznam',
+        },
+        name: {
+          en: 'Name',
+          cs: 'Název',
+        },
+        nameOfList: {
+          en: 'Name of the shopping list',
+          cs: 'Název nákupního seznamu',
+        },
+        create: {
+          en: 'Create new shopping list',
+          cs: 'Vytvořit nový nákupní seznam',
+        },
+    };
 
     const handleButtonClick = () => {
         setNewId(uniqueIdGenerator.generateUniqueId());
@@ -65,17 +85,21 @@ const NewListModal = (props, reloadData) => {
         <>
             <Modal show={props.show} onHide={props.handleClose} backdrop="static">
                 <Modal.Header closeButton>
-                    <Modal.Title>New shopping List</Modal.Title>
+                    <Modal.Title>
+                    {`${translations.newList[isEnglish ? 'en' : 'cs']}`}
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group>
-                            <Form.Label>List name</Form.Label>
+                            <Form.Label>
+                            {`${translations.name[isEnglish ? 'en' : 'cs']}`}
+                            </Form.Label>
                             <Form.Control
                                 id="listName"
                                 type="text"
                                 name="name"
-                                placeholder="Název nákupního seznamu"
+                                placeholder={`${translations.nameOfList[isEnglish ? 'en' : 'cs']}`}
                                 onChange={handleInputChange}
                                 required
                             />
@@ -91,7 +115,7 @@ const NewListModal = (props, reloadData) => {
                         variant="success"
                         disabled={newFormData.name === "" ? true : false}
                     >
-                        Create new shopping list
+                        {`${translations.create[isEnglish ? 'en' : 'cs']}`}
                     </Button>
                 </Modal.Footer>
             </Modal>

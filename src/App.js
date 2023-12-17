@@ -134,13 +134,13 @@ function App() {  // komponenta pro zobrazení celé aplikace
           <Route path="/" element={<HomePage />} />
           <Route
             path="ShoppingListPage"
-            element={<ShoppingListPage logInUser={logInUser} visibleLists={visibleLists} />}
+            element={<ShoppingListPage isEnglish={isEnglish} logInUser={logInUser} visibleLists={visibleLists} />}
           />
           <Route
             path="/EditorPage/:displayListId" component={ShoppingListForm}   
-            element={<EditorPage logInUser={logInUser} />}
+            element={<EditorPage isEnglish={isEnglish} logInUser={logInUser} />}
           />
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/*" element={<NotFoundPage isEnglish={isEnglish}/>} />
         </Routes>
       </Router>
     </div>

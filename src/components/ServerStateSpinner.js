@@ -2,13 +2,29 @@ import {Modal, Button, Spinner} from "react-bootstrap";
 
 const CallStateModal = (props) => {
     const error = props.error || "Server not responding";
+    const isEnglish = props.isEnglish;
+
+    const translations = {
+        contactingServer: {
+          en: 'Contacting server',
+          cs: 'Kontaktuji server',
+        },
+        close: {
+          en: 'Close',
+          cs: 'Zavřít',
+        },
+        done: {
+          en: 'Done',
+          cs: 'Hotovo',
+        },
+    };
 
     function serverResponseState() {
         switch (props.stateOfServer) {
             case "pending":
                 return (
                     <Modal.Body className="text-center">
-                        <h3>Contacting server</h3>
+                        <h3>{`${translations.contactingServer[isEnglish ? 'en' : 'cs']}`}</h3>
                         <Spinner />
                     </Modal.Body>
                 );
@@ -16,10 +32,14 @@ const CallStateModal = (props) => {
                 return (
                     <>
                         <Modal.Body>
-                            <h3 className="text-center text-success">Done</h3>
+                            <h3 className="text-center text-success">
+                            {`${translations.done[isEnglish ? 'en' : 'cs']}`}
+                            </h3>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="success text-center btn-block" onClick={props.onSuccess}>Close</Button>
+                            <Button variant="success text-center btn-block" onClick={props.onSuccess}>
+                             {`${translations.close[isEnglish ? 'en' : 'cs']}`}
+                            </Button>
                         </Modal.Footer>
                     </>
                 );
@@ -32,7 +52,9 @@ const CallStateModal = (props) => {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="danger" onClick={props.onCancel}>Close</Button>
+                            <Button variant="danger" onClick={props.onCancel}>
+                                {`${translations.close[isEnglish ? 'en' : 'cs']}`}
+                            </Button>
                         </Modal.Footer>
                     </>
                 );

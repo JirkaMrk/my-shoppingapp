@@ -2,6 +2,19 @@ import { Modal, Button } from "react-bootstrap";
 
 const ConfirmationDialog = (props) => {  // komponenta pro dialogové okno potvrzení
 
+  const isEnglish= props.isEnglish
+
+  const translations = {
+    cancel: {
+      en: 'Cancel',
+      cs: 'Zrušit',
+    },
+    confirm: {
+      en: 'Confirm',
+      cs: 'Potvrdit',
+    },
+  };
+
   return (
     <Modal show={props.show} onHide={props.handleClose} backdrop="static">
       <Modal.Header closeButton>
@@ -10,10 +23,10 @@ const ConfirmationDialog = (props) => {  // komponenta pro dialogové okno potvr
       <Modal.Body><h4>{props.body}</h4></Modal.Body>
       <Modal.Footer>
         <Button onClick={props.handleClose} variant="secondary">
-          Cancel
+        {`${translations.cancel[isEnglish ? 'en' : 'cs']}`}
         </Button>
         <Button onClick={props.onConfirm} variant="danger">
-          Confirm
+        {`${translations.confirm[isEnglish ? 'en' : 'cs']}`}
         </Button>
       </Modal.Footer>
     </Modal>
