@@ -6,16 +6,66 @@ import HomePage from './pages/HomePage';
 import ShoppingListPage from './pages/ShoppingListPage';
 import EditorPage from './pages/EditorPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav, Dropdown, Button } from 'react-bootstrap';
 import ShoppingListForm from "./components/ShoppingListForm";
 
 
 function App() {  // komponenta pro zobrazení celé aplikace
+
+  const translations = {
+    owner: {
+      en: 'Owner',
+      cs: 'Vlastník',
+    },
+    user: {
+      en: 'User',
+      cs: 'Uživatel',
+    },
+    activeUser: {
+      en: 'Active user',
+      cs: 'Aktivní uživatel',
+    },
+    shoppingListPage: {
+      en: 'Shopping list page',
+      cs: 'Stránka nákupních seznamů',
+    },
+    homePage: {
+      en: 'Home page',
+      cs: 'Domovská stránka',
+    },
+    setFilterAllLists: {
+      en: 'Set filter all lists',
+      cs: 'Zobrazit všechny seznamy',
+    },
+    setFilterActiveLists: {
+      en: 'Set filter active lists',
+      cs: 'Zobrazit aktivní seznamy',
+    },
+    visibleShoppingLists: {
+      en: 'Visible all lists: ',
+      cs: 'Zobrazit seznamy: ',
+    },
+    darkMode: {
+      en: 'Dark mode',
+      cs: 'Tmavý mód',
+    },
+    brightMode: {
+      en: 'Bright mode',
+      cs: 'Světlý mód',
+    },
+  };
+
   const [logInUser, setLogInUser] = useState(4586623265);
   const handleUserSelect = (user) => { setLogInUser(user); };
 
   const [visibleLists, setVisibleLists] = useState(true);
   const handleVisibleSelect = (list) => { setVisibleLists(list); };
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+
+  const [isEnglish, setIsEnglish] = useState(true)
+  const toggleLanguageMode = () =>  setIsEnglish(!isEnglish);
 
   return (
     <div>
@@ -26,31 +76,56 @@ function App() {  // komponenta pro zobrazení celé aplikace
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/">Home page</Nav.Link>
-                  <Nav.Link as={Link} to="/ShoppingListPage">Shopping list page</Nav.Link>
+                  <Nav.Link as={Link} to="/">
+                  {`${translations.homePage[isEnglish ? 'en' : 'cs']}`}
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/ShoppingListPage">
+                  {`${translations.shoppingListPage[isEnglish ? 'en' : 'cs']}`}
+                  </Nav.Link>
                   <Nav.Link as={Link} to={`/EditorPage/${logInUser}`}>
                   </Nav.Link>
                 </Nav>
                 <Dropdown>
-                  <Dropdown.Toggle variant="light" id="dropdown-basic">
-               Active user {logInUser}
-            </Dropdown.Toggle>
+                    <Dropdown.Toggle variant="light" id="dropdown-basic">
+                    {`${translations.activeUser[isEnglish ? 'en' : 'cs']}`} {logInUser}
+                    </Dropdown.Toggle>
+                     <Dropdown.Menu>
+                      <Dropdown.Item onClick={() => handleUserSelect(4586623265)}>
+                        {`${translations.owner[isEnglish ? 'en' : 'cs']}: 
+                        Jirka 4586623265`}</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleUserSelect(1234567890)}>
+                        {`${translations.user[isEnglish ? 'en' : 'cs']}: 
+                        Anna 1234567890`}</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleUserSelect(7777777777)}>
+                        {`${translations.user[isEnglish ? 'en' : 'cs']}: 
+                        Jessica 7777777777`}</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown>
+               <Dropdown.Toggle variant="warning" id="dropdown-basic">
+               {`${translations.visibleShoppingLists[isEnglish ? 'en' : 'cs']}`}{visibleLists.toString()} 
+               </Dropdown.Toggle>
               <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleUserSelect(4586623265)}>Owner: Jirka 4586623265</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleUserSelect(1234567890)}>User: Anna 1234567890</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleUserSelect(7777777777)}>User: Jessica 7777777777</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown>
-            <Dropdown.Toggle variant="warning" id="dropdown-basic">
-               Visible all cards list {visibleLists.toString()} 
-            </Dropdown.Toggle>
-              <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleVisibleSelect(true)}>Visible all lists</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleVisibleSelect(false)}>Visible only active lists</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleVisibleSelect(true)}>
+              {`${translations.setFilterAllLists[isEnglish ? 'en' : 'cs']}`}
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleVisibleSelect(false)}>
+              {`${translations.setFilterActiveLists[isEnglish ? 'en' : 'cs']}`}
+              </Dropdown.Item>
               </Dropdown.Menu>
                 </Dropdown>
-              </Navbar.Collapse>
+                <button onClick={toggleDarkMode}>
+                  {isDarkMode ? (
+                    `${translations.brightMode[isEnglish ? 'en' : 'cs']}`
+                  ) : (
+                    `${translations.darkMode[isEnglish ? 'en' : 'cs']}`
+                  )}
+                </button>
+                <button onClick={toggleLanguageMode}>
+                      {isEnglish ? 'Čeština' : 'English'}
+                </button>
+                
+                </Navbar.Collapse>
             </Container>
           </Navbar>
         </div>

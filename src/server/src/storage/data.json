@@ -2,29 +2,11 @@
   {
     "name": "Nákup 12",
     "note": "",
-    "activeList": true,
+    "activeList": false,
     "ownerId": 4586623265,
     "userId": [],
     "listOfItems": [],
     "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db9245j"
-  },
-  {
-    "name": "jirka",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "19f8dca1-f95e-4494-a3fe-62a614a60cde"
-  },
-  {
-    "name": "Alza 200",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db"
   },
   {
     "name": "Lídl",
@@ -47,14 +29,14 @@
   {
     "name": "Nákup drogerie",
     "note": "",
-    "activeList": true,
+    "activeList": false,
     "ownerId": 1234567890,
     "userId": [],
     "listOfItems": [],
     "_id": "84c5da2e-94a2-4af4-af90-982a2cd240af"
   },
   {
-    "name": "Hornbach",
+    "name": "Hornbach Jirka",
     "note": "",
     "activeList": true,
     "ownerId": 1234567890,
@@ -97,5 +79,14 @@
     "userId": [],
     "listOfItems": [],
     "_id": "49fab4b5-b430-4abf-8c55-f2d7e36bcf6c"
+  },
+  {
+    "name": "21",
+    "note": "",
+    "activeList": true,
+    "ownerId": 4586623265,
+    "userId": [],
+    "listOfItems": [],
+    "_id": "fd190615-d3d6-4e5c-9c1b-988731858c40"
   }
 ]
