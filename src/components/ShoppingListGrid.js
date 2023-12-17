@@ -5,6 +5,36 @@ import { FormControl, Row, Form, Col } from 'react-bootstrap';
 
 
 function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
+
+    const isEnglish = props.isEnglish;
+
+    const translations = {
+        listItem: {
+          en: 'List item',
+          cs: 'Polozka',
+        },
+        amount: {
+          en: 'Amount',
+          cs: 'Mnozstvi',
+        },
+        units: {
+          en: 'Units',
+          cs: 'Jednotky',
+        },
+        delete: {
+          en: 'Delete',
+          cs: 'Smazat',
+        },
+        done: {
+          en: 'Done',
+          cs: 'Hotovo',
+        },
+        toDo: {
+            en: 'To do',
+            cs: 'Nakoupit',
+            },
+    };
+
     
     return (
         <Form>
@@ -15,7 +45,11 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
                         id='checkBox'
                         type='checkbox'
                         name='checkBox'
-                        label={props.done === true ? "Done" : "ToDo"}
+                        label={props.done === true ? (
+                            `${translations.done[isEnglish ? 'en' : 'cs']}`
+                          ) : (
+                            `${translations.toDo[isEnglish ? 'en' : 'cs']}`
+                          )}
                         defaultChecked={props.done === true ? true : false}
                         onChange={props.onCheck}
                     />     
@@ -24,7 +58,7 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
                     <FormControl
                         id='listItem'
                         type='text'
-                        name='listItem'
+                        name={`${translations.listItem[isEnglish ? 'en' : 'cs']}`}
                         defaultValue={props.listItem}
                         disabled={props.done === true ? true : false}
                     />
@@ -33,7 +67,7 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
                     <FormControl
                         id='amount'
                         type='text'
-                        name='amount'
+                        name={`${translations.amount[isEnglish ? 'en' : 'cs']}`}
                         defaultValue={props.amount}
                         disabled={props.done === true ? true : false}
                     />
@@ -42,14 +76,14 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
                     <FormControl
                         id='units'
                         type='text'
-                        name='units'
+                        name={`${translations.units[isEnglish ? 'en' : 'cs']}`}
                         defaultValue={props.units}
                         disabled={props.done === true ? true : false}
                     />
                 </Col>
                 <Col sm={1} className="my-1">
                     <Button variant="danger" onClick={props.onDelete}>
-                        Delete
+                    {`${translations.delete[isEnglish ? 'en' : 'cs']}`}
                     </Button>
                 </Col>
             </Row>

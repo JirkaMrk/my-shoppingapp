@@ -27,9 +27,16 @@ const ShareModal = (props) => {
       en: 'Save',
       cs: 'Uložit',
     },
+    shared: {
+      en: 'Shared',
+      cs: 'Sdíleno',
+    },
+    notShared: {
+      en: 'Not shared',
+      cs: 'Nesdíleno',
+    },
 
   };
-
 
   useEffect(() => {
     // Update sharedUsers when props.shareList changes
@@ -70,7 +77,11 @@ const ShareModal = (props) => {
                     type="checkbox"
                     name="onShare"
                     label= {item.onShare 
-                      ? "Shared" : "Not shared"}
+                      ? (
+                        `${translations.shared[isEnglish ? 'en' : 'cs']}`
+                      ) : (
+                        `${translations.notShared[isEnglish ? 'en' : 'cs']}`
+                      )}
                     checked={item.onShare}
                     onChange={() => handleCheckboxChange(item.userId)}
                     disabled={handleUserFilter(item.userId)}

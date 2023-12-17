@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import UniqueIdGenerator from "./UniqueIdGenerator";
 import axios from 'axios';
 import ServerStateSpinner from './ServerStateSpinner'
-import { Link } from 'react-router-dom';
+
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
 
@@ -240,12 +240,15 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
              .filter((item) => showChecked || item.done === false  )
              .map((item) => (
                 <ShoppingListGrid key={item.id} {...item} 
+                isEnglish={isEnglish}
                 onDelete={() => handleDelete(item.id)}  // provede smazání položky
                 onCheck={() => handleCheck(item.id)}  // provede změnu stavu položky
                 />
             ))}
         
-            <AddBook key={list.length} onAdd={addBook} />  
+            <AddBook key={list.length} 
+            isEnglish={isEnglish}
+            onAdd={addBook} />  
 
             <Col sm={11} className="my-1 offset-sm-1 offset-md-1">
                 <Row sm={5}>

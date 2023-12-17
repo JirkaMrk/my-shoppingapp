@@ -7,6 +7,27 @@ function AddBook(props) {  // komponenta pro přidání položky do seznamu
   const [amount, setAmount] = useState("");
   const [units, setUnits] = useState("");
   const [done, setDone] = useState(false);
+  const isEnglish = props.isEnglish
+
+  const translations = {
+    addItem: {
+      en: 'Add item',
+      cs: 'Přidat položku',
+    },
+    listItemL: {
+      en: 'Item',
+      cs: 'Položka',
+    },
+    amountL: {
+      en: 'Amount',
+      cs: 'Množství',
+    },
+    unitsL: {
+      en: 'Units',
+      cs: 'Jednotky',
+    },
+
+  };
 
   return (  // formulář pro přidání položky do seznamu
     <Form>
@@ -20,37 +41,37 @@ function AddBook(props) {  // komponenta pro přidání položky do seznamu
                      setAmount("");
                      setUnits("");}} 
                     disabled={!listItem || !amount || !units}>  
-                        Add new item
+                        {`${translations.addItem[isEnglish ? 'en' : 'cs']}`}
                     </Button>
                   </div>
                 <Col sm={7} className="my-1">
                     <FormControl
                         id='listItem'
                         type='text'
-                        name='listItem'
+                        name="listItem"
                         value={listItem}
                         onChange={(e) => setListItem(e.target.value)}
-                        placeholder="listItem"
+                        placeholder={`${translations.listItemL[isEnglish ? 'en' : 'cs']}`}
                     />
                 </Col>
                 <Col sm={2} className="my-1">
                     <FormControl
                         id='amount'
                         type='text'
-                        name='amount'
+                        name="amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
-                        placeholder="amount"
+                        placeholder={`${translations.amountL[isEnglish ? 'en' : 'cs']}`}
                     />
                 </Col>
                 <Col sm={2} className="my-1">
                     <FormControl
                         id='units'
                         type='text'
-                        name='units'
+                        name="units"
                         value={units}
                         onChange={(e) => setUnits(e.target.value)}
-                        placeholder="units"
+                        placeholder={`${translations.unitsL[isEnglish ? 'en' : 'cs']}`}
 
                     />
                 </Col>
