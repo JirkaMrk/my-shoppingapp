@@ -42,8 +42,8 @@ function App() {  // komponenta pro zobrazení celé aplikace
       cs: 'Aktivní seznamy',
     },
     visibleShoppingLists: {
-      en: 'Visible all lists: ',
-      cs: 'Zobrazit seznamy: ',
+      en: 'Display: ',
+      cs: 'Zobrazit: ',
     },
     darkMode: {
       en: 'Dark mode',
@@ -75,7 +75,7 @@ function App() {  // komponenta pro zobrazení celé aplikace
         <div>
           <Navbar className="fw-bold" expand="lg" >
             <Container>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Toggle  aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/">
@@ -88,7 +88,7 @@ function App() {  // komponenta pro zobrazení celé aplikace
                   </Nav.Link>
                 </Nav>
                 <Dropdown>
-                    <Dropdown.Toggle variant="light" id="dropdown-basic">
+                    <Dropdown.Toggle variant="warning" id="dropdown-basic">
                     {`${translations.activeUser[isEnglish ? 'en' : 'cs']}`}
                     </Dropdown.Toggle>
                      <Dropdown.Menu>
@@ -116,14 +116,14 @@ function App() {  // komponenta pro zobrazení celé aplikace
               </Dropdown.Item>
               </Dropdown.Menu>
                 </Dropdown>
-                <Button onClick={toggleDarkMode}>
+                <Button variant="warning" onClick={toggleDarkMode}>
                   {isDarkMode ? (
                     `${translations.brightMode[isEnglish ? 'en' : 'cs']}`
                   ) : (
                     `${translations.darkMode[isEnglish ? 'en' : 'cs']}`
                   )}
                 </Button>
-                <Button onClick={toggleLanguageMode}>
+                <Button variant="warning" onClick={toggleLanguageMode}>
                       {isEnglish ? 'Čeština' : 'English'}
                 </Button>
                 
