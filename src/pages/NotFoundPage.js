@@ -1,11 +1,18 @@
 import React from 'react';
 
-function NotFoundPage() {   // komponenta pro zobrazení stránky s chybovou hláškou
+function NotFoundPage(props) {   // komponenta pro zobrazení stránky s chybovou hláškou
+
+    const isEnglish = props.isEnglish;
+
+    const translations = {
+        notFound: {
+          en: 'Page not found, go back to home page',
+          cs: 'Stránka nenalezena, vraťte se na domovskou stránku',
+        }
+    };
     return (
-        <div>
-            <h1>NotFoundPage</h1>
-            <p>Here you can find all the products you need!</p>
-            {/* Add any other HTML elements or React components here */}
+        <div className="d-flex justify-content-center">
+            <h1>{`${translations.notFound[isEnglish ? 'en' : 'cs']}`}</h1>
         </div>
     );
 }

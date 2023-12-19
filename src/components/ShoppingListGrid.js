@@ -26,12 +26,12 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
           cs: 'Smazat',
         },
         done: {
-          en: 'Done',
-          cs: 'Hotovo',
+          en: 'Ok',
+          cs: 'Ok',
         },
         toDo: {
-            en: 'To do',
-            cs: 'Nakoupit',
+            en: 'Need',
+            cs: 'Kup',
             },
     };
 
@@ -40,7 +40,7 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
         <Form>
          <ListGroup id={props} > 
             <Row className="align-items-center">
-                <Col sm={1} className="my-1">
+                <Col sm={2} className="my-1">
                     <Form.Check
                         id='checkBox'
                         type='checkbox'
@@ -54,7 +54,7 @@ function ShoppingListItem(props) {  // vypíše seznam položek v seznamu
                         onChange={props.onCheck}
                     />     
                 </Col>
-                <Col sm={6} className="my-1">
+                <Col sm={5} className="my-1">
                     <FormControl
                         id='listItem'
                         type='text'

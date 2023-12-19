@@ -1,20 +1,23 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-function HomePage() {
+function HomePage( props ) {
+
+  const isEnglish = props.isEnglish;
+
+  const translations = {
+      homePage: {
+        en: 'Shopping list aplication',
+        cs: 'Aplikace nákupních seznamů',
+      }
+  };
+
     return (
-        <Container className="mt-4">
+        <Container className="content-center">
           <div>
               <h1>Mrkvica Jiří</h1>
               <h1><p>-</p></h1>
-              <h2>
-                <p> Funkcionality DŮ5</p> 
-                <p>responsibilita defaut react/ bootstrap</p>
-                <p>dark/ bright mode</p>
-                <p>cz/ en jazyk </p>
-                <p> </p>
-              </h2>
-              
+              <h1>{`${translations.homePage[isEnglish ? 'en' : 'cs']}`}</h1>
           </div>
         </Container>  
     );

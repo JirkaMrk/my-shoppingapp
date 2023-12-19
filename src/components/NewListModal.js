@@ -121,6 +121,7 @@ const NewListModal = (props, reloadData) => {
             </Modal>
 
             <ServerStateSpinner
+                isEnglish={isEnglish}
                 show={showAddCall}
                 stateOfServer={serverAddState.state}
                 onSuccess={() => {

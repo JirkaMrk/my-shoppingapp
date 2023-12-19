@@ -28,11 +28,11 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
       cs: 'Název nákupního seznamu',
     },
     displayActiveLists: {
-      en: 'Display active lists',
+      en: 'Display active items',
       cs: 'Zobrazit aktivní položky',
     },
-    displayAllList: {
-      en: 'Display all lists',
+    displayAllLists: {
+      en: 'Display all items',
       cs: 'Zobrazit všechny položky',
     },
     updateList: {
@@ -255,9 +255,9 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                     <Button  // tlačítko pro zobrazení/ skrytí všech označených položek
                        variant="primary" onClick={handleToggleShowChecked}>
                       {showChecked ? (
-                          `${translations.displayAllList[isEnglish ? 'en' : 'cs']}`
-                        ) : (
                           `${translations.displayActiveLists[isEnglish ? 'en' : 'cs']}`
+                        ) : (
+                          `${translations.displayAllLists[isEnglish ? 'en' : 'cs']}`
                         )}
                     </Button>
             

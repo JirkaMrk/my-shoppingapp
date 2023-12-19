@@ -34,12 +34,12 @@ function App() {  // komponenta pro zobrazení celé aplikace
       cs: 'Domovská stránka',
     },
     setFilterAllLists: {
-      en: 'Set filter all lists',
-      cs: 'Zobrazit všechny seznamy',
+      en: 'All lists',
+      cs: 'Všechny seznamy',
     },
     setFilterActiveLists: {
-      en: 'Set filter active lists',
-      cs: 'Zobrazit aktivní seznamy',
+      en: 'Active lists',
+      cs: 'Aktivní seznamy',
     },
     visibleShoppingLists: {
       en: 'Visible all lists: ',
@@ -64,6 +64,8 @@ function App() {  // komponenta pro zobrazení celé aplikace
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
+  console.log('is modd', isDarkMode);
+
   const [isEnglish, setIsEnglish] = useState(true)
   const toggleLanguageMode = () =>  setIsEnglish(!isEnglish);
 
@@ -71,7 +73,7 @@ function App() {  // komponenta pro zobrazení celé aplikace
     <div>
       <Router>  
         <div>
-          <Navbar className="fw-bold" expand="lg">
+          <Navbar className="fw-bold" expand="lg" >
             <Container>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -87,7 +89,7 @@ function App() {  // komponenta pro zobrazení celé aplikace
                 </Nav>
                 <Dropdown>
                     <Dropdown.Toggle variant="light" id="dropdown-basic">
-                    {`${translations.activeUser[isEnglish ? 'en' : 'cs']}`} {logInUser}
+                    {`${translations.activeUser[isEnglish ? 'en' : 'cs']}`}
                     </Dropdown.Toggle>
                      <Dropdown.Menu>
                       <Dropdown.Item onClick={() => handleUserSelect(4586623265)}>
@@ -103,7 +105,7 @@ function App() {  // komponenta pro zobrazení celé aplikace
                 </Dropdown>
                 <Dropdown>
                <Dropdown.Toggle variant="warning" id="dropdown-basic">
-               {`${translations.visibleShoppingLists[isEnglish ? 'en' : 'cs']}`}{visibleLists.toString()} 
+               {`${translations.visibleShoppingLists[isEnglish ? 'en' : 'cs']}`}
                </Dropdown.Toggle>
               <Dropdown.Menu>
               <Dropdown.Item onClick={() => handleVisibleSelect(true)}>
@@ -114,24 +116,24 @@ function App() {  // komponenta pro zobrazení celé aplikace
               </Dropdown.Item>
               </Dropdown.Menu>
                 </Dropdown>
-                <button onClick={toggleDarkMode}>
+                <Button onClick={toggleDarkMode}>
                   {isDarkMode ? (
                     `${translations.brightMode[isEnglish ? 'en' : 'cs']}`
                   ) : (
                     `${translations.darkMode[isEnglish ? 'en' : 'cs']}`
                   )}
-                </button>
-                <button onClick={toggleLanguageMode}>
+                </Button>
+                <Button onClick={toggleLanguageMode}>
                       {isEnglish ? 'Čeština' : 'English'}
-                </button>
+                </Button>
                 
                 </Navbar.Collapse>
             </Container>
           </Navbar>
         </div>
         <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route index element={<HomePage isEnglish={isEnglish}/>} />
+          <Route path="/" element={<HomePage/>} />
           <Route
             path="ShoppingListPage"
             element={<ShoppingListPage isEnglish={isEnglish} logInUser={logInUser} visibleLists={visibleLists} />}

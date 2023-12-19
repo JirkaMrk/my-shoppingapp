@@ -1,83 +1,358 @@
 [
   {
-    "name": "Nákup 12",
-    "note": "",
+    "name": "Nakup na víkend",
+    "note": "Kup rychle,vykoupí!",
     "activeList": false,
     "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "0b91d5ea-f4e5-4d89-b08c-833e795db9245j"
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": true,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": false,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": false,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe82094682e200"
   },
   {
-    "name": "Lídldwwww",
-    "note": "",
+    "name": "Chtěl bych koupit něco na víkend",
+    "note": "Kup rychle,vykoupí!",
     "activeList": true,
     "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "a791bf36-d72e-412d-b290-9f468392e9ae"
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": true,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": false,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": false,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe82094682e355"
   },
   {
-    "name": "Nákup drogerie",
-    "note": "",
+    "name": "Tohle je potřeba na oslavu 15.12.2023",
+    "note": "Kup rychle, než to vykoupí!",
     "activeList": false,
     "ownerId": 1234567890,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "84c5da2e-94a2-4af4-af90-982a2cd240af"
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 4586623265
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": false,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": true,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": false,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bb82089462e201"
   },
   {
-    "name": "Hornbach Jirka",
-    "note": "",
+    "name": "Tohle je na tenhle víkend 12.3.2023",
+    "note": "Kup rychle, než to vykoupí!",
     "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": true,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": false,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": true,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe82089462202"
+  },
+  {
+    "name": "Nákup pro babičku 12.3.2023",
+    "note": "Kup rychle, než to vykoupí!",
+    "activeList": false,
     "ownerId": 1234567890,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "4ed9631c-0969-4c9a-85fe-4c3799f5bfec"
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": false,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": false,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": true,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe820862e203"
+  },
+  {
+    "name": "Nákup na chalupu Karlovy Vary 12.3.2023",
+    "note": "Kup rychle, než to vykoupí!",
+    "activeList": true,
+    "ownerId": 7777777777,
+    "userId": [
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": false,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": true,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": false,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe920862e204"
   },
   {
     "name": "Nákup",
+    "note": "Kup rychle, než to vykoupí!",
+    "activeList": false,
+    "ownerId": 4586623265,
+    "userId": [
+      {
+        "userId": 1234567890
+      },
+      {
+        "userId": 1111111111
+      },
+      {
+        "userId": 3333333333
+      },
+      {
+        "userId": 5555555555
+      },
+      {
+        "userId": 7777777777
+      },
+      {
+        "userId": 5656565656
+      }
+    ],
+    "listOfItems": [
+      {
+        "id": "0",
+        "done": true,
+        "listItem": "Mrkev",
+        "amount": 1,
+        "units": "kg"
+      },
+      {
+        "id": "1",
+        "done": false,
+        "listItem": "Máslo",
+        "amount": 1,
+        "units": "ks"
+      },
+      {
+        "id": "2",
+        "done": true,
+        "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      }
+    ],
+    "_id": "bbe8208cc62e205"
+  },
+  {
+    "name": "uikkiiii",
     "note": "",
     "activeList": true,
     "ownerId": 4586623265,
     "userId": [],
     "listOfItems": [],
-    "_id": "bd9c6cbe-4a3d-4928-b5b4-7cde24901377"
-  },
-  {
-    "name": "Nákup Penny",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "99faa5ed-ec76-45ec-912b-2633dcb89502"
-  },
-  {
-    "name": "Nákup",
-    "note": "",
-    "activeList": true,
-    "ownerId": 7777777777,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "bfda6d25-bef0-4d64-bd87-d1daa59183ca"
-  },
-  {
-    "name": "Nákup Penny",
-    "note": "",
-    "activeList": true,
-    "ownerId": 7777777777,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "49fab4b5-b430-4abf-8c55-f2d7e36bcf6c"
-  },
-  {
-    "name": "21",
-    "note": "",
-    "activeList": true,
-    "ownerId": 4586623265,
-    "userId": [],
-    "listOfItems": [],
-    "_id": "fd190615-d3d6-4e5c-9c1b-988731858c40"
+    "_id": "4a037e59-b317-4c3b-af63-f0b204c14dfb"
   }
 ]
