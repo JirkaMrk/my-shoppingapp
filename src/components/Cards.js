@@ -30,6 +30,22 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
       en: 'Are you sure? You want to delete this list.',
       cs: 'Jste si jistý? Chcete smazat tento seznam.',
     },
+    myList: {
+      en: 'My list',
+      cs: 'Můj seznam',
+    },
+    notMyList: {
+      en: 'Shared list',
+      cs: 'Sdílený seznam',
+    },
+    activeList: {
+      en: 'Active list',
+      cs: 'Aktivní seznam',
+    },
+    inactiveList: {
+      en: 'Inactive list',
+      cs: 'Neaktivní seznam',
+    },
   };
 
   const [data, setData] = useState([]);
@@ -147,8 +163,18 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
                 <Card.Img src={background} alt="Shopping List" />
                 <Card.Body>
                   <Card.Title>{dat.name}</Card.Title>
-                  <Card.Text>{dat.ownerId === logInUser ? "My own List" : "Shared List"}</Card.Text>
-                  <Card.Text>{dat.activeList === true ? "Active list" : "Inactive list"}</Card.Text>
+                  <Card.Text>{dat.ownerId === logInUser 
+                  ? (
+                    `${translations.myList[isEnglish ? 'en' : 'cs']}`
+                  ) : (
+                    `${translations.notMyList[isEnglish ? 'en' : 'cs']}`
+                  )}</Card.Text>
+                  <Card.Text>{dat.activeList === true 
+                  ? (
+                    `${translations.activeList[isEnglish ? 'en' : 'cs']}`
+                  ) : (
+                    `${translations.inactiveList[isEnglish ? 'en' : 'cs']}`
+                  )}</Card.Text>
                   <Button variant="outline-success" onClick={() => handleDetailClick(dat._id)}>
                     <Link to={`/EditorPage/${dat._id}`}>
                     {`${translations.detail[isEnglish ? 'en' : 'cs']}`}
