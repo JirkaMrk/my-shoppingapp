@@ -88,7 +88,6 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   const [itemToDelete, setItemToDelete] = useState(null);
   const [showDeleteCall, setShowDeleteCall] = useState(false);
   const [serverDeleteState, setServerDeleteState] = useState({ state: "pending" });
-  const [dataForChart, setDataForChart] = useState([]);  // data pro graf
 
   const [showDelete, setShowDelete] = useState(false);  // stavy pro dialogové okno smazání
   const handleCloseDelete = () => setShowDelete(false);
@@ -138,6 +137,12 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
     return userIds.includes(logInUser) || logInUser === item.ownerId;
   });
 
+  const dataForChartUser = filterIdUsers.map((item) => { // funkce vrátí seznam položek pro graf pro shoppingListPage
+    return {
+      name: item.name.substring(0, 11), // omezení počtu znaků v názvu
+      count: Array.isArray(item.listOfItems) ? item.listOfItems.length : 0, // počet položek
+    };
+  });
 
   return (
     <div>
@@ -196,9 +201,9 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
             </Col>
           );
         })}
-        <Chart
+        <Chart // graf pro shoppingListPage
           isEnglish={isEnglish}
-          data={data}
+          dataForChartUser={dataForChartUser}
         />
         <ServerStateSpinner // spinner pro načtení 
             show={showGetCall}

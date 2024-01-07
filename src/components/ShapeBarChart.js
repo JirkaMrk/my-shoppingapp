@@ -3,7 +3,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { useWindowSize } from "@uidotdev/usehooks";
 
 function Chart(props) { // komponenta pro zobrazení grafu
-    const dataX = props.dataX;
+    const data = props.dataForChartUser;
     const size = useWindowSize();
     const isMobile = size.width < 768;
     const [chartSize, setChartSize] = useState(150);
@@ -18,59 +18,8 @@ function Chart(props) { // komponenta pro zobrazení grafu
         }
     }, [size.width]);
 
-    const translations = { // překlady
-        active: {
-            en: 'Actcccive',
-            cs: 'Akticccvní',
-        },
-        inactive: {
-            en: 'Inacccctive',
-            cs: 'Neakccctivní',
-        }
-    };
-
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink','#0088FE', '#00C49F', '#FFBB28', 
                     '#FF8042', 'red', 'pink','#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
-
-        const data = [
-        {
-            name: 'Page A',
-            uv: 4000,
-        },
-        {
-            name: 'Page B',
-            uv: 3000,
-        },
-        {
-            name: 'Page C',
-            uv: 2000,
-        },
-        {
-            name: 'Page D',
-            uv: 2780,
-        },
-        {
-            name: 'Page E',
-            uv: 1890,
-        },
-        {
-            name: 'Page F',
-            uv: 2390,
-        },
-        {
-            name: 'Page G',
-            uv: 3090,
-        },
-        {
-            name: 'Page H', 
-            uv: 3090,
-        },
-        {
-            name: 'Page I',
-            uv: 3090,
-        },
-    
-        ];
 
         const getPath = (x, y, width, height) => {
         return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
@@ -100,7 +49,7 @@ const TriangleBar = (props) => {
                 <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis />
-                <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                <Bar dataKey="count" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
                     {data.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={colors[index % 20]} />
                 ))}

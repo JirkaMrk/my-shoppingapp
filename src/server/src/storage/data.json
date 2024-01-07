@@ -45,6 +45,13 @@
         "listItem": "Mléko",
         "amount": 2,
         "units": "l"
+      },
+      {
+        "id": "3",  
+        "done": false,
+        "listItem": "Pivo",
+        "amount": 2,
+        "units": "l"
       }
     ],
     "_id": "bbe82094682e200"
@@ -81,13 +88,6 @@
         "listItem": "Mrkev",
         "amount": 1,
         "units": "kg"
-      },
-      {
-        "id": "1",
-        "done": false,
-        "listItem": "Máslo",
-        "amount": 1,
-        "units": "ks"
       },
       {
         "id": "2",
@@ -132,6 +132,7 @@
         "amount": 1,
         "units": "kg"
       },
+
       {
         "id": "1",
         "done": true,
@@ -143,6 +144,13 @@
         "id": "2",
         "done": false,
         "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      },
+      {
+        "id": "3",
+        "done": false,
+        "listItem": "Pivo",
         "amount": 2,
         "units": "l"
       }
@@ -176,13 +184,6 @@
     ],
     "listOfItems": [
       {
-        "id": "0",
-        "done": true,
-        "listItem": "Mrkev",
-        "amount": 1,
-        "units": "kg"
-      },
-      {
         "id": "1",
         "done": false,
         "listItem": "Máslo",
@@ -194,6 +195,20 @@
         "done": true,
         "listItem": "Mléko",
         "amount": 2,
+        "units": "l"
+      },
+      {
+        "id": "3",
+        "done": false,
+        "listItem": "Kola",
+        "amount": 2,
+        "units": "l"
+      },
+      {
+        "id": "4",
+        "done": false,
+        "listItem": "Pivo",
+        "amount": 4,
         "units": "l"
       }
     ],
@@ -238,13 +253,6 @@
         "listItem": "Máslo",
         "amount": 1,
         "units": "ks"
-      },
-      {
-        "id": "2",
-        "done": true,
-        "listItem": "Mléko",
-        "amount": 2,
-        "units": "l"
       }
     ],
     "_id": "bbe820862e203"
@@ -290,6 +298,20 @@
         "id": "2",
         "done": false,
         "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      },
+      {
+        "id": "3",
+        "done": false,
+        "listItem": "Sýr",
+        "amount": 20,
+        "units": "Ks"
+      },
+      {
+        "id": "4",
+        "done": false,
+        "listItem": "Kola",
         "amount": 2,
         "units": "l"
       }
@@ -340,6 +362,20 @@
         "id": "2",
         "done": true,
         "listItem": "Mléko",
+        "amount": 2,
+        "units": "l"
+      },
+      {
+        "id": "3",
+        "done": false,
+        "listItem": "Pivo",
+        "amount": 2,
+        "units": "l"
+      },
+      {
+        "id": "4",
+        "done": false,
+        "listItem": "Kola",
         "amount": 2,
         "units": "l"
       }
