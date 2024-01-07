@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import ShoppingListForm from '../components/ShoppingListForm';
+import Chart from '../components/PieChart';
 
 function EditorPage({logInUser, isEnglish}) {  // komponenta pro zobrazení formuláře seznamu
     

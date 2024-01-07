@@ -6,6 +6,7 @@ import ConfirmationDialog from './ConfirmationDialog';
 import NewListModal from './NewListModal';
 import axios from 'axios';
 import ServerStateSpinner from './ServerStateSpinner';
+import Chart from '../components/ShapeBarChart';
 
 function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
 
@@ -87,6 +88,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
   const [itemToDelete, setItemToDelete] = useState(null);
   const [showDeleteCall, setShowDeleteCall] = useState(false);
   const [serverDeleteState, setServerDeleteState] = useState({ state: "pending" });
+  const [dataForChart, setDataForChart] = useState([]);  // data pro graf
 
   const [showDelete, setShowDelete] = useState(false);  // stavy pro dialogové okno smazání
   const handleCloseDelete = () => setShowDelete(false);
@@ -136,6 +138,7 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
     return userIds.includes(logInUser) || logInUser === item.ownerId;
   });
 
+
   return (
     <div>
       <div className='text-center'>
@@ -153,11 +156,12 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
         .filter(
           (dat) =>
             dat.activeList !== visibleLists && visibleLists === false || visibleLists === true    
-            // filtruje seznam podle "visibleLists"
+            // filtruje seznam podle "visibleLists"       
         )
-        .map((dat) => {   
-          
+
+        .map((dat) => { 
           return (
+
             <Col key={dat._id} className="d-flex justify-content-center" md={5} lg={4} xl={3} xxl={2} >
               <Card className="ShoppingListCard text-center m-4" >
                 <Card.Img src={background} alt="Shopping List" />
@@ -192,6 +196,10 @@ function ShoppingCards(props) {  // komponenta pro zobrazení seznamu položek
             </Col>
           );
         })}
+        <Chart
+          isEnglish={isEnglish}
+          data={data}
+        />
         <ServerStateSpinner // spinner pro načtení 
             show={showGetCall}
             isEnglish={isEnglish}

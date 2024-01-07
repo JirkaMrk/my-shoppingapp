@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import UniqueIdGenerator from "./UniqueIdGenerator";
 import axios from 'axios';
 import ServerStateSpinner from './ServerStateSpinner'
+import Chart from './PieChart';
 
 
 function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře seznamu
@@ -245,7 +246,7 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                 onCheck={() => handleCheck(item.id)}  // provede změnu stavu položky
                 />
             ))}
-        
+  
             <AddBook key={list.length} 
             isEnglish={isEnglish}
             onAdd={addBook} />  
@@ -316,6 +317,11 @@ function ShoppingListForm( props ) {  // komponenta pro zobrazení formuláře s
                    }}
                    />              
                 </Row>
+                <Chart
+                        isEnglish={isEnglish}
+                        dataActive={shoppingList.filter((item) => item.done === false).length}
+                        dataInactive={shoppingList.filter((item) => item.done === true).length}
+                    />
                 
             </Col>
         </div>    
